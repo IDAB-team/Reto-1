@@ -1,62 +1,70 @@
-# 🌐 Reto 1: Aplicación Web para Comerciantes de Vitoria
-
-> Proyecto desarrollado en **2º de Desarrollo de Aplicaciones Web**.  
-> Objetivo: crear una **aplicación web para los comerciantes locales de Vitoria**, que permita mostrar sus productos, servicios y facilitar la interacción con clientes.  
+# 🌐 Reto 1: Aplicación Web para Comerciantes de Vitoria �
 
 ---
 
-## 🎯 Objetivo del Proyecto
+# ◾ Índice
 
-- Digitalizar y visibilizar a los comercios de Vitoria.  
-- Ofrecer un catálogo online sencillo y accesible para los usuarios.  
-- Permitir que los comerciantes gestionen su información y productos.  
-
----
-
-## 🛠 Tecnologías y Herramientas
-
-- **Frontend:** HTML5, CSS3 (estilo azul 💙), JavaScript  
-- **Backend:** PHP  
-- **Base de datos:** MySQL  
-- **Control de versiones:** GitHub, GitHub Desktop  
-- **Gestión de proyecto:** Trello  
-- **Diseño y prototipado:** Figma, Canva  
-- **Comunicación:** WhatsApp, Discord  
+- [Estado del Proyecto](#estado)
+- [Descripción](#descripcion)
+- [Desarrolladores](#desarrolladores)
+- [Stack Tecnológico](#stack)
+- [Aspecto](#aspecto)
+- [Instalación](#instalacion)
+- [Uso](#uso)
 
 ---
 
-## 🏷 Categorías de Comercios
+<h1 id="estado">🔹 Estado del Proyecto</h1>
 
-- **Moda**  
-- **Tecnología**  
-- **Hogar**  
-- **Belleza**  
-- **Deportes**  
-- **Infantil**  
-- **Mascotas**  
-- **Automoción**  
-- **Salud**  
-- **Alimentación**  
-
-> Cada categoría contará con fichas de los comercios, productos destacados y datos de contacto.  
+**En desarrollo 🔧**  
 
 ---
 
-## 🚀 Funcionalidades (Reto Inicial)
+<h1 id="descripcion">🔹 Aplicación Web para Comerciantes de Vitoria</h1>
 
-- Visualización de comercios por categoría.  
-- Buscador de comercios por nombre o producto.  
-- Perfil de comercio con productos/servicios y contacto.  
-- Interfaz responsive adaptada a móviles y tablets.  
+Este proyecto corresponde a una aplicación web orientada a **digitalizar y visibilizar los comercios locales de Vitoria**.
+
+Ofrece funcionalidades para administrar comercios, productos, categorías y facilitar la interacción con clientes.
 
 ---
 
-## 💙 Estilo
+<h1 id="desarrolladores">🔹 Desarrolladores</h1>
+
+- <em>Danel</em>  
+- <em>Iker</em>  
+- <em>Dasha</em>  
+- <em>Bryan</em>  
+
+---
+
+<h1 id="stack">🔹 Stack Tecnológico</h1>
+
+- **Tecnologías de Desarrollo**
+ 
+![PHP](https://img.shields.io/badge/PHP-1E90FF?logo=php&logoColor=white&style=for-the-badge)
+![MySQL](https://img.shields.io/badge/MySQL-1E90FF?logo=mysql&logoColor=white&style=for-the-badge)
+![HTML5](https://img.shields.io/badge/HTML5-1E90FF?logo=html5&logoColor=white&style=for-the-badge)
+![CSS3](https://img.shields.io/badge/CSS3-1E90FF?logo=css3&logoColor=white&style=for-the-badge)
+![JavaScript](https://img.shields.io/badge/JavaScript-1E90FF?logo=javascript&logoColor=white&style=for-the-badge)
+
+- **Herramientas de Organización y Comunicación**
+
+![GitHub](https://img.shields.io/badge/GitHub-1E90FF?logo=github&logoColor=white&style=for-the-badge)
+![GitHub Desktop](https://img.shields.io/badge/GitHub_Desktop-1E90FF?logo=github&logoColor=white&style=for-the-badge)
+![Trello](https://img.shields.io/badge/Trello-1E90FF?logo=trello&logoColor=white&style=for-the-badge)
+![WhatsApp](https://img.shields.io/badge/WhatsApp-1E90FF?logo=whatsapp&logoColor=white&style=for-the-badge)
+![Discord](https://img.shields.io/badge/Discord-1E90FF?logo=discord&logoColor=white&style=for-the-badge)
+![Figma](https://img.shields.io/badge/Figma-1E90FF?logo=figma&logoColor=white&style=for-the-badge)
+![Canva](https://img.shields.io/badge/Canva-1E90FF?logo=canva&logoColor=white&style=for-the-badge)
+
+---
+
+<h1 id="aspecto">🔹 Aspecto</h1>
 
 El diseño de la aplicación se centra en una **paleta azul**, buscando transmitir confianza y modernidad:  
 
 - **Color principal:** #1E90FF (Dodger Blue)  
-- **Color secundario:** #E6F0FA (celeste suave)  
+- **Color secundario:** #E6F0FA (Celeste suave)  
 - **Tipografía:** Sans-serif clara y legible  
 
 ---

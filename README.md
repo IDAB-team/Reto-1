@@ -1,7 +1,5 @@
 # 🌐 Reto 1: Aplicación Web para Comerciantes de Vitoria
 
-![Banner Azul](https://via.placeholder.com/1200x200/1E90FF/FFFFFF?text=Comerciantes+de+Vitoria)  
-
 > Proyecto desarrollado en **2º de Desarrollo de Aplicaciones Web**.  
 > Objetivo: crear una **aplicación web para los comerciantes locales de Vitoria**, que permita mostrar sus productos, servicios y facilitar la interacción con clientes.  
 

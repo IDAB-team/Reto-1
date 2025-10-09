@@ -2,7 +2,7 @@
 
 ---
 
-# ◾ Índice
+# 🔹 Índice
 
 - [Estado del Proyecto](#estado)
 - [Descripción](#descripcion)

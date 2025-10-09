@@ -9,8 +9,6 @@
 - [Desarrolladores](#desarrolladores)
 - [Stack Tecnológico](#stack)
 - [Aspecto](#aspecto)
-- [Instalación](#instalacion)
-- [Uso](#uso)
 
 ---
 

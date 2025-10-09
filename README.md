@@ -1,4 +1,4 @@
-# 🌐 Reto 1: Aplicación Web para Comerciantes de Vitoria �
+# 🌐 Reto 1: Aplicación Web para Comerciantes de Vitoria
 
 ---
 

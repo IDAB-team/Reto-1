@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/Database.php';
 
-class EmpleadoModel {
+class UsuarioModel {
     
     public static function getAll() {
         

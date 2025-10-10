@@ -61,8 +61,7 @@ Ofrece funcionalidades para administrar comercios, productos, categorías y faci
 
 El diseño de la aplicación se centra en una **paleta azul**, buscando transmitir confianza y modernidad:  
 
-- **Color principal:** #1E90FF (Dodger Blue)  
-- **Color secundario:** #E6F0FA (Celeste suave)  
-- **Tipografía:** Sans-serif clara y legible  
+- **Color principal:** #1156CC (Dodger Blue)  
+- **Tipografía:** Montserrat clara y legible  
 
 ---

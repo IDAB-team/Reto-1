@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="/assets/images/favicon.png">
 
     <!-- CSS principal -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="/Reto-1/code/assets/css/style.css">
 </head>
 <body>
     <header>

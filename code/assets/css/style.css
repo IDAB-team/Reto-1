@@ -18,6 +18,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    gap: 2em;
     padding: 1em;
 }
 
@@ -54,6 +55,17 @@ header {
     height: 3em;
     display: flex;
     align-items: center;
+}
+
+.categorias {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.categorias img {
+    width: 2em;
 }
 
 /* ==================================================================================================================

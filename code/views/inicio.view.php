@@ -3,7 +3,7 @@
     <?php include __DIR__ . '/layout/headerSinSession.php'; ?>
 
 
-    <main>
+    <main class="inicioMain">
         <div class="inicioBusqueda">
             <h1>¿Que quieres encontrar?</h1>
             <div class="inicioBuscador">
@@ -31,5 +31,6 @@
         </div>   
     </main>
 
+    
     <?php include __DIR__ . '/layout/footer.php'; ?>
 </html>

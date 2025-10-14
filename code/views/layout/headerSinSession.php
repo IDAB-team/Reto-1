@@ -12,16 +12,18 @@
     <link rel="icon" type="image/png" href="/assets/images/favicon.png">
 
     <!-- CSS principal -->
-<link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/inicio.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
 </head>
 <body>
     <header>
-        <div class="titulo">
+        <div class="headerTitulo">
             <img src="./assets/images/Logo_azul.png" alt="Logotipo" class="logotipo">
             <h1>ComerciaGasteiz</h1>
         </div>
-        <div class="botones">
-            <div class="boton">Iniciar sesión</div>
-            <div class="boton">Crear cuenta</div>
+        <div class="headerBotones">
+            <div class="headerBoton">Iniciar sesión</div>
+            <div class="headerBoton">Crear cuenta</div>
         </div>
     </header>

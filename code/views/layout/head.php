@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="/assets/images/favicon.png">
 
     <!-- CSS principal -->
-<link rel="stylesheet" href="/Reto-1/code/assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <header>
@@ -21,7 +21,7 @@
             <h1>ComerciaGasteiz</h1>
         </div>
         <div class="botones">
-            <div class="boton">Boton 1</div>
-            <div class="boton">Boton 2</div>
+            <div class="boton">Iniciar sesión</div>
+            <div class="boton">Crear cuenta</div>
         </div>
     </header>

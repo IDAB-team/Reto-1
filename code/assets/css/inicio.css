@@ -3,68 +3,47 @@
 ================================================================================================================== */
 
 
-/* =========================================================
-   VARIABLES GENERALES
-========================================================= */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    background-color: white;
-    width: 100%;
-    height: 100vh;
+
+.inicioMain {
     display: flex;
     flex-direction: column;
-    gap: 2em;
-    padding: 1em;
-}
-
-header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.titulo {
-    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.logotipo{
-    width: 4em;
-}
-
-.titulo h1 {
-    color: #1156CC;
-}
-
-.botones {
+.inicioBusqueda {
     display: flex;
-    gap: 0.5em;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.boton {
-    background-color: #1156CC;
-    color: white;
-    padding: 1em;
+.inicioBuscar {
+    display: flex;
+    justify-content: right;
+    border: 1px solid #1156CC;
     border-radius: 10px;
-    height: 3em;
-    display: flex;
-    align-items: center;
+    padding: 0.5em 1em;
 }
 
-.categorias {
+.inicioBotonBuscar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #1156CC;
+    padding: 0.5em;
+    border-radius: 10px;
+}
+
+.inicioCategorias {
     width: 100%;
     display: flex;
     justify-content: center;
     gap: 0.5em;
 }
 
-.categorias img {
+.inicioCategorias img {
     width: 2em;
 }
 

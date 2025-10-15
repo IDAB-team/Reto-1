@@ -7,9 +7,18 @@ class VendedorController extends BaseController
 {
     public function index()
     {
-        session_start();
+        session_start(); 
 
-        // Verificar sesión
+        // Header según tipo de usuario --DANEL
+        $header = 'headerSinSession.php';
+        if (isset($_SESSION['user'])) {
+            if ($_SESSION['user']['tipo'] === 'comprador') {
+                $header = 'headerSessionComprador.php';
+            } elseif ($_SESSION['user']['tipo'] === 'vendedor') {
+                $header = 'headerSessionVendedor.php';
+            }
+        }
+        // Verificar sesión --DASHA
         if (!isset($_SESSION['id_usuario'])) {
             header("Location: index.php?controller=Auth&action=login");
             exit;
@@ -33,6 +42,7 @@ class VendedorController extends BaseController
 
             // Renderizar vista
             $this->render('vendedor.view.php', [
+                'header' => $header, //DANEL
                 'user' => $user,
                 'listaAnuncios' => $listaAnuncios,
                 'paginaActual' => $paginaActual,
@@ -46,6 +56,18 @@ class VendedorController extends BaseController
                 'mensaje' => 'Ha ocurrido un error al cargar los datos del vendedor.'
             ]);
         }
+
+    
+    public function show() {
+        
+    }
+    
+    public function store() {
+        
+    }
+    
+    public function destroy() {
+        
     }
 
     private function getPaginacionConfig()

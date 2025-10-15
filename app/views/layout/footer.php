@@ -18,3 +18,4 @@
     </footer>
 </body>
 <script src="./assets/scripts/header.js"></script>
+<script src="./assets/scripts/headerSinSession.js"></script>

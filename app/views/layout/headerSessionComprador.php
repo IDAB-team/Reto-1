@@ -39,9 +39,9 @@
                     </svg>
                 </div>
                 <div class="headerDesplegable">
-                    <a href="">Mis favoritos</a>
-                    <a href="">Ajustes</a>
-                    <a href="">Cerrar sesión</a>
+                    <a href="index.php?controller=FavoritosController">Mis favoritos</a>
+                    <a href="index.php?controller=AjustesController">Ajustes</a>
+                    <a href="?controller=LoginController&accion=logout">Cerrar sesión</a>
                 </div>
             </div>
         </div>

@@ -32,11 +32,59 @@
             <h1>ComerciaGasteiz</h1>
         </div>
         <div class="headerBotones">
-            <a href="index.php?controller=IniciarSesionController">
-                <div class="headerBoton">Iniciar sesión</div>
-            </a>
-            <a href="index.php?controller=CrearCuentaController">
-                <div class="headerBoton">Crear cuenta</div>
-            </a>
+            <div class="headerBoton">Iniciar sesión</div>
+            <div class="headerBoton">Crear cuenta</div>
         </div>
     </header>
+    <!-- Overlay / Fondo opaco -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <!-- Cabecera con logo y cerrar -->
+            <div class="modal-header">
+                <div class="modalTitulo">
+                    <img src="./assets/images/Logo_azul.png" alt="Logotipo" class="logotipo">
+                    <h1>ComerciaGasteiz</h1>
+                </div>
+                <span id="closeModal" class="modal-close">&times;</span>
+            </div>
+
+            <!-- Barra de selección de pestañas -->
+            <div class="modal-tabs">
+                <span id="tabLogin" class="active">Iniciar sesión</span>
+                <span id="tabRegister">Crear cuenta</span>
+            </div>
+
+            <!-- Contenido de formularios -->
+            <div class="modal-body">
+                
+                <!-- Login -->
+                <form id="loginForm" class="modal-form visible" method="POST" action="?controller=LoginController&accion=login">
+                    <input type="email" name="email" placeholder="Correo electrónico" required>
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <button type="submit">Iniciar sesión</button>
+                </form>
+
+                <!-- Registro -->
+                <form id="registerForm" class="modal-form hidden" method="POST" action="?controller=LoginController&accion=register">
+                    <div id="registerChoice" class="register-choice">
+                        <p>¿Qué quieres hacer?</p>
+                        <div class="choice-buttons">
+                            <button type="button" id="btnComprar">Comprar</button>
+                            <button type="button" id="btnVender">Vender</button>
+                        </div>
+                        <input type="hidden" name="tipoCuenta" id="tipoCuenta">
+                    </div>
+
+                    <div id="registerFields" class="formRegister hidden">
+                        <input type="text" id="inputCIF" name="cif" placeholder="CIF" class="hidden">
+                        <input type="text" name="nombre" placeholder="Nombre completo" required>
+                        <input type="email" name="email" placeholder="Correo electrónico" required>
+                        <input type="password" name="password" placeholder="Contraseña" required>
+                        <input type="password" name="passwordConfirm" placeholder="Repetir contraseña" required>
+                        <button type="submit">Crear cuenta</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>

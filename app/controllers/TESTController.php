@@ -5,6 +5,18 @@ require_once __DIR__ . '/BaseController.php';
 class TESTController extends BaseController {
     
     public function index() {
-        $this->render('TEST.view.php');
+        session_start(); 
+
+        // Header según tipo de usuario
+        $header = 'headerSinSession.php';
+        if (isset($_SESSION['user'])) {
+            if ($_SESSION['user']['tipo'] === 'comprador') {
+                $header = 'headerSessionComprador.php';
+            } elseif ($_SESSION['user']['tipo'] === 'vendedor') {
+                $header = 'headerSessionVendedor.php';
+            }
+        }
+
+        $this->render('TEST.view.php', ['header' => $header]);
     }
 }

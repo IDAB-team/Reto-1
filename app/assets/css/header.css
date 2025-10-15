@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 2em;
+
+    /* sombra solo abajo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.headerTitulo {
+    display: flex;
+    align-items: center;
+}
+
+.headerLogotipo{
+    width: 4em;
+}
+
+.headerTitulo h1 {
+    color: #1156CC;
+}
+
+.headerTitulo img{
+    width: 4em;
+}
+
+.headerBotones {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}
+
+.headerBoton {
+    background-color: #1156CC;
+    color: white;
+    padding: 1em;
+    border-radius: 10px;
+    height: 3em;
+    display: flex;
+    align-items: center;
+}

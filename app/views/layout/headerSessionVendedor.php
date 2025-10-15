@@ -11,10 +11,19 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/images/favicon.png">
 
-    <!-- CSS principal -->
+    <!-- CSS vistas y layout -->
     <link rel="stylesheet" href="./assets/css/header.css">
-    <link rel="stylesheet" href="./assets/css/inicio.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
+
+    <link rel="stylesheet" href="./assets/css/inicio.css">
+    <link rel="stylesheet" href="./assets/css/filtrado.css">
+    <link rel="stylesheet" href="./assets/css/anuncio.css">
+    <link rel="stylesheet" href="./assets/css/misAnuncios.css">
+    <link rel="stylesheet" href="./assets/css/favoritos.css">
+    <link rel="stylesheet" href="./assets/css/subirAnuncio.css">
+    <link rel="stylesheet" href="./assets/css/editarAnuncio.css">
+    <link rel="stylesheet" href="./assets/css/ajustes.css">
+    <link rel="stylesheet" href="./assets/css/vendedor.css">
 
 
 </head>

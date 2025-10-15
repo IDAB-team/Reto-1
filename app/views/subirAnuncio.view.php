@@ -4,7 +4,7 @@
 
 
     <main class="subirAnuncioMain">
-        <h1>SUBIR ANUNCIO</h1>
+        <h1>Subir anuncio</h1>
     </main>
 
     

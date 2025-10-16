@@ -49,9 +49,10 @@ header {
 .headerBoton {
     background-color: #1156CC;
     color: white;
-    padding: 0.5em 1em;
+    padding: 0.75em 1.25em;
     border-radius: 10px;
     display: flex;
+    gap: 10px;
     align-items: center;
 }
 
@@ -93,12 +94,21 @@ header {
 
 
 
-
+.modal span {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 1em;
+    padding-top: 1em;
+}
 
 /* Título del modal */
 .modalTitulo {
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .modalTitulo h1 {
@@ -145,7 +155,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    border-bottom: 1px solid #ddd;
 }
 
 .modal-close {
@@ -158,14 +167,16 @@ header {
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+    /*border-bottom: 1px solid #ddd;*/
 }
 
 .modal-tabs span {
     cursor: pointer;
     font-weight: bold;
     padding: 5px 0;
-    border-bottom: 2px solid transparent;
+    border-bottom: 2px solid #ccc;
+    color: #ccc;
+    width: auto;
 }
 
 .modal-tabs span.active {
@@ -201,8 +212,8 @@ header {
 .modal-form input,
 .formRegister input {
     padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+    border-radius: 20px;
+    border: 1px solid #1156CC;
     font-size: 14px;
     width: 100%;
 }
@@ -210,15 +221,18 @@ header {
 .modal-form button,
 .formRegister button {
     padding: 10px;
-    background-color: #1156CC;
+    border: 2px solid #ccc;
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    background-color: #1156CC;
 }
 
-.modal-form button:hover,
 .formRegister button:hover {
     background-color: #0d3d99;
 }
@@ -234,6 +248,7 @@ header {
 
 .register-choice p {
     text-align: center;
+    color: #1156CC;
 }
 
 .choice-buttons {
@@ -242,20 +257,20 @@ header {
 }
 
 .choice-buttons button.active {
-    background-color: #1156CC;
-    color: white;
+    border: 2px solid #1156CC;
+    color: #1156CC;
 }
 .choice-buttons button {
-    background-color: #f0f0f0;
-    color: #333;
-    border-radius: 6px;
+    color: #ccc;
+    border-radius: 20px;
     border: 1px solid #ccc;
     padding: 10px 15px;
     cursor: pointer;
     transition: all 0.2s;
+    background-color: white;
 }
 .choice-buttons button:hover {
-    background-color: #d0d0d0;
+    color: #1156CC;
 }
 
 

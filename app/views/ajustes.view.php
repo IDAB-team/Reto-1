@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="en">
-    <?php include __DIR__ . '/layout/headerSessionVendedor.php'; ?>
-
+    <?php
+    // Incluir header dinámico
+    include __DIR__ . '/layout/' . $header;
+    ?>
 
     <main class="ajustesMain">
         <h1>Ajustes</h1>

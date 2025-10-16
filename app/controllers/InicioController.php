@@ -1,11 +1,22 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-//require_once __DIR__ . '/../models/XxxxxModel.php';
 
 class InicioController extends BaseController {
     
     public function index() {
-        $this->render('inicio.view.php');
+        session_start(); 
+
+        // Header según tipo de usuario
+        $header = 'headerSinSession.php';
+        if (isset($_SESSION['user'])) {
+            if ($_SESSION['user']['tipo'] === 'comprador') {
+                $header = 'headerSessionComprador.php';
+            } elseif ($_SESSION['user']['tipo'] === 'vendedor') {
+                $header = 'headerSessionVendedor.php';
+            }
+        }
+
+        $this->render('inicio.view.php', ['header' => $header]);
     }
     
     public function show() {

@@ -34,13 +34,19 @@
             <h1>ComerciaGasteiz</h1>
         </div>
         <div class="headerBotones">
-            <a href="index.php?controller=SubirAnuncioController">
-                <div class="headerBoton">Subir anuncio</div>
-            </a>
-            <div class="headerIcono">
-                <svg width="2em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#1156CC">
-                    <path d="M20 21C20 19.6044 20 18.9067 19.8278 18.3389C19.44 17.0605 18.4395 16.06 17.1611 15.6722C16.5933 15.5 15.8956 15.5 14.5 15.5H9.5C8.10444 15.5 7.40665 15.5 6.83886 15.6722C5.56045 16.06 4.56004 17.0605 4.17224 18.3389C4 18.9067 4 19.6044 4 21M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <div class="headerMenu">
+                <div class="headerIcono">
+                    <svg width="2em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#1156CC">
+                        <path d="M20 21C20 19.6044 20 18.9067 19.8278 18.3389C19.44 17.0605 18.4395 16.06 17.1611 15.6722C16.5933 15.5 15.8956 15.5 14.5 15.5H9.5C8.10444 15.5 7.40665 15.5 6.83886 15.6722C5.56045 16.06 4.56004 17.0605 4.17224 18.3389C4 18.9067 4 19.6044 4 21M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="headerDesplegable">
+                    <a href="index.php?controller=SubirAnuncioController">Subir anuncio</a>
+                    <a href="index.php?controller=MisAnunciosController">Mis anuncios</a>
+                    <a href="index.php?controller=FavoritosController">Mis favoritos</a>
+                    <a href="index.php?controller=AjustesController">Ajustes</a>
+                    <a href="?controller=LoginController&accion=logout">Cerrar sesión</a>
+                </div>
             </div>
         </div>
     </header>

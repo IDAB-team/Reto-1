@@ -32,20 +32,31 @@
             <h1>ComerciaGasteiz</h1>
         </div>
         <div class="headerBotones">
-            <div class="headerBoton">Iniciar sesión</div>
-            <div class="headerBoton">Crear cuenta</div>
+            <div class="headerBoton">
+                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M16 18L18 20L22 16M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Iniciar sesión
+            </div>
+            <div class="headerBoton">
+                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M19 21V15M16 18H22M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Crear cuenta
+            </div>
         </div>
     </header>
     <!-- Overlay / Fondo opaco -->
     <div id="modalOverlay" class="modal-overlay">
         <div class="modal">
+            <span id="closeModal" class="modal-close">&times;</span>
+
             <!-- Cabecera con logo y cerrar -->
             <div class="modal-header">
                 <div class="modalTitulo">
                     <img src="./assets/images/Logo_azul.png" alt="Logotipo" class="logotipo">
                     <h1>ComerciaGasteiz</h1>
                 </div>
-                <span id="closeModal" class="modal-close">&times;</span>
             </div>
 
             <!-- Barra de selección de pestañas -->
@@ -61,7 +72,12 @@
                 <form id="loginForm" class="modal-form visible" method="POST" action="?controller=LoginController&accion=login">
                     <input type="email" name="email" placeholder="Correo electrónico" required>
                     <input type="password" name="password" placeholder="Contraseña" required>
-                    <button type="submit">Iniciar sesión</button>
+                    <button type="submit">
+                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M16 18L18 20L22 16M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Iniciar sesión
+                    </button>
                 </form>
 
                 <!-- Registro -->
@@ -81,7 +97,12 @@
                         <input type="email" name="email" placeholder="Correo electrónico" required>
                         <input type="password" name="password" placeholder="Contraseña" required>
                         <input type="password" name="passwordConfirm" placeholder="Repetir contraseña" required>
-                        <button type="submit">Crear cuenta</button>
+                        <button type="submit">
+                            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M19 21V15M16 18H22M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Crear cuenta
+                        </button>
                     </div>
                 </form>
 

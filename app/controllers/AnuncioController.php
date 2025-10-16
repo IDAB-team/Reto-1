@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-//require_once __DIR__ . '/../models/XxxxxModel.php';
+require_once __DIR__ . '/../models/AnuncioModel.php';
 
 class AnuncioController extends BaseController {
     
@@ -17,23 +17,28 @@ class AnuncioController extends BaseController {
             }
         }
 
+    $listaAnuncios = AnuncioModel::getAll(); // ✅ Añadido
+    $this->render('anuncio.view.php', [
+        'listaAnuncios' => $listaAnuncios,
+        'header' => $header // ✅ También pasamos el header
+    ]);    
+}
 
-        $this->render('anuncio.view.php', ['header' => $header]);
+    public function getAll(){
+        $listaAnuncios=AnuncioModel::getAll();
+        $this->render('anuncio.view.php', ['listaAnuncios' => $listaAnuncios]);
     }
-    
-    public function show() {
-        
+
+    public function getByNameCategory(){
+        $nameCategoria = $_GET['categoria'] ?? '';
+
+        if ($nameCategoria !== '') {
+            $listaAnuncios = AnuncioModel::getByNameCategory($nameCategoria);
+        } else {
+            $listaAnuncios = AnuncioModel::getAll();
+        }
+
+        $this->render('anuncio.view.php', ['listaAnuncios' => $listaAnuncios]);
     }
-    
-    public function store() {
-        
-    }
-    
-    public function destroy() {
-        
-    }
-    
-    public function destroyAll() {
-        
-    }
+
 }

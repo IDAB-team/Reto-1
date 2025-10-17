@@ -8,15 +8,19 @@ class InicioController extends BaseController {
 
         // Header según tipo de usuario
         $header = 'headerSinSession.php';
+        $user = null;
+
         if (isset($_SESSION['user'])) {
-            if ($_SESSION['user']['tipo'] === 'comprador') {
+            $user = $_SESSION['user'];
+
+            if ($user['tipo'] === 'Cliente') {
                 $header = 'headerSessionComprador.php';
-            } elseif ($_SESSION['user']['tipo'] === 'vendedor') {
+            } elseif ($user['tipo'] === 'Comerciante') {
                 $header = 'headerSessionVendedor.php';
             }
         }
 
-        $this->render('inicio.view.php', ['header' => $header]);
+        $this->render('inicio.view.php', ['header' => $header, 'user' => $user]);
     }
     
     public function show() {

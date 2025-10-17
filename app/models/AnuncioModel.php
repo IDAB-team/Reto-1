@@ -4,30 +4,24 @@ require_once __DIR__ . '/Database.php';
 class AnuncioModel {
     public static function getAll() {
         $db = Database::getConnection();
-        $sqlQuery = "SELECT * FROM Anuncios";
+        $sqlQuery = "SELECT a.Nombre AS nombreAnuncio, a.Precio AS precioAnuncio, a.Descripcion AS descripcionAnuncio,u.Username AS usernameAnuncio
+                     FROM Anuncios a
+                     JOIN Usuarios u ON a.ID_Usuario = u.ID_Usuario";
         $stmt = $db->prepare($sqlQuery);
         $stmt->execute();
         return $stmt->fetchAll();
     }
 
-    public static function getByNameCategory($nombreCategoria){
+    public static function getByCategoryName($nameCategory){
         $db = Database::getConnection();
-        $sqlGetByName = "SELECT
-                            a.Nombre as nombreAnuncio, a.Precio, c.Nombre as nombreCategoria
-                        FROM
-                            Anuncios a 
-                        JOIN 
-                            Categorias c 
-                        ON
-                            a.ID_Categoria = c.ID_Categoria
-                        WHERE
-                            c.Nombre = :nombre
-                        ";
-        $stmt = $db -> prepare($sqlGetByName);
-        $stmt -> execute(['nombre' => $nombreCategoria]);
+        $sqlGetByName = "SELECT a.Nombre, a.Precio, c.Nombre as nombreCategoria
+                        FROM Anuncios a
+                        JOIN Categorias c ON c.ID_Categoria = a.ID_Categoria
+                        WHERE c.Nombre = :nameCategory";
+        $stmt = $db->prepare($sqlGetByName);
+        $stmt->execute(['nameCategory'=>$nameCategory]);
         return $stmt -> fetchAll();
     }
-
     public static function orderByPrice($orden = 'ASC') {
         $db = Database::getConnection();
         $sqlQueryPrice = "SELECT * FROM Anuncios ORDER BY Precio " . ($orden === 'DESC' ? 'DESC' : 'ASC');
@@ -35,4 +29,6 @@ class AnuncioModel {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+
 }

@@ -84,7 +84,7 @@ function showRegister() {
 btnComprar.addEventListener('click', () => {
     // sin CIF
     inputCIF.classList.add('hidden');         
-    tipoCuentaInput.value = "comprador";      
+    tipoCuentaInput.value = "comprar";
     btnComprar.classList.add('active');
     btnVender.classList.remove('active');
     registerFields.classList.remove('hidden'); 
@@ -93,7 +93,7 @@ btnComprar.addEventListener('click', () => {
 btnVender.addEventListener('click', () => {
     // con CIF
     inputCIF.classList.remove('hidden');  
-    tipoCuentaInput.value = "vendedor";       
+    tipoCuentaInput.value = "vender";
     btnVender.classList.add('active');
     btnComprar.classList.remove('active');
     registerFields.classList.remove('hidden'); 

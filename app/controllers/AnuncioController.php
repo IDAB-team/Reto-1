@@ -9,18 +9,23 @@ class AnuncioController extends BaseController {
 
         // Header según tipo de usuario
         $header = 'headerSinSession.php';
+        $user = null;
+
         if (isset($_SESSION['user'])) {
-            if ($_SESSION['user']['tipo'] === 'comprador') {
+            $user = $_SESSION['user'];
+
+            if ($user['tipo'] === 'Cliente') {
                 $header = 'headerSessionComprador.php';
-            } elseif ($_SESSION['user']['tipo'] === 'vendedor') {
+            } elseif ($user['tipo'] === 'Comerciante') {
                 $header = 'headerSessionVendedor.php';
             }
         }
 
-    $listaAnuncios = AnuncioModel::getAll(); // ✅ Añadido
+    $listaAnuncios = AnuncioModel::getAll(); 
     $this->render('anuncio.view.php', [
         'listaAnuncios' => $listaAnuncios,
-        'header' => $header // ✅ También pasamos el header
+        'header' => $header,
+        'user' => $user 
     ]);    
 }
 

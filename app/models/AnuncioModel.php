@@ -27,7 +27,7 @@ class AnuncioModel {
         $stmt -> execute(['nombre' => $nombreCategoria]);
         return $stmt -> fetchAll();
     }
-
+ 
     public static function orderByPrice($orden = 'ASC') {
         $db = Database::getConnection();
         $sqlQueryPrice = "SELECT * FROM Anuncios ORDER BY Precio " . ($orden === 'DESC' ? 'DESC' : 'ASC');

@@ -25,7 +25,8 @@ header {
 
 .headerTitulo {
     display: flex;
-    align-items: center;
+    align-items: end;
+    gap: 0.5em;
 }
 
 .headerLogotipo{
@@ -37,13 +38,14 @@ header {
 }
 
 .headerTitulo img{
-    width: 4em;
+    width: 3em;
 }
 
 .headerBotones {
     display: flex;
     gap: 0.5em;
     align-items: center;
+    justify-content: center;
 }
 
 .headerBoton {
@@ -54,6 +56,17 @@ header {
     display: flex;
     gap: 10px;
     align-items: center;
+}
+
+.headerIcono {
+    display: flex;
+    align-items:end;
+    color: #1156CC;
+    gap: 0.5em;
+}
+
+.headerIcono span {
+    font-size: 1.2em;
 }
 
 

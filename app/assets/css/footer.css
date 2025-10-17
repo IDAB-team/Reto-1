@@ -5,7 +5,7 @@ footer {
     justify-content: center;
     align-items: center;
     color: black;
-    padding: 2em 0;
+    padding: 1em 0;
 
     /* sombra solo arriba */
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
@@ -23,12 +23,14 @@ footer {
 }
 
 .footerRedes div {
-  background-color: #1156CC;
+  background-color: white;
+  border: 1px solid #1156CC;
   border-radius: 10px;
   display: flex; /* para centrar el ícono */
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s;
+  padding: 0.2em;
 }
 
 .footerRedes div:hover {
@@ -37,6 +39,7 @@ footer {
 
 .footerRedes img {
   margin: 0;
+  width: 2em;
 }
 
 .footerDerechos {

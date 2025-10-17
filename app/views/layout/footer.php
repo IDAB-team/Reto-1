@@ -8,7 +8,7 @@
             <img src="./assets/images/iconos/redes/icons8-facebook-50.svg" alt="Facebook">
         </div>
         <div>
-            <img src="./assets/images/iconos/redes/icons8-whatsapp-50.svg" alt="WhatsApp" width="50px">
+            <img src="./assets/images/iconos/redes/icons8-whatsapp-50.svg" alt="WhatsApp">
         </div>
         <div>
             <img src="./assets/images/iconos/redes/icons8-gmail.svg" alt="Gmail">

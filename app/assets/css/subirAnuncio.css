@@ -1,7 +1,8 @@
 /* ==================================================================================================================
     ------------------------------------------------- SUBIR ANUNCIO SIEMPRE -------------------------------------------------
 ================================================================================================================== */
-.imagenSubir {
+
+.subirImagen {
     width: 100%;
     height: 140px;
     border: 2px solid #2563eb;
@@ -17,19 +18,19 @@
     box-sizing: border-box;
 }
 
-.imagenSubir:hover {
+.subirImagen:hover {
     background-color: #eff6ff;
     box-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
 }
 
-.imagenSubir img {
+.subirImagen img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
 }
 
-.tituloSubir {
+.subirTitulo {
     text-align: center;
     color: #2563eb;
     font-size: 1.5rem;
@@ -42,17 +43,18 @@
     margin-right: auto;
 }
 
-.formularioSubir {
+.subirFormulario {
     max-width: 1100px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-.formularioSubir div {
+.subirCampo,
+.subirCampoImagen {
     margin-bottom: 2rem;
 }
 
-.formularioSubir label {
+.subirLabel {
     display: block;
     color: #2563eb;
     font-size: 0.95rem;
@@ -60,9 +62,11 @@
     font-weight: 500;
 }
 
-.formularioSubir input[type="text"],
-.formularioSubir textarea,
-.formularioSubir select {
+.subirInput[type="text"],
+.subirInput[type="file"],
+.subirInput[type="textarea"],
+.subirInput select,
+textarea.subirInput {
     width: 100%;
     padding: 0.875rem 1rem;
     border: 2px solid #2563eb;
@@ -73,15 +77,15 @@
     box-sizing: border-box;
 }
 
-.formularioSubir input[type="text"]:focus,
-.formularioSubir textarea:focus,
-.formularioSubir select:focus {
+.subirInput:focus,
+textarea.subirInput:focus,
+select.subirInput:focus {
     border-color: #1d4ed8;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-.formularioSubir input::placeholder,
-.formularioSubir textarea::placeholder {
+.subirInput::placeholder,
+textarea.subirInput::placeholder {
     color: #94a3b8;
     font-size: 0.9rem;
 }
@@ -91,18 +95,13 @@
     height: 150px;
 }
 
-.filaSubir {
+.subirFila {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
 }
 
-.campoSubir {
-    flex: 1;
-    min-width: 200px;
-}
-
-.formularioSubir button[type="submit"] {
+.subirFormulario .subirBoton {
     display: block;
     margin: 1.5rem auto 0;
     background-color: #2563eb;
@@ -116,26 +115,25 @@
     transition: all 0.3s ease;
 }
 
-.formularioSubir button[type="submit"]:hover {
+.subirFormulario .subirBoton:hover {
     background-color: #1d4ed8;
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
-.formularioSubir button[type="submit"]:active {
+.subirFormulario .subirBoton:active {
     transform: translateY(0);
 }
 
 @media (max-width: 768px) {
-    .formularioSubir {
+    .subirFormulario {
         padding: 1rem;
     }
 
-    .tituloSubir {
+    .subirTitulo {
         font-size: 1.25rem;
     }
 
-    .filaSubir {
+    .subirFila {
         flex-direction: column;
     }
 }
-

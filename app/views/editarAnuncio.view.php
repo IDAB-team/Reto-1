@@ -4,46 +4,46 @@
     // Incluir header dinámico
     include __DIR__ . '/layout/' . $header;
     ?>
-    <main class="mainEditar">
-        <h1 class="tituloEditar">Editar anuncio</h1>
-        <form action="ejer1.php" method="post" class="formularioEditar">
-            <div class="campoEditar">
-                <label for="imagen">Imagen: *</label>
-                <div class="imagenSubir" onclick="document.getElementById('imagen').click();">
+    <main class="editarMain">
+        <h1 class="editarTitulo">Editar anuncio</h1>
+        <form action="ejer1.php" method="post" class="editarFormulario">
+            <div class="editarCampo">
+                <label for="imagen" class="editarLabel">Imagen: *</label>
+                <div class="editarImagen" onclick="document.getElementById('imagen').click();">
                     <span>+</span>
                     <img id="preview" src="" alt="" style="display:none;">
                 </div>
                 <input type="file" id="imagen" name="imagen" accept="image/*" style="display:none;" required>
             </div>
-            <div>
-                <label for="nombre">Nombre: * </label>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre del producto" required>
+            <div class="editarCampo">
+                <label for="nombre" class="editarLabel">Nombre: * </label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre del producto" required class="editarInput">
             </div>    
-            <div>
-                <label for="descripcion">Descripción: * </label>
-                <textarea id="descripcion" placeholder="Escribe la descipción" rows="10" cols="80" style="resize: none" required></textarea>
+            <div class="editarCampo">
+                <label for="descripcion" class="editarLabel">Descripción: * </label>
+                <textarea id="descripcion" placeholder="Escribe la descripción" rows="10" cols="80" style="resize: none" required class="editarInput"></textarea>
             </div>
-            <div class="filaEditar">
-                <div class="campoEditar">
-                    <label for="categoria">Categoría: *</label>
-                    <select id="categoria" name="categoria" required>
+            <div class="editarFila">
+                <div class="editarCampo">
+                    <label for="categoria" class="editarLabel">Categoría: *</label>
+                    <select id="categoria" name="categoria" required class="editarInput">
                         <option value="">Selecciona una categoría ▼</option>
                         <option value="ropa">Ropa</option>
                         <option value="tecnologia">Tecnología</option>
                         <option value="hogar">Hogar</option>
                     </select>
                 </div>
-                <div class="campoEditar">
-                    <label for="precio">Precio: *</label>
-                    <input type="text" id="precio" name="precio" placeholder="€" required>
+                <div class="editarCampo">
+                    <label for="precio" class="editarLabel">Precio: *</label>
+                    <input type="text" id="precio" name="precio" placeholder="€" required class="editarInput">
                 </div>
-                <div class="campoEditar">
-                    <label for="stock">Stock:</label>
-                    <input type="text" id="stock" name="stock" value="1" min="1">
+                <div class="editarCampo">
+                    <label for="stock" class="editarLabel">Stock:</label>
+                    <input type="text" id="stock" name="stock" value="1" min="1" class="editarInput">
                 </div>
             </div>
             <div>  
-                <button type="submit">Guardar cambios</button>
+                <button type="submit" class="editarBoton">Guardar cambios</button>
             </div>
         </form>
     </main>

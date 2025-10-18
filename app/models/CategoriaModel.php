@@ -7,6 +7,6 @@ class CategoriaModel {
         $sqlQuery = "SELECT * FROM Categorias";
         $stmt = $db->prepare($sqlQuery);
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

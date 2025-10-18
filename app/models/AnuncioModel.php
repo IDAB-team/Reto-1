@@ -31,4 +31,22 @@ class AnuncioModel {
     }
 
 
+
+
+    public static function getUltimos($limite = 8) {
+        $db = Database::getConnection();
+        $sql = "
+            SELECT a.*, u.Username AS comerciante
+            FROM anuncios a
+            JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
+            ORDER BY a.Fecha_pub DESC
+            LIMIT :limite
+        ";
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
 }

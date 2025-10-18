@@ -22,17 +22,36 @@
             </div>
         </div>
         <div class="inicioCategorias">
-            <img src="./assets/images/iconos/Moda.png" alt="Moda">
-            <img src="./assets/images/iconos/Belleza.png" alt="Belleza">
-            <img src="./assets/images/iconos/Hogar.png" alt="Hogar">
-            <img src="./assets/images/iconos/Tecnologia.png" alt="Tenología">
-            <img src="./assets/images/iconos/Deportes.png" alt="Deportes">
-            <img src="./assets/images/iconos/Automoción.png" alt="Automoción">
-            <img src="./assets/images/iconos/Salud.png" alt="Salud">
-            <img src="./assets/images/iconos/Alimentacion.png" alt="Alimentacion">
-            <img src="./assets/images/iconos/Mascotas.png" alt="Mascotas">
-            <img src="./assets/images/iconos/Infantil.png" alt="Infantil">
-        </div>   
+            <?php foreach ($categorias as $categoria): ?>
+                <div class="inicioCategoria">
+                    <img src="./<?= $categoria['Url_icono'] ?>" alt="icono . <?= $categoria['Nombre'] ?>">
+                    <p><?= $categoria['Nombre'] ?></p>
+                </div>
+
+            <?php endforeach; ?>
+        </div> 
+        <div class="inicioAnuncios">
+            <p>Lo más reciente ▼</p>
+            <div class="anunciosGrid">
+                <?php foreach ($anuncios as $anuncio): ?>
+                    <div class="anuncioCard">
+                        <div class="imagenCard">
+                            <img src="./<?= $anuncio['Url_imagen'] ?>" alt="imagen <?= htmlspecialchars($anuncio['Nombre']) ?>">
+                        </div>
+                        <div class="infoCard">
+                            <div class="info">
+                                <h3><?= htmlspecialchars($anuncio['Nombre']) ?></h3>
+                                <p><?= htmlspecialchars($anuncio['Descripcion']) ?></p>
+                                <p><?= ucfirst(htmlspecialchars($anuncio['comerciante'])) ?></p>
+                            </div>
+                            <div class="infoPrecio">
+                                <p><strong><?= number_format($anuncio['Precio'], 2) ?> €</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>  
     </main>
 
     

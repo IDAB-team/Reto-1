@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
+require_once __DIR__ . '/../models/CategoriaModel.php';
+require_once __DIR__ . '/../models/AnuncioModel.php';
+
 
 class InicioController extends BaseController {
     
@@ -20,7 +23,18 @@ class InicioController extends BaseController {
             }
         }
 
-        $this->render('inicio.view.php', ['header' => $header, 'user' => $user]);
+        // Obtener categorías desde la base de datos
+        $categorias = CategoriaModel::getAll();
+        //var_dump($categorias); exit;
+        $anuncios = AnuncioModel::getUltimos(8);
+
+
+        $this->render('inicio.view.php', [
+            'header' => $header, 
+            'user' => $user,
+            'categorias' => $categorias,
+            'anuncios' => $anuncios
+        ]);
     }
     
     public function show() {

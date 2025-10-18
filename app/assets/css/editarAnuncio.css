@@ -1,7 +1,8 @@
 /* ==================================================================================================================
     ------------------------------------------------- EDITAR ANUNCIO SIEMPRE -------------------------------------------------
 ================================================================================================================== */
-.imagenEditar {
+
+.editarImagen {
     width: 100%;
     height: 140px;
     border: 2px solid #2563eb;
@@ -17,19 +18,19 @@
     box-sizing: border-box;
 }
 
-.imagenEditar:hover {
+.editarImagen:hover {
     background-color: #eff6ff;
     box-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
 }
 
-.imagenEditar img {
+.editarImagen img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
 }
 
-.tituloEditar {
+.editarTitulo {
     text-align: center;
     color: #2563eb;
     font-size: 1.5rem;
@@ -42,17 +43,17 @@
     margin-right: auto;
 }
 
-.formularioEditar {
+.editarFormulario {
     max-width: 1100px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-.formularioEditar div {
+.editarCampo {
     margin-bottom: 2rem;
 }
 
-.formularioEditar label {
+.editarLabel {
     display: block;
     color: #2563eb;
     font-size: 0.95rem;
@@ -60,9 +61,14 @@
     font-weight: 500;
 }
 
-.formularioEditar input[type="text"],
-.formularioEditar textarea,
-.formularioEditar select {
+.editarInput[type="text"],
+.editarInput[type="file"],
+.editarInput[type="password"],
+.editarInput[type="number"],
+.editarInput[type="email"],
+.editarInput[type="textarea"],
+.editarInput select,
+textarea.editarInput {
     width: 100%;
     padding: 0.875rem 1rem;
     border: 2px solid #2563eb;
@@ -73,15 +79,15 @@
     box-sizing: border-box;
 }
 
-.formularioEditar input[type="text"]:focus,
-.formularioEditar textarea:focus,
-.formularioEditar select:focus {
+.editarInput:focus,
+textarea.editarInput:focus,
+select.editarInput:focus {
     border-color: #1d4ed8;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-.formularioEditar input::placeholder,
-.formularioEditar textarea::placeholder {
+.editarInput::placeholder,
+textarea.editarInput::placeholder {
     color: #94a3b8;
     font-size: 0.9rem;
 }
@@ -91,18 +97,13 @@
     height: 150px;
 }
 
-.filaEditar {
+.editarFila {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
 }
 
-.campoEditar {
-    flex: 1;
-    min-width: 200px;
-}
-
-.formularioEditar button[type="submit"] {
+.editarFormulario .editarBoton {
     display: block;
     margin: 1rem auto 0;
     background-color: #2563eb;
@@ -116,26 +117,25 @@
     transition: all 0.3s ease;
 }
 
-.formularioEditar button[type="submit"]:hover {
+.editarFormulario .editarBoton:hover {
     background-color: #1d4ed8;
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
-.formularioEditar button[type="submit"]:active {
+.editarFormulario .editarBoton:active {
     transform: translateY(0);
 }
 
 @media (max-width: 768px) {
-    .formularioEditar {
+    .editarFormulario {
         padding: 1rem;
     }
 
-    .tituloEditar {
+    .editarTitulo {
         font-size: 1.25rem;
     }
 
-    .filaEditar {
+    .editarFila {
         flex-direction: column;
     }
 }
-

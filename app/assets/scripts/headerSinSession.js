@@ -6,7 +6,7 @@ const loginForm = document.getElementById('loginForm'); //iniciar sesion
 const registerForm = document.getElementById('registerForm'); // crear cuenta
 const registerChoice = document.getElementById('registerChoice'); // vender comprar
 const registerFields = document.getElementById('registerFields'); // inputs
-const inputCIF = document.getElementById('inputCIF');
+const divCIF = document.getElementById('divCIF');
 const tipoCuentaInput = document.getElementById('tipoCuenta');
 const btnComprar = document.getElementById('btnComprar');
 const btnVender = document.getElementById('btnVender');
@@ -23,7 +23,7 @@ function resetRegister() {
     registerForm.reset();                  
     registerChoice.classList.remove('hidden'); 
     registerFields.classList.add('hidden');    
-    inputCIF.classList.add('hidden');         
+    divCIF.classList.add('hidden');    
     tipoCuentaInput.value = "";                
     btnComprar.classList.remove('active');     
     btnVender.classList.remove('active');      
@@ -83,8 +83,8 @@ function showRegister() {
 //Elegir tipo de cuenta
 btnComprar.addEventListener('click', () => {
     // sin CIF
-    inputCIF.classList.add('hidden');         
-    tipoCuentaInput.value = "comprador";      
+    divCIF.classList.add('hidden');    
+    tipoCuentaInput.value = "comprar";
     btnComprar.classList.add('active');
     btnVender.classList.remove('active');
     registerFields.classList.remove('hidden'); 
@@ -92,8 +92,8 @@ btnComprar.addEventListener('click', () => {
 
 btnVender.addEventListener('click', () => {
     // con CIF
-    inputCIF.classList.remove('hidden');  
-    tipoCuentaInput.value = "vendedor";       
+    divCIF.classList.remove('hidden');
+    tipoCuentaInput.value = "vender";
     btnVender.classList.add('active');
     btnComprar.classList.remove('active');
     registerFields.classList.remove('hidden'); 

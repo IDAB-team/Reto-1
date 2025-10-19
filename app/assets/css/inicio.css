@@ -7,20 +7,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1.5em;
 }
 
 .inicioBusqueda {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 0.5em;
     width: 40%;
+    padding-top: 2em;
+}
+
+.inicioBusqueda h1 {
+    text-align: center;
 }
 
 .inicioBuscar {
     display: flex;
     justify-content: right;
     border: 1px solid #1156CC;
-    border-radius: 10px;
+    border-radius: 30px;
     padding: 0.5em 1em;
 }
 
@@ -30,17 +37,127 @@
     align-items: center;
     color: white;
     background-color: #1156CC;
-    padding: 0.5em;
-    border-radius: 10px;
+    padding: 0.5em 1em;
+    border-radius: 25px;
 }
 
 .inicioCategorias {
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 0.5em;
+    gap: 1.5em;
 }
 
-.inicioCategorias img {
-    width: 2em;
+.inicioCategoria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.inicioCategoria img {
+    width: 3em;
+}
+
+.inicioCategoria p {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+
+
+.inicioAnuncios {
+    width: 75%;
+    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.inicioAnuncios p {
+    font-weight: bold;
+    color: #1156CC;
+    font-size: 1.2em;
+}
+
+.anunciosGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5em;
+}
+
+.anuncioCard {
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+    height: 250px; /* altura fija para todas las tarjetas */
+}
+
+.anuncioCard:hover {
+    transform: scale(1.03);
+}
+
+/* Sección superior: imagen */
+.anuncioCard .imagenCard {
+    flex: 7; /* 70% de la tarjeta */
+    width: 100%;
+    overflow: hidden;
+}
+
+.anuncioCard .imagenCard img {
+    width: 100%;
+    height: 100%;       /* ocupa todo el contenedor */
+    object-fit: cover;  /* recorta la imagen si es necesario */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* Sección inferior: información */
+.anuncioCard {
+    flex: 3; /* 40% */
+    background-color: white;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.anuncioCard .infoCard p {
+    color: black;
+    font-size: 0.9em;
+}
+
+.infoCard {
+    padding: 1em 2em;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.info p:hover {
+    color: #1156CC; 
+}
+
+.info a {
+    color: #1156CC;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+.infoPrecio {
+    font-size: 1.5em;
 }

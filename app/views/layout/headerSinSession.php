@@ -70,8 +70,16 @@
                 
                 <!-- Login -->
                 <form id="loginForm" class="modal-form visible" method="POST" action="?controller=LoginController&accion=login">
-                    <input type="email" name="email" placeholder="Correo electrónico" required>
-                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <div class="inputs">
+                        <div>
+                            <label for="loginEmail">Correo electrónico:</label>
+                            <input type="email" name="email" id="loginEmail" placeholder="Correo electrónico" required>
+                        </div>    
+                        <div>
+                            <label for="loginPassword">Contraseña:</label>
+                            <input type="password" name="password" placeholder="Contraseña" required>
+                        </div>
+                    </div>
                     <button type="submit">
                         <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M16 18L18 20L22 16M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -92,11 +100,28 @@
                     </div>
 
                     <div id="registerFields" class="formRegister hidden">
-                        <input type="text" id="inputCIF" name="cif" placeholder="CIF" class="hidden">
-                        <input type="text" name="nombre" placeholder="Nombre completo" required>
-                        <input type="email" name="email" placeholder="Correo electrónico" required>
-                        <input type="password" name="password" placeholder="Contraseña" required>
-                        <input type="password" name="passwordConfirm" placeholder="Repetir contraseña" required>
+                        <div class="inputs">
+                            <div id="divCIF" class="hidden">
+                                <label for="inputCIF">CIF:</label>
+                                <input type="text" id="inputCIF" name="cif" placeholder="CIF">
+                            </div>
+                            <div>
+                                <label for="registerNombre">Nombre completo:</label>
+                                <input type="text" id="registerNombre" name="nombre" placeholder="Nombre completo" required>
+                            </div>
+                            <div>
+                                <label for="registerEmail">Correo electrónico:</label>
+                                <input type="email" id="registerEmail" name="email" placeholder="Correo electrónico" required>
+                            </div>
+                            <div>
+                                <label for="registerPassword">Contraseña:</label>
+                                <input type="password" id="registerPassword" name="password" placeholder="Contraseña" required>
+                            </div>
+                            <div>
+                                <label for="registerPasswordConfirm">Repetir contraseña:</label>
+                                <input type="password" id="registerPasswordConfirm" name="passwordConfirm" placeholder="Repetir contraseña" required>
+                            </div>
+                        </div>
                         <button type="submit">
                             <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 15.5H7.5C6.10444 15.5 5.40665 15.5 4.83886 15.6722C3.56045 16.06 2.56004 17.0605 2.17224 18.3389C2 18.9067 2 19.6044 2 21M19 21V15M16 18H22M14.5 7.5C14.5 9.98528 12.4853 12 10 12C7.51472 12 5.5 9.98528 5.5 7.5C5.5 5.01472 7.51472 3 10 3C12.4853 3 14.5 5.01472 14.5 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

@@ -2,10 +2,140 @@
     ------------------------------------------------- EDITAR ANUNCIO SIEMPRE -------------------------------------------------
 ================================================================================================================== */
 
-.editarAnuncioMain {
+.editarImagen {
+    width: 100%;
+    height: 140px;
+    border: 2px solid #2563eb;
+    border-radius: 8px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    color: #2563eb;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    box-sizing: border-box;
 }
 
+.editarImagen:hover {
+    background-color: #eff6ff;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
+}
+
+.editarImagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.editarTitulo {
+    text-align: center;
+    color: #2563eb;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #2563eb;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.editarFormulario {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.editarCampo {
+    margin-bottom: 2rem;
+}
+
+.editarLabel {
+    display: block;
+    color: #2563eb;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.editarInput[type="text"],
+.editarInput[type="file"],
+.editarInput[type="password"],
+.editarInput[type="number"],
+.editarInput[type="email"],
+.editarInput[type="textarea"],
+.editarInput select,
+textarea.editarInput {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #2563eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.editarInput:focus,
+textarea.editarInput:focus,
+select.editarInput:focus {
+    border-color: #1d4ed8;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.editarInput::placeholder,
+textarea.editarInput::placeholder {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+#descripcion {
+    resize: none;
+    height: 150px;
+}
+
+.editarFila {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.editarFormulario .editarBoton {
+    display: block;
+    margin: 1rem auto 0;
+    background-color: #2563eb;
+    color: white;
+    padding: 0.875rem 3rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.editarFormulario .editarBoton:hover {
+    background-color: #1d4ed8;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.editarFormulario .editarBoton:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .editarFormulario {
+        padding: 1rem;
+    }
+
+    .editarTitulo {
+        font-size: 1.25rem;
+    }
+
+    .editarFila {
+        flex-direction: column;
+    }
+}

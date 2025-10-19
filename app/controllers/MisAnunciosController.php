@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-//require_once __DIR__ . '/../models/XxxxxModel.php';
+require_once __DIR__ . '/../models/CategoriaModel.php';
 
 class MisAnunciosController extends BaseController {
     
@@ -21,7 +21,10 @@ class MisAnunciosController extends BaseController {
             }
         }
 
-        $this->render('misAnuncios.view.php', ['header' => $header, 'user' => $user]);
+        $categorias = CategoriaModel::getAll();
+
+
+        $this->render('misAnuncios.view.php', ['header' => $header, 'user' => $user, 'categorias' => $categorias]);
     }
     
     public function show() {

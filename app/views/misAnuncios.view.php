@@ -10,16 +10,14 @@
  <aside class="misAnunciosFiltros">
         <h4>Filtros</h4>
         <ul><!--Faltas los Iconos clicables-->
-            <li><img src="./assets/images//iconos/Moda.png" alt="Moda"><a href="#">Moda</a></li>
-            <li><img src="./assets/images//iconos/Belleza.png" alt="Belleza"><a href="#">Belleza</a></li>
-            <li><img src="./assets/images//iconos/Hogar.png" alt="Hogar"><a href="#">Hogar</a></li>
-            <li><img src="./assets/images//iconos/Tecnologia.png" alt="Tecnologia"><a href="#">Tecnología</a></li>
-            <li><img src="./assets/images//iconos/Deportes.png" alt="Deportes"><a href="#">Deportes</a></li>
-            <li><img src="./assets/images//iconos/Automoción.png" alt="Automocion"><a href="#">Automoción</a></li>
-            <li><img src="./assets/images//iconos/Salud.png" alt="Salud"><a href="#">Salud</a></li>
-            <li><img src="./assets/images//iconos/Alimentacion.png" alt="Alimentacion"><a href="#">Alimentación</a></li>
-            <li><img src="./assets/images//iconos/Mascotas.png" alt="Mascotas"><a href="#">Mascotas</a></li>
-            <li><img src="./assets/images//iconos/Infantil.png" alt="Infantil"><a href="#">Infantil</a></li>
+            <?php foreach ($categorias as $categoria): ?>
+                <li>
+                    <div class="misAnunciosCategoria">
+                        <img src="./<?= $categoria['Url_icono'] ?>" alt="icono . <?= $categoria['Nombre'] ?>">
+                        <p><?= $categoria['Nombre'] ?></p>
+                    </div>
+                </li>
+            <?php endforeach; ?>
         </ul>
     </aside>
 

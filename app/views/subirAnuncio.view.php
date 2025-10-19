@@ -44,8 +44,13 @@
                     <input type="text" id="stock" name="stock" value="1" min="1" class="subirInput">
                 </div>
             </div>
-            <div>  
+            <div class="subirBotones">  
                 <button type="submit" class="subirBoton">Guardar cambios</button>
+                <button type="submit" class="subirBotonAtras">
+                    <a href="index.php?controller=InicioController">
+                        Volver a página principal
+                    </a>
+                </button>
             </div>
         </form>
     </main>

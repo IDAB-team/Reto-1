@@ -56,9 +56,14 @@
     font-size: 0.9rem;
 }
 
+.ajustesBotones{
+    display: flex;
+    justify-content: center;
+}
+
 .ajustesBoton {
     display: block;
-    margin: 3rem auto 0;
+    margin: 3rem 1em 0;
     background-color: #2563eb;
     color: white;
     padding: 0.875rem 3rem;
@@ -78,6 +83,24 @@
 
 .ajustesBoton:active {
     transform: translateY(0);
+}
+
+.ajustesBotonAtras{
+    display: block;
+    margin: 3rem 1em 0;
+    background-color: white;
+    padding: 0.875rem 3rem;
+    border: 2px solid #2563eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;  
+}
+
+.ajustesBotonAtras a {
+    text-decoration: none;
+    color: #2563eb;
 }
 
 @media (max-width: 768px) {

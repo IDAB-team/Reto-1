@@ -42,8 +42,13 @@
                     <input type="text" id="stock" name="stock" value="1" min="1" class="editarInput">
                 </div>
             </div>
-            <div>  
+            <div class="editarBotones">  
                 <button type="submit" class="editarBoton">Guardar cambios</button>
+                <button type="submit" class="editarBotonAtras">
+                    <a href="index.php?controller=InicioController">
+                        Volver a página principal
+                    </a>
+                </button>
             </div>
         </form>
     </main>

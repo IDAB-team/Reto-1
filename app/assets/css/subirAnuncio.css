@@ -103,7 +103,7 @@ textarea.subirInput::placeholder {
 
 .subirFormulario .subirBoton {
     display: block;
-    margin: 1.5rem auto 0;
+    margin: 3rem 1em 0;
     background-color: #2563eb;
     color: white;
     padding: 0.875rem 3rem;
@@ -122,6 +122,31 @@ textarea.subirInput::placeholder {
 
 .subirFormulario .subirBoton:active {
     transform: translateY(0);
+}
+
+
+
+.subirBotones{
+    display: flex;
+    justify-content: center;
+}
+
+.subirBotonAtras{
+    display: block;
+    margin: 3rem 1em 0;
+    background-color: white;
+    padding: 0.875rem 3rem;
+    border: 2px solid #2563eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;  
+}
+
+.subirBotonAtras a {
+    text-decoration: none;
+    color: #2563eb;
 }
 
 @media (max-width: 768px) {

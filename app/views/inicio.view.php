@@ -41,8 +41,8 @@
                         <div class="infoCard">
                             <div class="info">
                                 <h3><?= htmlspecialchars($anuncio['Nombre']) ?></h3>
-                                <p><?= htmlspecialchars($anuncio['Descripcion']) ?></p>
                                 <p><?= ucfirst(htmlspecialchars($anuncio['comerciante'])) ?></p>
+                                <a href="">Ver más</a>
                             </div>
                             <div class="infoPrecio">
                                 <p><strong><?= number_format($anuncio['Precio'], 2) ?> €</strong></p>

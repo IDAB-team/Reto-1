@@ -16,6 +16,7 @@
     justify-content: center;
     gap: 0.5em;
     width: 40%;
+    padding-top: 2em;
 }
 
 .inicioBusqueda h1 {
@@ -26,7 +27,7 @@
     display: flex;
     justify-content: right;
     border: 1px solid #1156CC;
-    border-radius: 10px;
+    border-radius: 30px;
     padding: 0.5em 1em;
 }
 
@@ -36,8 +37,8 @@
     align-items: center;
     color: white;
     background-color: #1156CC;
-    padding: 0.5em;
-    border-radius: 10px;
+    padding: 0.5em 1em;
+    border-radius: 25px;
 }
 
 .inicioCategorias {
@@ -60,12 +61,13 @@
 
 .inicioCategoria p {
     font-size: 1.1em;
+    font-weight: bold;
 }
 
 
 
 .inicioAnuncios {
-    width: 90%;
+    width: 75%;
     margin: 2em auto;
     display: flex;
     flex-direction: column;
@@ -92,7 +94,7 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.2s;
-    height: 350px; /* altura fija para todas las tarjetas */
+    height: 250px; /* altura fija para todas las tarjetas */
 }
 
 .anuncioCard:hover {
@@ -127,7 +129,7 @@
 }
 
 .anuncioCard .infoCard p {
-    color: #555;
+    color: black;
     font-size: 0.9em;
 }
 
@@ -144,6 +146,16 @@
     flex-direction: column;
     justify-content: center;
     text-align: left;
+}
+
+.info p:hover {
+    color: #1156CC; 
+}
+
+.info a {
+    color: #1156CC;
+    text-decoration: none;
+    font-size: 0.8em;
 }
 
 .infoPrecio {

@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -25,7 +28,7 @@ header {
 
 .headerTitulo {
     display: flex;
-    align-items: end;
+    align-items: center;
     gap: 0.5em;
 }
 
@@ -35,10 +38,11 @@ header {
 
 .headerTitulo h1 {
     color: #1156CC;
+    font-size: 1.5em;
 }
 
 .headerTitulo img{
-    width: 3em;
+    width: 4em;
 }
 
 .headerBotones {
@@ -145,14 +149,14 @@ header {
     z-index: 200;
     justify-content: center;
     align-items: flex-start; /* borde superior alineado */
-    padding-top: 10%; /* espacio desde el top de la ventana */
+    padding-top: 5%; /* espacio desde el top de la ventana */
 }
 
 /* Modal centrado */
 .modal {
     background-color: white;
     border-radius: 10px;
-    width: 360px;
+    width: 450px;
     max-width: 90%;
     max-height: 90%;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -207,7 +211,7 @@ header {
 .modal-form, .formRegister {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2em;
     width: 100%;
     align-items: center;
 }
@@ -225,7 +229,7 @@ header {
 .modal-form input,
 .formRegister input {
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     border: 1px solid #1156CC;
     font-size: 14px;
     width: 100%;
@@ -244,6 +248,26 @@ header {
     align-items: center;
     gap: 0.5em;
     background-color: #1156CC;
+}
+
+.modal-form div {
+    width: 100%;
+}
+
+.modal-form div label {
+    color: #1156CC;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.modal-form input:focus,
+.formRegister input:focus {
+    outline: none; /* quita el borde negro del navegador */
+    border: 2px solid #1156CC; /* azul, 1px más grueso que el normal */
 }
 
 .formRegister button:hover {
@@ -267,6 +291,7 @@ header {
 .choice-buttons {
     display: flex;
     gap: 10px;
+    justify-content: center;
 }
 
 .choice-buttons button.active {

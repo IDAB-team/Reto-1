@@ -23,8 +23,13 @@
                 <label for="repetirNuevaContraseña" class="ajustesLabel">Repetir nueva contraseña :</label>
                 <input type="password" id="repetirNuevaContraseña" name="repetirNuevaContraseña" placeholder="***********" class="ajustesInput">
             </div>
-            <div>  
+            <div class="ajustesBotones">  
                 <button type="submit" class="ajustesBoton">Guardar cambios</button>
+                <button type="submit" class="ajustesBotonAtras">
+                    <a href="index.php?controller=InicioController">
+                        Volver a página principal
+                    </a>
+                </button>
             </div>
         </form>
     </main>

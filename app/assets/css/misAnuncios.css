@@ -8,22 +8,30 @@
 }
     body{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
 }
     .misAnunciosMain {
     display: flex;
     flex-direction: row;
     gap: 2em;
-    padding: .5em .2em; 
-    max-width: 100%;
-    margin: 0 auto;
+    padding: 2em 0;
+    
+    /* 🔥 Estas tres líneas son la clave */
+    width: 100%;
+    max-width: 1200px;   /* limita el ancho total */
+    margin: 8em auto;  
 }
 /*Filtros: */
     .misAnunciosFiltros{
-    width: 180px;
+    max-width: 40%;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     padding: .5rem;
     height: fit-content;
-    width: 40%;
+    
 }
     .misAnunciosFiltros h4 {
     text-align: center;
@@ -65,11 +73,12 @@
 }
 
     .misAnunciosContenido{
-        width: 60%;
+        max-width: 60%;
     }
     .misAnunciosContenido h3{
         color:#1156CC;
         margin-bottom: .3em;
+        
         
     }
 /*Búsqueda:*/

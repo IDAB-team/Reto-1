@@ -4,7 +4,7 @@
     // Incluir header dinámico
     include __DIR__ . '/layout/' . $header;
     ?>
-
+    
     <main class="anuncioMain">
         <div class="anuncioFiltro">
             <h1>Filtros</h1>
@@ -19,17 +19,18 @@
             </div>
 
             <div class="anuncioFiltroCategorias">
-                <ul>
-                    <?php foreach($listaCategorias as $categoria) : ?>
-                    <li>
-                        <a href="index.php?controller=AnuncioController&accion=getByNameCategory&categoria=<?= urlencode($categoria->Nombre) ?>">
-                            <?= $categoria->Nombre ?>
-                        </a>
-                    </li>
-                    <?php endforeach; ?>               
-                </ul>
-            </div>
-        </div>
+        <ul>
+            <?php foreach($listaCategorias as $categoria) : ?>
+            <?php if (!empty($categoria->Nombre)) : ?>
+                <li>
+                    <a href="index.php?controller=AnuncioController&accion=getByNameCategory&categoria=<?= urlencode($categoria->Nombre) ?>">
+                        <?= htmlspecialchars($categoria->Nombre) ?>
+                    </a>
+                </li>
+            <?php endif; ?>
+            <?php endforeach; ?>               
+        </ul>
+    </div>
                     
         <div class="anuncioFiltroNav">
             <select id="anuncioOrdenar">
@@ -42,17 +43,23 @@
         </div>
 
         <div class="anuncioListado">
-            <?php foreach($listaAnuncios as $anuncio) :?>
-                <div class="anuncioIndividual">
-                    <p class="nombreAnuncio"><?= $anuncio->nombreAnuncio ?></p>
-                    <p class="precioAnuncio"><?= $anuncio->precioAnuncio ?> €</p>
-                    <p class="descripcionAnuncio"><?= $anuncio->descripcionAnuncio ?></p>
-                    <p class="usuarioAnuncio">Publicado por: <?= $anuncio->usernameAnuncio ?></p>
-                </div>
+            <?php foreach($listaCategorias as $categoria) : ?>
+                <?php if (!empty($categoria['Nombre'])) : ?>
+                    <li>
+                    <a href="index.php?controller=AnuncioController&accion=getByNameCategory&categoria=<?= urlencode($categoria['Nombre']) ?>">
+                        <?= htmlspecialchars($categoria['Nombre']) ?>
+                    </a>
+                    </li>
+                <?php endif; ?>
             <?php endforeach; ?>
         </div>
     </main>
 
     
     <?php include __DIR__ . '/layout/footer.php'; ?>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/app/assets/scripts/anuncio.js"></script>
+
 </html>

@@ -9,7 +9,7 @@ class AnuncioModel {
                      JOIN Usuarios u ON a.ID_Usuario = u.ID_Usuario";
         $stmt = $db->prepare($sqlQuery);
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public static function getByCategoryName($nameCategory){
@@ -20,18 +20,15 @@ class AnuncioModel {
                         WHERE c.Nombre = :nameCategory";
         $stmt = $db->prepare($sqlGetByName);
         $stmt->execute(['nameCategory'=>$nameCategory]);
-        return $stmt -> fetchAll();
+        return $stmt -> fetchAll(PDO::FETCH_OBJ);
     }
     public static function orderByPrice($orden = 'ASC') {
         $db = Database::getConnection();
         $sqlQueryPrice = "SELECT * FROM Anuncios ORDER BY Precio " . ($orden === 'DESC' ? 'DESC' : 'ASC');
         $stmt = $db->prepare($sqlQueryPrice);
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-
-
-
 
     public static function getUltimos($limite = 8) {
         $db = Database::getConnection();

@@ -68,6 +68,10 @@
 .editarInput[type="email"],
 .editarInput[type="textarea"],
 .editarInput select,
+.editarCampo[type="text"],
+.editarCampo[type="file"],
+.editarCampo[type="textarea"],
+.editarCampo select,
 textarea.editarInput {
     width: 100%;
     padding: 0.875rem 1rem;

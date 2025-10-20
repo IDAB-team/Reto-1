@@ -66,6 +66,10 @@
 .subirInput[type="file"],
 .subirInput[type="textarea"],
 .subirInput select,
+.subirCampo[type="text"],
+.subirCampot[type="file"],
+.subirCampo[type="textarea"],
+.subirCampo select,
 textarea.subirInput {
     width: 100%;
     padding: 0.875rem 1rem;

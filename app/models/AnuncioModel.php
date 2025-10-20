@@ -89,23 +89,23 @@ class AnuncioModel {
     // Obtener los últimos anuncios publicados
     public static function getUltimos($limite = 8) {
         $db = Database::getConnection();
-        $sql = "SELECT 
-                    a.ID_Anuncio,
-                    a.Nombre AS nombreAnuncio,
-                    a.Descripcion AS descripcionAnuncio,
-                    a.Fecha_pub,
-                    a.Precio AS precioAnuncio,
-                    a.Url_imagen,
-                    u.Username AS usernameAnuncio,
-                    c.Nombre AS nombreCategoria
-                FROM anuncios a
-                JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
-                JOIN categorias c ON a.ID_Categoria = c.ID_Categoria
-                ORDER BY a.Fecha_pub DESC
-                LIMIT :limite";
+        $sql = "
+            SELECT a.*, u.Username AS comerciante
+            FROM anuncios a
+            JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
+            ORDER BY a.Fecha_pub DESC
+            LIMIT :limite
+        ";
+
+
+
+
+
+
+
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

@@ -13,8 +13,8 @@
             <li>
             <a href="#" data-categoria="<?= urlencode($categoria['Nombre']) ?>">
                 <div class="misAnunciosCategoria">
-                <img src="./<?= $categoria['Url_icono'] ?>" alt="icono <?= htmlspecialchars($categoria['Nombre']) ?>">
-                <p><?= htmlspecialchars($categoria['Nombre']) ?></p>
+                  <img src="./<?= $categoria['Url_icono'] ?>" alt="icono <?= htmlspecialchars($categoria['Nombre']) ?>">
+                  <p><?= htmlspecialchars($categoria['Nombre']) ?></p>
                 </div>
             </a>
             </li>
@@ -26,7 +26,7 @@
 
   <!-- Contenido principal -->
   <section class="filtradoAnuncioContenido">
-    <h3>Mis anuncios</h3>
+    <h3>Anuncios</h3>
 
     <!-- Buscador y orden -->
     <div class="misAnunciosBusqueda">
@@ -83,5 +83,5 @@
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="/app/assets/scripts/filtrado.js"></script>
+<script src="assets/scripts/filtrado.js"></script>
 </html>

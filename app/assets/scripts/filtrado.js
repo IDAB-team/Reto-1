@@ -1,25 +1,33 @@
-// 🔧 Selección de elementos del DOM
+//Selección de elementos del DOM
 const contenedor = document.querySelector('.anuncioListado'); // Contenedor donde se mostrarán los anuncios
 const buscarBtn = document.querySelector('button[name="bBuscarAnuncio"]'); // Botón de búsqueda por nombre
 const buscarInput = document.querySelector('input[name="buscarAnuncio"]'); // Campo de texto para escribir el nombre del anuncio
 const categoriaLinks = document.querySelectorAll('.anuncioFiltroCategorias a'); // Enlaces de las categorías para filtrar
 const selectOrden = document.querySelector('#anuncioOrdenar'); // Selector para ordenar los anuncios por precio
 
-// 🔍 Buscar por nombre al hacer clic en el botón
+// Buscar por nombre al hacer clic en el botón
 buscarBtn.addEventListener('click', async () => {
   const texto = buscarInput.value.trim(); // Obtiene el texto ingresado y elimina espacios
-  if (!texto) return; // Si el campo está vacío, no hace nada
 
   try {
-    // Realiza una petición GET al backend para buscar anuncios por nombre
-    const response = await axios.get(`index.php?controller=FiltradoController&accion=apiBuscarPorNombre&texto=${encodeURIComponent(texto)}`);
+    let response;
+
+    if (!texto) {
+      // Si el campo está vacío, se hace una petición para obtener todos los anuncios
+      response = await axios.get('index.php?controller=FiltradoController&accion=getAll');
+    } else {
+      // Si hay texto, se hace una búsqueda por nombre
+      response = await axios.get(`index.php?controller=FiltradoController&accion=apiBuscarPorNombre&texto=${encodeURIComponent(texto)}`);
+    }
+
     renderAnuncios(response.data); // Muestra los resultados en pantalla
   } catch (error) {
-    console.error("Error al buscar por nombre:", error); // Muestra error en consola si la petición falla
+    console.error("Error al buscar por nombre:", error); // Muestra error por consola si la petición falla
   }
 });
 
-// 🧭 Filtrar por categoría al hacer clic en un enlace
+
+// Filtrar por categoría al hacer clic en un enlace
 categoriaLinks.forEach(link => {
   link.addEventListener('click', async (e) => {
     e.preventDefault(); // Evita que el enlace recargue la página
@@ -35,22 +43,32 @@ categoriaLinks.forEach(link => {
   });
 });
 
-// 💰 Ordenar por precio al cambiar el valor del selector
+// Ordenar por precio o fecha al cambiar el valor del selector
 selectOrden.addEventListener('change', async () => {
   const valor = selectOrden.value; // Obtiene el valor seleccionado
-  let orden = 'ASC'; // Por defecto, orden ascendente
-  if (valor === 'Precio más alto') orden = 'DESC'; // Si se selecciona "Precio más alto", cambia a descendente
 
   try {
-    // Realiza una petición GET al backend para ordenar los anuncios por precio
-    const response = await axios.get(`index.php?controller=FiltradoController&accion=apiOrdenarPorPrecio&orden=${orden}`);
-    renderAnuncios(response.data); // Muestra los anuncios ordenados
+    let response;
+
+    if (valor === 'Por fecha') {
+      // Si se selecciona "Por fecha", hace la petición correspondiente
+      response = await axios.get('index.php?controller=FiltradoController&accion=apiOrdenarPorFecha');
+    } else {
+      // Si se selecciona orden por precio
+      let orden = 'ASC'; // Por defecto, ascendente
+      if (valor === 'Precio más alto') orden = 'DESC'; // Cambia a descendente si se selecciona esa opción
+
+      response = await axios.get(`index.php?controller=FiltradoController&accion=apiOrdenarPorPrecio&orden=${orden}`);
+    }
+
+    renderAnuncios(response.data); // Renderiza los anuncios según la respuesta
   } catch (error) {
-    console.error("Error al ordenar por precio:", error); // Muestra error en consola si la petición falla
+    console.error("Error al ordenar los anuncios:", error); // Muestra error en consola si la petición falla
   }
 });
 
-// 🧱 Función para renderizar los anuncios en el DOM
+
+//Función para renderizar los anuncios en el DOM
 function renderAnuncios(anuncios) {
   contenedor.innerHTML = ''; // Limpia el contenedor antes de mostrar nuevos anuncios
 

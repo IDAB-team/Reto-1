@@ -25,8 +25,8 @@ class InicioController extends BaseController {
 
         // Obtener categorías desde la base de datos
         $categorias = CategoriaModel::getAll();
-        //var_dump($categorias); exit;
         $anuncios = AnuncioModel::getUltimos(8);
+        //var_dump($anuncios); exit;
 
 
         $this->render('inicio.view.php', [

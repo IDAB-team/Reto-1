@@ -21,14 +21,27 @@ class FiltradoController extends BaseController {
                 $header = 'headerSessionVendedor.php';
             }
         }
-        
-        $listaAnuncios = AnuncioModel::getAll();
+
+        // Modelos
         $listaCategorias = CategoriaModel::getAll();
 
+        // Si hay texto de búsqueda
+        if (!empty($_GET['texto'])) {
+            $listaAnuncios = AnuncioModel::getByName($_GET['texto']);
+        }
+        // Si hay una categoría seleccionada
+        elseif (!empty($_GET['categoria'])) {
+            $listaAnuncios = AnuncioModel::getByCategoryName($_GET['categoria']);
+        }
+        // Si no hay filtros, mostrar todos
+        else {
+            $listaAnuncios = AnuncioModel::getAll();
+        }
+
         $this->render('filtrado.view.php', [
-        'listaAnuncios' => $listaAnuncios,
-        'listaCategorias' => $listaCategorias,
-        'header' => $header
+            'listaAnuncios' => $listaAnuncios,
+            'listaCategorias' => $listaCategorias,
+            'header' => $header
         ]);    
     }
 

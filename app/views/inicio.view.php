@@ -9,23 +9,30 @@
 
     <main class="inicioMain">
         <div class="inicioBusqueda">
-            <h1>¿Que quieres encontrar?</h1>
-            <div class="inicioBuscador">
-                <div class="inicioBuscar">
-                    <div class="inicioBotonBuscar">
-                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 21L16.65 16.65M11 6C13.7614 6 16 8.23858 16 11M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <p>Buscar</p>
-                    </div>
-                </div>
-            </div>
+            <h1>¿Qué quieres encontrar?</h1>
+            <form class="inicioBuscar" action="index.php" method="get">
+                <input type="hidden" name="controller" value="FiltradoController">
+                <input type="text" name="texto" id="busquedaInput" placeholder="Escribe aquí..." required>
+
+                <button type="submit" class="inicioBotonBuscar">
+                    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21 21L16.65 16.65M11 6C13.7614 6 16 8.23858 16 11M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    <p>Buscar</p>
+                </button>
+            </form>
         </div>
         <div class="inicioCategorias">
             <?php foreach ($categorias as $categoria): ?>
                 <div class="inicioCategoria">
-                    <img src="./<?= $categoria['Url_icono'] ?>" alt="icono . <?= $categoria['Nombre'] ?>">
-                    <p><?= $categoria['Nombre'] ?></p>
+                    <a href="index.php?controller=FiltradoController&categoria=<?= urlencode($categoria['Nombre']) ?>">
+                        <img src="./<?= $categoria['Url_icono'] ?>" alt="icono <?= htmlspecialchars($categoria['Nombre']) ?>">
+                        <p><?= htmlspecialchars($categoria['Nombre']) ?></p>
+                    </a>
                 </div>
 
             <?php endforeach; ?>

@@ -28,7 +28,16 @@
     justify-content: right;
     border: 1px solid #1156CC;
     border-radius: 30px;
-    padding: 0.5em 1em;
+}
+
+.inicioBuscar input {
+    width: 100%;
+    border: 0;
+    border-radius: 30px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: white;
+    padding: 0.75em 1em;
 }
 
 .inicioBotonBuscar {
@@ -38,7 +47,9 @@
     color: white;
     background-color: #1156CC;
     padding: 0.5em 1em;
-    border-radius: 25px;
+    border-radius: 30px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 
 .inicioCategorias {
@@ -59,12 +70,18 @@
     width: 3em;
 }
 
-.inicioCategoria p {
-    font-size: 1.1em;
-    font-weight: bold;
+.inicioCategoria a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-
+.inicioCategoria a p {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #1156CC;
+}
 
 .inicioAnuncios {
     width: 75%;

@@ -46,11 +46,14 @@ class FiltradoController extends BaseController {
     }
 
     public function getAll() {
-        $listaAnuncios = AnuncioModel::getAll();
-        $this->render('filtrado.view.php', ['listaAnuncios' => $listaAnuncios]);
+        header('Content-Type: application/json');
+        $resultados = AnuncioModel::getAll();
+        echo json_encode($resultados);
+        exit;
     }
 
-    // 🔍 Buscar anuncios por nombre
+
+    //Buscar anuncios por nombre
     public function apiBuscarPorNombre() {
         header('Content-Type: application/json');
         $texto = $_GET['texto'] ?? '';
@@ -59,7 +62,7 @@ class FiltradoController extends BaseController {
         exit;
     }
 
-    // 📂 Filtrar por categoría
+    //Filtrar por categoría
     public function apiPorCategoria() {
         header('Content-Type: application/json');
         $categoria = $_GET['categoria'] ?? '';
@@ -67,8 +70,15 @@ class FiltradoController extends BaseController {
         echo json_encode($resultados);
         exit;
     }
+    //Ordenar por fecha
+    public function apiOrdenarPorFecha(){
+        header('Content-Type: application/json');
+        $resultados = AnuncioModel::orderByDate();
+        echo json_encode($resultados);
+        exit;
+    }
 
-    // 💰 Ordenar por precio
+    // Ordenar por precio
     public function apiOrdenarPorPrecio() {
         header('Content-Type: application/json');
         $orden = $_GET['orden'] ?? 'ASC';

@@ -86,6 +86,17 @@
                         </svg>
                         Iniciar sesión
                     </button>
+                    <div id="loginError" class="hidden loginError">
+                        <?php
+                        if (session_status() === PHP_SESSION_NONE) {
+                            session_start();
+                        }
+                        if (isset($_SESSION['error'])) {
+                            echo htmlspecialchars($_SESSION['error']);
+                            unset($_SESSION['error']); // Limpiar para no mostrarlo de nuevo
+                        }
+                        ?>
+                    </div>
                 </form>
 
                 <!-- Registro -->

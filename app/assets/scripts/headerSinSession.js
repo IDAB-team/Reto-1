@@ -11,6 +11,7 @@ const tipoCuentaInput = document.getElementById('tipoCuenta');
 const btnComprar = document.getElementById('btnComprar');
 const btnVender = document.getElementById('btnVender');
 const closeModal = document.getElementById('closeModal');
+const loginError = document.getElementById('loginError');
 
 
 // Reset de iniciar sesion
@@ -78,6 +79,9 @@ function showRegister() {
     loginForm.classList.remove('visible');
 
     registerForm.classList.remove('hidden');
+
+    //Para ocultar si vuelve a login después
+    loginError.classList.add('hidden');
 }
 
 //Elegir tipo de cuenta
@@ -102,6 +106,7 @@ btnVender.addEventListener('click', () => {
 // Cerrarlo
 closeModal.addEventListener('click', () => {
     modalOverlay.style.display = 'none';
+    loginError.classList.add('hidden'); // mostrar mensaje
     resetLogin();
     resetRegister();
 });
@@ -113,3 +118,18 @@ modalOverlay.addEventListener('click', e => {
         resetRegister();
     }
 });
+
+function showLoginError(message) {
+    loginError.textContent = message;
+    loginError.classList.remove('hidden');
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (loginError.textContent.trim() !== "") {
+        modalOverlay.style.display = 'flex'; // abrir modal
+        showLogin();                          // mostrar pestaña login
+        loginError.classList.remove('hidden'); // mostrar mensaje
+    }
+});
+

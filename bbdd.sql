@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               8.4.3 - MySQL Community Server - GPL
--- Server OS:                    Win64
--- HeidiSQL Version:             12.8.0.6908
+-- Versión del servidor:         8.4.3 - MySQL Community Server - GPL
+-- SO del servidor:              Win64
+-- HeidiSQL Versión:             12.8.0.6908
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -15,12 +15,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Dumping database structure for reto1
+-- Volcando estructura de base de datos para reto1
 DROP DATABASE IF EXISTS `reto1`;
 CREATE DATABASE IF NOT EXISTS `reto1` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `reto1`;
 
--- Dumping structure for table reto1.administradores
+-- Volcando estructura para tabla reto1.administradores
 DROP TABLE IF EXISTS `administradores`;
 CREATE TABLE IF NOT EXISTS `administradores` (
   `ID_Admin` int NOT NULL AUTO_INCREMENT,
@@ -34,13 +34,13 @@ CREATE TABLE IF NOT EXISTS `administradores` (
   CONSTRAINT `TIPO_ADMIN_CK` CHECK ((`Tipo` in (_utf8mb4'SuperAdmin',_utf8mb4'Gestor')))
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table reto1.administradores: ~3 rows (approximately)
+-- Volcando datos para la tabla reto1.administradores: ~3 rows (aproximadamente)
 INSERT INTO `administradores` (`ID_Admin`, `Username`, `Password`, `Email`, `Tipo`) VALUES
 	(1, 'superadmin', '12345Qwerty', 'superadmin@correo.com', 'SuperAdmin'),
 	(2, 'gestor1', 'idabteam', 'gestor1@correo.com', 'Gestor'),
 	(3, 'gestor2', 'idabteam', 'gestor2@correo.com', 'Gestor');
 
--- Dumping structure for table reto1.anuncios
+-- Volcando estructura para tabla reto1.anuncios
 DROP TABLE IF EXISTS `anuncios`;
 CREATE TABLE IF NOT EXISTS `anuncios` (
   `ID_Anuncio` int NOT NULL AUTO_INCREMENT,
@@ -59,18 +59,18 @@ CREATE TABLE IF NOT EXISTS `anuncios` (
   CONSTRAINT `anuncios_ibfk_2` FOREIGN KEY (`ID_Categoria`) REFERENCES `categorias` (`ID_Categoria`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table reto1.anuncios: ~8 rows (approximately)
+-- Volcando datos para la tabla reto1.anuncios: ~8 rows (aproximadamente)
 INSERT INTO `anuncios` (`ID_Anuncio`, `ID_Usuario`, `ID_Categoria`, `Nombre`, `Descripcion`, `Fecha_pub`, `Precio`, `Stock`, `Url_imagen`) VALUES
 	(17, 3, 4, 'iPhone 18', 'Lo último de los móviles', '2025-10-18 10:00:00', 1850.00, 10, 'assets/images/anuncios/iPhone 18.jpg'),
 	(18, 3, 4, 'Apple Watch', 'Poder en tu muñeca', '2025-10-18 10:05:00', 300.00, 10, 'assets/images/anuncios/Apple Watch.jpg'),
-	(19, 4, 4, 'BMW M4', 'Agresivo con clase', '2025-10-18 10:10:00', 80000.00, 10, 'assets/images/anuncios/BMW m4.jpg'),
+	(19, 4, 6, 'BMW M4', 'Agresivo con clase', '2025-10-18 10:10:00', 80000.00, 10, 'assets/images/anuncios/BMW m4.jpg'),
 	(20, 5, 3, 'Termo Mix Pro', 'Facilidad en la cocina', '2025-10-18 10:15:00', 100.00, 10, 'assets/images/anuncios/Termo Mix.jpg'),
 	(21, 6, 1, 'Bolso de mano', 'Muy cómodo. Lujo', '2025-10-18 10:20:00', 475.00, 10, 'assets/images/anuncios/Bolso Gucci.jpg'),
 	(22, 7, 5, 'Dunlop x12', 'Precisión perfecta', '2025-10-18 10:25:00', 120.00, 10, 'assets/images/anuncios/Raqueta Padel.jpg'),
 	(23, 8, 8, 'Comida Perro', 'Cuida bien tu mascota', '2025-10-18 10:30:00', 12.00, 10, 'assets/images/anuncios/Comida Mascotas.jpg'),
 	(24, 9, 10, 'Bicicleta', 'Saca una sonrisa a tu hijo', '2025-10-18 10:35:00', 160.00, 10, 'assets/images/anuncios/Bicicleta Infantil.jpg');
 
--- Dumping structure for table reto1.categorias
+-- Volcando estructura para tabla reto1.categorias
 DROP TABLE IF EXISTS `categorias`;
 CREATE TABLE IF NOT EXISTS `categorias` (
   `ID_Categoria` int NOT NULL AUTO_INCREMENT,
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   UNIQUE KEY `Nombre` (`Nombre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table reto1.categorias: ~10 rows (approximately)
+-- Volcando datos para la tabla reto1.categorias: ~10 rows (aproximadamente)
 INSERT INTO `categorias` (`ID_Categoria`, `Nombre`, `Url_icono`) VALUES
 	(1, 'Moda', 'assets/images/iconos/categorias/Moda.png'),
 	(2, 'Belleza', '/assets/images/iconos/categorias/Belleza.png'),
@@ -93,7 +93,7 @@ INSERT INTO `categorias` (`ID_Categoria`, `Nombre`, `Url_icono`) VALUES
 	(9, 'Mascotas', '/assets/images/iconos/categorias/Mascotas.png'),
 	(10, 'Infantil', '/assets/images/iconos/categorias/Infantil.png');
 
--- Dumping structure for table reto1.favoritos
+-- Volcando estructura para tabla reto1.favoritos
 DROP TABLE IF EXISTS `favoritos`;
 CREATE TABLE IF NOT EXISTS `favoritos` (
   `ID_Favorito` int NOT NULL AUTO_INCREMENT,
@@ -106,9 +106,9 @@ CREATE TABLE IF NOT EXISTS `favoritos` (
   CONSTRAINT `favoritos_ibfk_2` FOREIGN KEY (`ID_Anuncio`) REFERENCES `anuncios` (`ID_Anuncio`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table reto1.favoritos: ~0 rows (approximately)
+-- Volcando datos para la tabla reto1.favoritos: ~0 rows (aproximadamente)
 
--- Dumping structure for table reto1.usuarios
+-- Volcando estructura para tabla reto1.usuarios
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `ID_Usuario` int NOT NULL AUTO_INCREMENT,
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   CONSTRAINT `TIPO_USER_CK` CHECK ((`Tipo` in (_utf8mb4'Cliente',_utf8mb4'Comerciante')))
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table reto1.usuarios: ~9 rows (approximately)
+-- Volcando datos para la tabla reto1.usuarios: ~2 rows (aproximadamente)
 INSERT INTO `usuarios` (`ID_Usuario`, `CIF`, `Username`, `Password`, `Email`, `Tipo`) VALUES
 	(1, NULL, 'Comprador', '12345Abcde', 'comprar@test.com', 'Cliente'),
 	(2, NULL, 'Vendedor', '12345Abcde', 'vender@test.com', 'Comerciante'),

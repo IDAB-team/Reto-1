@@ -24,11 +24,11 @@
     <section class="misAnunciosContenido">
     <h3>Mis anuncios</h3>
 
-    <div class="misAnunciosBusqueda">
+    
         <form method="GET" action="" class="formularioBusqueda">    
         
         <select name="misAnunciosOrden">
-            <option value="ordenar" selected disabled hidden>Ordenar por ▽</option>
+            <option value="ordenar" selected disabled hidden>Ordenar por </option>
             <option value="fecha">Fecha de publicación</option>
             <option value="precio">Precio</option>
         </select>
@@ -38,7 +38,7 @@
                             <path d="M21 21L16.65 16.65M11 6C13.7614 6 16 8.23858 16 11M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>Buscar</button>
         </form>
-    </div>
+    
 
     <div class="misAnunciosLista">
         <div class="misAnunciosAnuncioCard">

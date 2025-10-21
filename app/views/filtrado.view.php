@@ -12,7 +12,7 @@
         <?php if (!empty($categoria['Nombre'])): ?>
             <li>
             <a href="#" data-categoria="<?= urlencode($categoria['Nombre']) ?>">
-                <div class="misAnunciosCategoria">
+                <div class="filtroAnunciosCategoria">
                 <img src="./<?= $categoria['Url_icono'] ?>" alt="icono <?= htmlspecialchars($categoria['Nombre']) ?>">
                 <p><?= htmlspecialchars($categoria['Nombre']) ?></p>
                 </div>
@@ -29,8 +29,8 @@
     <h3>Anuncios</h3>
 
     <!-- Buscador y orden -->
-    <div class="misAnunciosBusqueda">
-    <div class="formularioBusqueda">
+    <div class="filtradoAnunciosBusqueda">
+    <div class="filtradoFormularioBusqueda">
         <select id="anuncioOrdenar">
         <option value="ordenar" selected disabled hidden>Ordenar por ▽</option>
         <option value="Por fecha">Fecha de publicación(más reciente)</option>
@@ -49,18 +49,18 @@
     </div>
 
     <!-- Listado de anuncios dinámico -->
-    <div class="anuncioListado">
+    <div class="filtradoAnuncioListado">
     <?php foreach ($listaAnuncios as $anuncio): ?>
-        <div class="misAnunciosAnuncioCard">
-        <div class="misAnunciosImagen">
+        <div class="filtradoAnunciosAnuncioCard">
+        <div class="filtradoAnunciosImagen">
             <img src="./<?= $anuncio->Url_imagen ?>" alt="<?= $anuncio->nombreAnuncio ?>">
         </div>
-        <div class="misAnunciosInfo">
+        <div class="filtradoAnunciosInfo">
             <h4><?= $anuncio->nombreAnuncio ?></h4>
             <h5><?= $anuncio->usernameAnuncio ?></h5>
             <p><?= $anuncio->descripcionAnuncio ?></p>
-            <p class="fechaAnuncio"><?= date('d/m/Y', strtotime($anuncio->Fecha_pub)) ?></p>
-            <div class="misAnunciosPrecio">
+            <p class="filtradoFechaAnuncio"><?= date('d/m/Y', strtotime($anuncio->Fecha_pub)) ?></p>
+            <div class="filtradoAnunciosPrecio">
             <p><?= $anuncio->precioAnuncio ?> €</p>
             </div>
         </div>
@@ -69,13 +69,13 @@
     </div>
 
     <!-- Paginación (estática por ahora) -->
-    <div class="misAnunciosPaginas">
-    <button class="paginaBtn paginaActiva">1</button>
-    <button class="paginaBtn">2</button>
-    <button class="paginaBtn">3</button>
-    <button class="paginaBtn">4</button>
-    <button class="paginaBtn">5</button>
-    <button class="paginaBtn">6</button>
+    <div class="filtradoAnunciosPaginas">
+    <button class="filtradoPaginaBtn paginaActiva">1</button>
+    <button class="filtradoPaginaBtn">2</button>
+    <button class="filtradoPaginaBtn">3</button>
+    <button class="filtradoPaginaBtn">4</button>
+    <button class="filtradoPaginaBtn">5</button>
+    <button class="filtradoPaginaBtn">6</button>
     </div>
   </section>
   </main>
@@ -86,4 +86,6 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/scripts/filtrado.js"></script>
 
+
+  <script src="/app/assets/scripts/favorito.js"></script>
 </html>

@@ -1,180 +1,205 @@
 /* ==================================================================================================================
     ------------------------------------------------- MIS ANUNCIOS SIEMPRE -------------------------------------------------
 ================================================================================================================== */
-    *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-    body{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
 }
-    .FiltradoMain {
-    display: flex;
-    flex-direction: row;
-    gap: 2em;
-    padding: 2em 0;
-    
-    /* Estas tres líneas son la clave */
-    width: 100%;
-    max-width: 1200px;   /* limita el ancho total */
-    margin: 8em auto;  
+
+/* ===================== MAIN ===================== */
+.FiltradoMain {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  padding: 2em 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 8em auto;
 }
-/*Filtros: */
-    .filtradoCategorias{
-    max-width: 40%;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    padding: .5rem;
-    height: fit-content;
-    
+
+/* ===================== FILTROS ===================== */
+.filtradoCategorias {
+  max-width: 40%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  height: fit-content;
 }
-    .filtradoCategorias h4 {
-    text-align: center;
-    margin-bottom: 1em;
-    color: #1156CC;
-    border-bottom: solid #1156CC thin;
+
+.filtradoCategorias h4 {
+  text-align: center;
+  margin-bottom: 1em;
+  color: #1156CC;
+  border-bottom: solid #1156CC thin;
 }
-    .filtradoCategorias img {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
+
+.filtradoCategorias ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
+
+.filtradoCategorias li {
+  margin: 0.3em 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 8px;
+}
+
+.filtradoCategorias li:hover {
+  border-bottom: solid #1156CC thin;
+}
+
 .filtradoCategorias a {
-    color: black;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-   
-}
-    .filtradoCategorias ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    
-}
-    .filtradoCategorias li {
-    margin: 0.3em 0;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.1rem 0.5rem;
-    border-radius: 8px;
-}
-    .filtradoCategorias li:hover {
-    border-bottom: solid #1156CC thin;
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
-    .filtradoAnuncioContenido{
-        max-width: 60%;
-    }
-    .filtradoAnuncioContenido h3{
-        color:#1156CC;
-        margin-bottom: .3em;
-        
-        
-    }
-/*Búsqueda:*/
-    .formularioBusqueda select{
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    border: 1px solid #1156CC;
-    font-size: 0.95rem;
-    color: white;
-    background-color: #1156CC;
-}
-    .formularioBusqueda select option{
-    background-color: white;
-    color: #1156CC;
-}
-    .formularioBusqueda [type="search"]{
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    border: .2em solid #1156CC;
-    font-size: 0.95rem;
-    width: 60%;
-}
-    .formularioBusqueda {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    }
-    .formularioBusqueda button {
-    background-color: #1156CC;
-    color: white;
-    border: none;
-    padding: .5em ;
-    border-radius: 6px;
-    cursor: pointer;
-}
-/*Anuncios: */
-    .anuncioListado{
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    
-}
-    .anuncioListadoCard{
-        display: flex;  
-        overflow: hidden;   /*Recorta la imagen a los bordes */
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        border-radius: 1em;
-
-    }
-    .anuncioListadoImagen{
-        width: 50%;
-        min-width: 180px;
-        
-    }
-    .anuncioListadoImagen img {
-    display: block;           /* elimina gaps por inline images */
-    width: 100%;
-    height: 100%;
-    object-fit: cover;        /* <- ocupa todo y recorta sin deformar */
-    object-position: center; 
-    
-}
-    .misAnunciosInfo {
-    padding: 1rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.filtradoCategorias img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 
-
-/* Paginación */
-    .misAnunciosPaginas {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 2rem;
+/* ===================== CONTENIDO ===================== */
+.filtradoAnuncioContenido {
+  max-width: 60%;
 }
 
-    .paginaBtn {
-    background-color: #989898;
-    color: white;
-    font-weight: 750;
-    border: none;
-    padding: .7em;
-    border-radius: 6px;
-    cursor: pointer;
+.filtradoAnuncioContenido h3 {
+  color: #1156CC;
+  margin-bottom: 0.3em;
 }
 
-    .paginaBtn:hover {
-    background-color: #1156CC;
+/* ===================== BÚSQUEDA ===================== */
+.filtradoAnunciosBusqueda {
+  margin-bottom: 2rem;
 }
 
-    .paginaActiva {
-    background-color: #1156CC;
-    color: white;
+.filtradoFormularioBusqueda {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-    
 
+.filtradoFormularioBusqueda select {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #1156CC;
+  font-size: 0.95rem;
+  color: white;
+  background-color: #1156CC;
+}
+
+.filtradoFormularioBusqueda select option {
+  background-color: white;
+  color: #1156CC;
+}
+
+.filtradoFormularioBusqueda input[type="search"] {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 0.2em solid #1156CC;
+  font-size: 0.95rem;
+  width: 60%;
+}
+
+.filtradoFormularioBusqueda button {
+  background-color: #1156CC;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ===================== ANUNCIOS ===================== */
+.filtradoAnuncioListado {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.filtradoAnunciosAnuncioCard {
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+}
+
+.filtradoAnunciosImagen {
+  width: 50%;
+  min-width: 180px;
+}
+
+.filtradoAnunciosImagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.filtradoAnunciosInfo {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.filtradoAnunciosPrecio p {
+  font-weight: bold;
+  color: #1156CC;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.filtradoFechaAnuncio {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.3rem;
+}
+
+/* ===================== PAGINACIÓN ===================== */
+.filtradoAnunciosPaginas {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.filtradoPaginaBtn {
+  background-color: #989898;
+  color: white;
+  font-weight: 750;
+  border: none;
+  padding: 0.7em 1em;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filtradoPaginaBtn:hover {
+  background-color: #1156CC;
+}
+
+.paginaActiva {
+  background-color: #1156CC;
+  color: white;
+}

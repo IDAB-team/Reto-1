@@ -1,5 +1,5 @@
 //Selección de elementos del DOM
-const contenedor = document.querySelector('.anuncioListado'); // Contenedor donde se mostrarán los anuncios
+const contenedor = document.querySelector('.filtradoAnuncioListado'); // Contenedor donde se mostrarán los anuncios
 const buscarBtn = document.querySelector('button[name="bBuscarAnuncio"]'); // Botón de búsqueda por nombre
 const buscarInput = document.querySelector('input[name="buscarAnuncio"]'); // Campo de texto para escribir el nombre del anuncio
 const categoriaLinks = document.querySelectorAll('.anuncioFiltroCategorias a'); // Enlaces de las categorías para filtrar

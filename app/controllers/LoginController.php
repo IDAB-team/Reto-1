@@ -42,22 +42,29 @@ class LoginController extends BaseController {
         $nombre = $_POST['nombre'] ?? '';
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
-        $cif = $_POST['cif'] ?? null; // opcional
+        $cif = $_POST['cif'] ?? null;
 
         $usuarioModel = new UsuarioModel();
 
+        // Verificar tipo de cuenta
         if (strtolower($tipoCuenta) === 'comprar') {
-            $tipoCuenta = 'Cliente';       // comprar = Cliente
+            $tipoCuenta = 'Cliente';
         } elseif (strtolower($tipoCuenta) === 'vender') {
-            $tipoCuenta = 'Comerciante';   // vender = Comerciante
+            $tipoCuenta = 'Comerciante';
         } else {
             $_SESSION['error'] = 'Debes seleccionar un tipo de cuenta';
             $this->redirect('?controller=InicioController');
             exit;
         }
 
+        // 🚨 Verificar si ya existe el usuario (por email, por ejemplo)
+        if ($usuarioModel->getUsuarioByEmail($email)) {
+            $_SESSION['error'] = 'Ya existe un usuario registrado con ese correo';
+            $this->redirect('?controller=InicioController');
+            exit;
+        }
 
-        // Ahora sí crear array de datos para insertar
+        // Crear nuevo usuario
         $datos = [
             'cif' => $cif,
             'username' => $nombre,
@@ -66,7 +73,6 @@ class LoginController extends BaseController {
             'tipo' => $tipoCuenta
         ];
 
-        // Insertar usuario
         if ($usuarioModel->create($datos)) {
             $_SESSION['user'] = [
                 'nombre' => $nombre,

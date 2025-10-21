@@ -39,6 +39,13 @@ class UsuarioModel {
         ]);
     }
 
+    public function getUsuarioByEmail($email) {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT * FROM usuarios WHERE Email = :email LIMIT 1");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
 
     public static function getAll() {
         

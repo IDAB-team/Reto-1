@@ -64,13 +64,30 @@ header {
 
 .headerIcono {
     display: flex;
-    align-items:end;
+    align-items:center;
     color: #1156CC;
     gap: 0.5em;
 }
 
+
+.nombres {
+    display: flex;
+    flex-direction: column;
+    align-items: bottom;
+}
+
+.tipo {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: #1156CC;
+    padding: 0.25em 0em;
+}
+
 .headerIcono span {
     font-size: 1.2em;
+    border-bottom: 1px solid #1156CC;
+    font-weight: bold;
 }
 
 
@@ -108,6 +125,7 @@ header {
 .headerDesplegable.show {
   display: flex;
 }
+
 
 
 

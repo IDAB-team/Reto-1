@@ -87,5 +87,5 @@
   <script src="assets/scripts/filtrado.js"></script>
 
 
-  <script src="/app/assets/scripts/favorito.js"></script>
+  <script src="/app/assets/scripts/filtrado.js"></script>
 </html>

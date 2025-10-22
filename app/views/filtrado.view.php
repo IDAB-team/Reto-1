@@ -63,6 +63,12 @@
             <div class="filtradoAnunciosPrecio">
             <p><?= $anuncio->precioAnuncio ?> €</p>
             </div>
+
+            <?php if (!empty($user)): ?>
+                <a href="#" class="favoritoToggle" data-id="<?= $anuncio->ID_Anuncio ?>">Añadir a favoritos</a>
+            <?php endif; ?>
+
+            
         </div>
         </div>
     <?php endforeach; ?>
@@ -82,9 +88,15 @@
 
   <?php include __DIR__ . '/layout/footer.php'; ?>
 
+  <!-- Variable global para saber si hay sesión iniciada y rellenar los favoritos -->
+  <script>
+    const usuarioLogueado = <?= isset($user) ? 'true' : 'false' ?>;
+    const favoritosUsuario = <?= json_encode($favoritos ?? []) ?>;
+  </script>
+
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="assets/scripts/filtrado.js"></script>
+  <script src="assets/scripts/filtrado.js" ></script>
 
 
   <script src="/app/assets/scripts/filtrado.js"></script>

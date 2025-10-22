@@ -5,6 +5,8 @@ const buscarInput = document.querySelector('input[name="buscarAnuncio"]'); // Ca
 const categoriaLinks = document.querySelectorAll('.anuncioFiltroCategorias a'); // Enlaces de las categorías para filtrar
 const selectOrden = document.querySelector('#anuncioOrdenar'); // Selector para ordenar los anuncios por precio
 
+
+
 // Buscar por nombre al hacer clic en el botón
 buscarBtn.addEventListener('click', async () => {
   const texto = buscarInput.value.trim(); // Obtiene el texto ingresado y elimina espacios
@@ -67,37 +69,72 @@ selectOrden.addEventListener('change', async () => {
   }
 });
 
+//Función para activarBotonesFavorito
+function activarFavoritos() {
+  document.querySelectorAll('.favoritoToggle').forEach(link => {
+    link.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const idAnuncio = link.dataset.id;
+
+      try {
+        const response = await axios.get(`index.php?controller=FavoritosController&accion=existeFavorito&ID_Anuncio=${idAnuncio}`);
+        const estado = response.data.estado;
+
+        if (estado === 'agregado') {
+          link.classList.add('favoritoActivo');
+          link.textContent = 'Favorito añadido';
+        } else if (estado === 'eliminado') {
+          link.classList.remove('favoritoActivo');
+          link.textContent = 'Añadir a favoritos';
+        }
+      } catch (error) {
+        console.error('Error al cambiar favorito:', error);
+      }
+    });
+  });
+}
+
 
 //Función para renderizar los anuncios en el DOM
 function renderAnuncios(anuncios) {
-  contenedor.innerHTML = ''; // Limpia el contenedor antes de mostrar nuevos anuncios
+  contenedor.innerHTML = '';
 
   if (anuncios.length === 0) {
-    contenedor.innerHTML = '<p>No se encontraron anuncios.</p>'; // Muestra mensaje si no hay resultados
+    contenedor.innerHTML = '<p>No se encontraron anuncios.</p>';
     return;
   }
 
-  // Recorre cada anuncio recibido y lo agrega al contenedor
   anuncios.forEach(anuncio => {
-    const box = document.createElement('div'); // Crea un nuevo div para el anuncio
-    box.classList.add('anuncioIndividual'); // Le asigna la clase CSS
+    const box = document.createElement('div');
+    box.classList.add('anuncioIndividual');
 
-    // Inserta el contenido HTML del anuncio dentro del div
     box.innerHTML = `
-      <div class="misAnunciosImagen">
+      <div class="filtradoAnunciosImagen">
         <img src="./${anuncio.Url_imagen}" alt="${anuncio.nombreAnuncio}">
       </div>
-      <div class="misAnunciosInfo">
+      <div class="filtradoAnunciosInfo">
         <h4>${anuncio.nombreAnuncio}</h4>
         <h5>${anuncio.usernameAnuncio}</h5>
         <p>${anuncio.descripcionAnuncio}</p>
-        <p class="fechaAnuncio">${new Date(anuncio.Fecha_pub).toLocaleDateString()}</p>
-        <div class="misAnunciosPrecio">
+        <p class="filtradoFechaAnuncio">${new Date(anuncio.Fecha_pub).toLocaleDateString()}</p>
+        <div class="filtradoAnunciosPrecio">
           <p>${anuncio.precioAnuncio} €</p>
         </div>
-      </div>
+       ${usuarioLogueado ?
+          `
+            <a href="#" class="favoritoToggle ${favoritosUsuario.includes(anuncio.ID_Anuncio) ? 'favoritoActivo' : ''}" data-id="${anuncio.ID_Anuncio}">
+              ${favoritosUsuario.includes(anuncio.ID_Anuncio) ? 'Favorito añadido' : 'Añadir a favoritos'}
+            </a>
+          ` 
+        : ''}
+
+        </div>
     `;
 
-    contenedor.appendChild(box); // Agrega el anuncio al contenedor principal
+    contenedor.appendChild(box);
   });
+
+  // Activar favoritos si hay sesión
+  if (usuarioLogueado) activarFavoritos();
 }
+

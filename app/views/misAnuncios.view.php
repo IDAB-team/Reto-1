@@ -40,22 +40,23 @@ include __DIR__ . '/layout/' . $header;
         </form>
 
         <div class="misAnunciosLista">
-            <!-- Anuncio 1 -->
+        <?php foreach($listaAnuncios as $anuncio): ?>
             <div class="misAnunciosAnuncioCard">
                 <div class="misAnunciosImagen">
-                    <img src="./assets/images/anuncios/Iphone 18.jpg" alt="Producto1">
+                    <img src="./<?= $anuncio->urlImagen ?>" alt="<?= $anuncio->nombreAnuncio ?>">
                 </div>
                 <div class="misAnunciosInfo">
                     <div class="misAnunciosDetalles">
                         <div class="misAnunciosTexto">
-                            <h4>iPhone 18</h4>
-                            <h5>UsernameComerciante</h5>
+                            <h4><?=$anuncio->nombreAnuncio ?> </h4>
+                            <h5><?=$anuncio->userName ?></h5>
                             <div class="desc">
-                                <p>Descripción de producto</p>
+                                <p><?=$anuncio->descAnuncio ?></p>
                             </div>
+                            <p class="misAnunciosFecha"><?= date('d/m/Y', strtotime($anuncio->fechaAnuncio)) ?></p>
                         </div>
                         <div class="misAnunciosPrecio">
-                            <p>1850€</p>
+                            <p><?=$anuncio->precioAnuncio ?> €</p>
                         </div>
                     </div>
                     <div class="misAnunciosEdicion">
@@ -74,36 +75,7 @@ include __DIR__ . '/layout/' . $header;
                     </div>
                 </div>
             </div>
-
-            <!-- Anuncio 2 -->
-            <div class="misAnunciosAnuncioCard">
-                <div class="misAnunciosImagen">
-                    <img src="./assets/images/anuncios/Apple Watch.jpg" alt="Producto2">
-                </div>
-                <div class="misAnunciosInfo">
-                    <h4>Apple Watch</h4>
-                    <h5>UsernameComerciante</h5>
-                    <p>Descripción de producto</p>
-                    <div class="misAnunciosPrecio">
-                        <p>900€</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Anuncio 3 -->
-            <div class="misAnunciosAnuncioCard">
-                <div class="misAnunciosImagen">
-                    <img src="./assets/images/anuncios/Termo Mix.jpg" alt="Producto3">
-                </div>
-                <div class="misAnunciosInfo">
-                    <h4>Termo Mix</h4>
-                    <h5>UsernameComerciante</h5>
-                    <p>Descripción de producto</p>
-                    <div class="misAnunciosPrecio">
-                        <p>150€</p>
-                    </div>
-                </div>
-            </div>
+        <?php endforeach; ?>
         </div>
 
         <div class="misAnunciosPaginas">
@@ -118,4 +90,7 @@ include __DIR__ . '/layout/' . $header;
 </main>
 
 <?php include __DIR__ . '/layout/footer.php'; ?>
+ <!--Script de la select-->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/scripts/filtrado.js"></script>
 </html>

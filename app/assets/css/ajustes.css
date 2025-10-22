@@ -103,6 +103,80 @@
     color: #2563eb;
 }
 
+#mensajeResultado {
+    max-width: 1100px;
+    margin: 1rem auto;
+    padding: 1rem 0rem;
+    border-radius: 8px;
+    font-weight: 700;
+    text-align: left;
+    transition: opacity 0.5s ease;
+}
+
+.visible {
+    display: block;
+}
+
+#mensajeResultado.exito {
+    color: #166534;
+}
+
+#mensajeResultado.error {
+    color: #991b1b
+}
+
+#mensajeResultado.oculto {
+    display: none;
+}
+
+/* Contenedor de cada grupo de contraseña */
+.ajustesFormularioGrupo.ajustesGrupoPassword {
+    position: relative;
+}
+
+/* Wrapper para contener input + icono */
+.ajustesPasswordWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Input de contraseña */
+.ajustesPasswordInput {
+    width: 100%;
+    padding: 0.875rem 2.5rem 0.875rem 1rem; /* deja espacio a la derecha para el icono */
+    border: 2px solid #2563eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    background-color: #f9fafb;
+}
+
+/* Efecto focus */
+.ajustesPasswordInput:focus {
+    border-color: #1d4ed8;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Icono del ojo */
+.ajustesTogglePassword {
+    position: absolute;
+    right: 0.9rem;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1rem;
+    color: #2563eb;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Hover en el icono */
+.ajustesTogglePassword:hover {
+    color: #1d4ed8;
+    transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
     .ajustesFormulario {
         padding: 1rem;
@@ -110,5 +184,14 @@
     
     .ajustesTitulo {
         font-size: 1.25rem;
+    }
+    
+    .ajustesPasswordInput {
+        padding-right: 2.2rem;
+    }
+
+    .ajustesTogglePassword {
+        right: 0.75rem;
+        font-size: 0.95rem;
     }
 }

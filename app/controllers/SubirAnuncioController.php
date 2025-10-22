@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
+require_once __DIR__ . '/../models/CategoriaModel.php';
+
 //require_once __DIR__ . '/../models/XxxxxModel.php';
 
 class SubirAnuncioController extends BaseController {
@@ -20,8 +22,8 @@ class SubirAnuncioController extends BaseController {
                 $header = 'headerSessionVendedor.php';
             }
         }
-
-        $this->render('subirAnuncio.view.php', ['header' => $header, 'user' => $user]);
+        $categorias = CategoriaModel::getAll();
+        $this->render('subirAnuncio.view.php', ['header' => $header, 'user' => $user,'categorias' => $categorias]);
     }
     
     public function show() {

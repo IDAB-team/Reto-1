@@ -25,7 +25,10 @@
     <link rel="stylesheet" href="./assets/css/ajustes.css">
     <link rel="stylesheet" href="./assets/css/vendedor.css">
 
-
+    <link rel="stylesheet" href="./assets/css/usuarios.css">
+    <link rel="stylesheet" href="./assets/css/anuncios.css">
+    <link rel="stylesheet" href="./assets/css/crearGestor.css">
+    
 </head>
 <body>
     <header>
@@ -50,8 +53,8 @@
                 </div>
                 <div class="headerDesplegable">
                     <a href="index.php?controller=CrearGestorController">Crear gestor</a>
-                    <a href="index.php?controller=">Usuarios</a>
-                    <a href="index.php?controller=">Anuncios</a>
+                    <a href="index.php?controller=UsuariosController">Usuarios</a>
+                    <a href="index.php?controller=AnunciosController">Anuncios</a>
                     <a href="?controller=LoginController&accion=logout">Cerrar sesión</a>
                 </div>
             </div>

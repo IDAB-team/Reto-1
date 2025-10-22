@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/UsuarioModel.php';
+require_once __DIR__ . '/../models/AdminModel.php';
+
 
 
 class LoginController extends BaseController {
@@ -12,7 +14,10 @@ class LoginController extends BaseController {
         $password = $_POST['password'] ?? '';
 
         $usuarioModel = new UsuarioModel();
-        $usuario = $usuarioModel->getUsuarioLogin($email, $password); // método existente en UsuarioModel
+        $adminModel = new AdminModel(); // Asegúrate de crear este modelo para administradores
+
+        // Primero intentamos con usuarios normales
+        $usuario = $usuarioModel->getUsuarioLogin($email, $password);
 
         if ($usuario) {
             $_SESSION['user'] = [
@@ -22,11 +27,24 @@ class LoginController extends BaseController {
                 'tipo'   => $usuario->Tipo
             ];
         } else {
-            $_SESSION['error'] = 'Usuario o contraseña incorrectos';
+            // Si no hay usuario normal, buscamos admin
+            $admin = $adminModel->getAdminLogin($email, $password);
+
+            if ($admin) {
+                $_SESSION['user'] = [
+                    'id'     => $admin->ID_Admin,
+                    'nombre' => $admin->Username,
+                    'email'  => $admin->Email,
+                    'tipo'   => $admin->Tipo
+                ];
+            } else {
+                $_SESSION['error'] = 'Usuario o contraseña incorrectos';
+            }
         }
 
         $this->redirect('?controller=InicioController');
     }
+
 
     public function logout() {
         session_start();   // 👈 Muy importante

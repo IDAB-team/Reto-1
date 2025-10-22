@@ -46,7 +46,29 @@ class UsuarioModel {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
+    
+    public static function editarDatos($datos){
+        $db = Database::getConnection();
+        $sql = "UPDATE usuarios SET Email = :email, Password = :nuevaContrasena WHERE Username = :usuario";
+        $stmt = $db->prepare($sql);
+        return $stmt->execute([
+            "usuario" => $datos["usuario"],
+            "nuevaContrasena" => $datos['nuevaContraseña'],
+            "email" => $datos['email'],
+        ]);
+    }
 
+    public static function devolverContraseña() {
+        $db = Database::getConnection();
+        $nombre = $_SESSION["user"]["nombre"];
+        $sql = "SELECT Password FROM usuarios WHERE Username = :nombre";
+        $stmt = $db->prepare($sql);
+        $stmt->execute(['nombre' => $nombre]);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($resultado) {
+            return $resultado['Password'];
+        }
+    }
     public static function getAll() {
         
     }

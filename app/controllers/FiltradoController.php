@@ -2,6 +2,8 @@
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/AnuncioModel.php';
 require_once __DIR__ . '/../models/CategoriaModel.php';
+require_once __DIR__ . '/../models/FavoritoModel.php';
+
 
 class FiltradoController extends BaseController {
     
@@ -24,6 +26,12 @@ class FiltradoController extends BaseController {
 
         // Modelos
         $listaCategorias = CategoriaModel::getAll();
+        //Para rellenar los favoritos si tiene y mostrarlo al ingresar a la página
+        $favoritos = [];
+        if (!empty($user)) {
+            $favoritos = FavoritoModel::obtenerIdsFavoritos($user['id']);
+        }
+
 
         // Si hay texto de búsqueda
         if (!empty($_GET['texto'])) {
@@ -41,10 +49,15 @@ class FiltradoController extends BaseController {
         $this->render('filtrado.view.php', [
             'listaAnuncios' => $listaAnuncios,
             'listaCategorias' => $listaCategorias,
-            'header' => $header
+            'header' => $header,
+            'user' => $user,
+            'favoritos' => $favoritos
         ]);    
     }
 
+    /*
+    Usa header('Content-Type: application/json') solo en funciones que devuelven JSON.
+    */ 
     public function getAll() {
         header('Content-Type: application/json');
         $resultados = AnuncioModel::getAll();

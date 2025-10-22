@@ -13,6 +13,7 @@ class FavoritosController extends BaseController {
         // Header según tipo de usuario
         $header = 'headerSinSession.php';
         $user = null;
+        $listaAnunciosFavoritos=[];
 
         if (isset($_SESSION['user'])) {
             $user = $_SESSION['user'];
@@ -22,32 +23,37 @@ class FavoritosController extends BaseController {
             } elseif ($user['tipo'] === 'Comerciante') {
                 $header = 'headerSessionVendedor.php';
             }
+
+            $listaAnunciosFavoritos=FavoritoModel::obtenerFavoritos($user['id']);
+
         }
 
-        $idUsuario= $user['ID_Usuario'] ?? null;
         $listaCategorias = CategoriaModel::getAll();
-        $listaAnuncios = FavoritoModel::obtenerFavoritos($idUsuario);
 
         $this->render('favoritos.view.php', [
             'header' => $header,
             'user' => $user,
-            'listaAnuncios' => $listaAnuncios,
+            'listaAnuncios' => $listaAnunciosFavoritos,
             'listaCategorias' => $listaCategorias
         ]);
     }
+
+    /*SOY EL ADMIN DEL GRUPO . IDAB TEAM ENTERPTISE BRYAN DEP USO EL SESSION_START() EN CADA FUNCION PORQUE PHP 
+    NO MANTIENE LA SESION AUTOMATICAMENTE, SI NO LO HAGO
+    $_SESSION['USER'] ESTARIA VACIO */
     
     public function existeFavorito() {
         session_start();
-        $idUsuario = $_SESSION['user']['ID_Usuario'] ?? null;
-        $idAnuncio = $_GET['ID_Anuncio'] ?? null;
+        $id_usuario = $_SESSION['user']['id'] ?? null;
+        $id_anuncio = $_GET['ID_Anuncio'] ?? null;
 
-        if ($idUsuario && $idAnuncio) {
-            $existe = FavoritoModel::existeFavorito($idUsuario, $idAnuncio);
+        if ($id_usuario && $id_anuncio) {
+            $existe = FavoritoModel::existeFavorito($id_usuario, $id_anuncio);
                 if ($existe) {
-                    FavoritoModel::eliminarFavorito($idUsuario, $idAnuncio);
+                    FavoritoModel::eliminarFavorito($id_usuario, $id_anuncio);
                     echo json_encode(['estado' => 'eliminado']);
                 } else {
-                    FavoritoModel::agregarFavorito($idUsuario, $idAnuncio);
+                    FavoritoModel::agregarFavorito($id_usuario, $id_anuncio);
                     echo json_encode(['estado' => 'agregado']);
                 }
         } else {
@@ -58,17 +64,17 @@ class FavoritosController extends BaseController {
 
     public function ordenarPorFecha() {
     session_start();
-    $idUsuario = $_SESSION['user']['ID_Usuario'] ?? null;
-    $resultados = FavoritoModel::ordenarPorFecha($idUsuario);
+    $id_usuario = $_SESSION['user']['id'] ?? null;
+    $resultados = FavoritoModel::ordenarPorFecha($id_usuario);
     echo json_encode($resultados);
     exit;
 }
 
 public function ordenarPorPrecio() {
     session_start();
-    $idUsuario = $_SESSION['user']['ID_Usuario'] ?? null;
+    $id_usuario = $_SESSION['user']['id'] ?? null;
     $orden = $_GET['orden'] ?? 'ASC';
-    $resultados = FavoritoModel::ordenarPorPrecio($idUsuario, $orden);
+    $resultados = FavoritoModel::ordenarPorPrecio($id_usuario, $orden);
     echo json_encode($resultados);
     exit;
 }

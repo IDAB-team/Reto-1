@@ -2,10 +2,10 @@
     <html lang="en">
     <?php include __DIR__ . '/layout/' . $header; ?>
 
-    <main class="FiltradoMain">
+    <main class="FavoritoMain">
 
     <!-- Filtros por categoría -->
-        <aside class="filtradoCategorias">
+        <aside class="FavoritoCategorias">
         <h4>Filtros</h4>
         <ul class="anuncioFiltroCategorias">
             <?php if (!empty($listaCategorias)): ?>
@@ -29,12 +29,16 @@
 
 
     <!-- Contenido principal -->
-    <section class="filtradoAnuncioContenido">
+    <section class="favoritoAnuncioContenido">
         <h3>Anuncios</h3>
+        <h3>
+        <?= $user['tipo'] === 'Cliente' ? 'Mis anuncios favoritos' : 'Favoritos guardados como comerciante' ?>
+        </h3>
+
 
         <!-- Buscador y orden -->
-        <div class="misAnunciosBusqueda">
-        <div class="formularioBusqueda">
+        <div class="favoritoAnunciosBusqueda">
+        <div class="favoritoFormularioBusqueda">
             <select id="anuncioOrdenar">
             <option value="ordenar" selected disabled hidden>Ordenar por ▽</option>
             <option value="Por fecha">Fecha de publicación(más reciente)</option>
@@ -53,28 +57,28 @@
         </div>
 
         <!-- Listado de anuncios dinámico -->
-        <div class="anuncioListado">
+        <div class="favoritoAnuncioListado">
 
         <?php if (!empty($listaAnuncios)): ?>  
               
             <?php foreach ($listaAnuncios as $anuncio): ?>
 
-                <div class="misAnunciosAnuncioCard">
+                <div class="favoritoAnuncioCard">
 
-                    <div class="misAnunciosImagen">
+                    <div class="favoritoAnunciosImagen">
                         <img src="./<?= $anuncio->Url_imagen ?>" alt="<?= $anuncio->nombreAnuncio ?>">
                     </div>
-                    <div class="misAnunciosInfo">
+                    <div class="favortioAnunciosInfo">
                         <h4><?= $anuncio->nombreAnuncio ?></h4>
                         <h5><?= $anuncio->usernameAnuncio ?></h5>
                         <p><?= $anuncio->descripcionAnuncio ?></p>
-                        <p class="fechaAnuncio"><?= date('d/m/Y', strtotime($anuncio->Fecha_pub)) ?></p>
+                        <p class="favoritoFechaAnuncio"><?= date('d/m/Y', strtotime($anuncio->Fecha_pub)) ?></p>
                         
-                        <div class="misAnunciosPrecio">
+                        <div class="favoritoAnunciosPrecio">
                             <p><?= $anuncio->precioAnuncio ?> €</p>
                         </div>
 
-                        <button class="btnFavorito" data-id="<?= $anuncio->ID_Anuncio ?>">❤️</button>
+                        <a href="#" class="favoritoToggle favoritoActivo" data-id="<?= $anuncio->ID_Anuncio ?>">Eliminar de favoritos</a>
                     </div>
                 </div>    
             <?php endforeach; ?>
@@ -84,13 +88,13 @@
         </div>
 
         <!-- Paginación (estática por ahora) -->
-        <div class="misAnunciosPaginas">
-        <button class="paginaBtn paginaActiva">1</button>
-        <button class="paginaBtn">2</button>
-        <button class="paginaBtn">3</button>
-        <button class="paginaBtn">4</button>
-        <button class="paginaBtn">5</button>
-        <button class="paginaBtn">6</button>
+        <div class="favoritoAnunciosPaginas">
+        <button class="favoritoPaginaBtn paginaActiva">1</button>
+        <button class="favoritoPaginaBtn">2</button>
+        <button class="favoritoPaginaBtn">3</button>
+        <button class="favoritoPaginaBtn">4</button>
+        <button class="favoritoPaginaBtn">5</button>
+        <button class="favoritoPaginaBtn">6</button>
         </div>
     </section>
     </main>

@@ -33,6 +33,15 @@ class FavoritoModel {
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    public static function obtenerIdsFavoritos($id_usuario) {
+        $db = Database::getConnection();
+        $sql = "SELECT ID_Anuncio FROM favoritos WHERE ID_Usuario = :id_usuario";
+        $stmt = $db->prepare($sql);
+        $stmt->execute(['id_usuario' => $id_usuario]);
+        return array_column($stmt->fetchAll(PDO::FETCH_ASSOC), 'ID_Anuncio');
+    }
+
+
     public static function agregarFavorito($id_usuario,$id_anuncio){
         $db = Database::getConnection();
         $sql = "INSERT INTO favoritos(ID_Usuario,ID_Anuncio)

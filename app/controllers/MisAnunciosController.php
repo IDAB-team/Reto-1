@@ -29,24 +29,34 @@ class MisAnunciosController extends BaseController {
         $categorias = CategoriaModel::getAll();
 
         $this->render('misAnuncios.view.php', ['header' => $header,
-         'user' => $user,
-          'categorias' => $categorias,
-           'listaAnuncios'=>$listaAnuncios]);
+        'user' => $user,
+        'categorias' => $categorias,
+        'listaAnuncios'=>$listaAnuncios]);
     }
-    
+    public function getAll() {
+        header('Content-Type: application/json');
+        $resultados = AnuncioModel::getAll();
+        echo json_encode($resultados);
+        exit;
+    }
     public function buscarPorId() {
+        session_start();
         header('Content-Type: application/json');
         $idUser=$_GET['user']['id'];
         $resultados=AnuncioModel::getByIdUser($idUser);
         echo json_encode($resultados);
     }
     
-    public function store() {
-        
-    }
-    
-    public function destroy() {
-        
+    public function eliminarById() {
+        session_start();
+        $idUsuario=$_SESSION['user']['id'];
+        $idAnuncio=$_GET['anuncio']['id'];
+
+        if($idUsuario && $idAnuncio){
+            AnuncioModel::eliminarById($idUsuario,$idAnuncio);
+        }
+        header('Location : index.php?controller=MisAnunciosController&accion=index');
+        exit;
     }
     
     public function destroyAll() {

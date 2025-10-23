@@ -51,14 +51,13 @@ class FavoritosController extends BaseController {
             $existe = FavoritoModel::existeFavorito($id_usuario, $id_anuncio);
                 if ($existe) {
                     FavoritoModel::eliminarFavorito($id_usuario, $id_anuncio);
-                    echo json_encode(['estado' => 'eliminado']);
                 } else {
                     FavoritoModel::agregarFavorito($id_usuario, $id_anuncio);
-                    echo json_encode(['estado' => 'agregado']);
                 }
-        } else {
-            echo json_encode(['estado' => 'error']);
         }
+
+        // Redirige a la vista de favoritos o a donde quieras volver
+        header('Location: index.php?controller=FavoritosController&accion=index');
         exit;
     }
 

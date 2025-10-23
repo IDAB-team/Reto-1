@@ -60,25 +60,26 @@ function renderFavoritos(anuncios) {
 
 // Activar funcionalidad de favoritos
 function activarFavoritos() {
+
+  console.log("Script cargado");
+  
   document.querySelectorAll('.favoritoToggle').forEach(link => {
     link.addEventListener('click', async (e) => {
-      e.preventDefault();
+      e.preventDefault(); // Solo funciona si href="#"
       const idAnuncio = link.dataset.id;
 
       try {
-        const response = await axios.get(`index.php?controller=FavoritosController&accion=existeFavorito&ID_Anuncio=${idAnuncio}`);
-        const estado = response.data.estado;
-
-        if (estado === 'eliminado') {
-          link.classList.remove('favoritoActivo');
-          link.textContent = 'Añadir a favoritos';
-        } else if (estado === 'agregado') {
-          link.classList.add('favoritoActivo');
-          link.textContent = 'Eliminar de favoritos';
-        }
+        await axios.get(`index.php?controller=FavoritosController&accion=existeFavorito&ID_Anuncio=${idAnuncio}`);
+        location.reload(); // Recarga la página
       } catch (error) {
         console.error('Error al cambiar favorito:', error);
       }
     });
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  activarFavoritos();
+});
+
+

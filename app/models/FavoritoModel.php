@@ -53,7 +53,6 @@ class FavoritoModel {
         ]);
     }
 
-    //Solo le paso el id_favorito, porque las fk las borro en casacada
     public static function eliminarFavorito($id_usuario, $id_anuncio) {
         $db = Database::getConnection();
         $sql = "DELETE FROM favoritos WHERE ID_Usuario = :id_usuario AND ID_Anuncio = :id_anuncio";

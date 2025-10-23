@@ -28,9 +28,9 @@
                     <label for="categoria" class="editarLabel">Categoría: *</label>
                     <select id="categoria" name="categoria" required class="editarInput">
                         <option value="">Selecciona una categoría ▼</option>
-                        <option value="ropa">Ropa</option>
-                        <option value="tecnologia">Tecnología</option>
-                        <option value="hogar">Hogar</option>
+                        <?php foreach($categorias as $categoria):?>
+                            <option value="<?=$categoria["Nombre"]?>"><?=$categoria["Nombre"]?></option>
+                        <?php endforeach;?>
                     </select>
                 </div>
                 <div class="editarCampo">

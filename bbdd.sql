@@ -36,9 +36,9 @@ CREATE TABLE IF NOT EXISTS `administradores` (
 
 -- Volcando datos para la tabla reto1.administradores: ~3 rows (aproximadamente)
 INSERT INTO `administradores` (`ID_Admin`, `Username`, `Password`, `Email`, `Tipo`) VALUES
-	(1, 'superadmin', '12345Qwerty', 'superadmin@correo.com', 'SuperAdmin'),
-	(2, 'gestor1', 'idabteam', 'gestor1@correo.com', 'Gestor'),
-	(3, 'gestor2', 'idabteam', 'gestor2@correo.com', 'Gestor');
+	(1, 'Administrador', '12345Abcde', 'admin@test.com', 'SAdmin'),
+	(2, 'Gestor 1', '12345Abcde', 'gestor1@test.com', 'Gestor'),
+	(3, 'Gestor 2', '12345Abcde', 'gestor2@test.com', 'Gestor');
 
 -- Volcando estructura para tabla reto1.anuncios
 DROP TABLE IF EXISTS `anuncios`;

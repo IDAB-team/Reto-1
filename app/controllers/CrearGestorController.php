@@ -1,10 +1,8 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-require_once __DIR__ . '/../models/CategoriaModel.php';
-require_once __DIR__ . '/../models/AnuncioModel.php';
+//require_once __DIR__ . '/../models/XxxxxModel.php';
 
-
-class InicioController extends BaseController {
+class CrearGestorController extends BaseController {
     
     public function index() {
         session_start(); 
@@ -36,18 +34,8 @@ class InicioController extends BaseController {
             }
         }
 
-        // Obtener categorías y anuncios
-        $categorias = CategoriaModel::getAll();
-        $anuncios = AnuncioModel::getUltimos(8);
-
-        $this->render('inicio.view.php', [
-            'header' => $header, 
-            'user' => $user,
-            'categorias' => $categorias,
-            'anuncios' => $anuncios
-        ]);
+        $this->render('crearGestor.view.php', ['header' => $header, 'user' => $user]);
     }
-
     
     public function show() {
         

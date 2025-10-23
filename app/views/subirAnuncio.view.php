@@ -6,7 +6,7 @@
     ?>
     <main class="subirMain">
         <h1 class="subirTitulo">Subir anuncio</h1>
-        <form action="ejer1.php" method="post" class="subirFormulario">
+        <form action="index.php?controller=SubirAnuncioController&accion=subirCategoria" enctype="multipart/form-data" method="post" class="subirFormulario">
             <div class="subirCampoImagen">
                 <label for="imagen" class="subirLabel">Imagen: *</label>
                 <div class="subirImagen" onclick="document.getElementById('imagen').click();">
@@ -21,7 +21,7 @@
             </div>    
             <div class="subirCampo">
                 <label for="descripcion" class="subirLabel">Descripción: * </label>
-                <textarea id="descripcion" placeholder="Escribe la descripción" rows="10" cols="80" style="resize: none" required class="subirInput"></textarea>
+                <textarea id="descripcion" name="descripcion" placeholder="Escribe la descripción" rows="10" cols="80" style="resize: none" required class="subirInput"></textarea>
             </div>
             <div class="subirFila">
                 <div class="subirCampo">
@@ -46,9 +46,11 @@
             </div>
             <div class="subirBotones">  
                 <button type="submit" class="subirBoton">Guardar cambios</button>
-                <a href="index.php?controller=InicioController" class="subirBotonAtras">
-                    Volver a página principal
-                </a>
+                <button type="submit" class="subirBotonAtras">
+                    <a href="index.php?controller=InicioController">
+                        Volver a página principal
+                    </a>
+                </button>
             </div>
         </form>
     </main>

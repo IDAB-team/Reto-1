@@ -1,4 +1,4 @@
-function togglePassword(id, icon) {
+function mostrarContraseña(id, icon) {
     const input = document.getElementById(id);
     if (!input) return;
 

@@ -69,7 +69,17 @@ class UsuarioModel {
             return $resultado['Password'];
         }
     }
-
+    
+    public static function devolverIdUsuario(){
+        $dba = Database::getConnection();
+        $nombre = $_SESSION["user"]["nombre"];
+        $stmt = $dba -> prepare("SELECT ID_Usuario FROM usuarios WHERE Username = :nombre");
+        $stmt -> execute(["nombre" => $nombre]);
+        $resultado = $stmt ->fetch(PDO::FETCH_ASSOC);
+        if ($resultado) {
+            return $resultado['ID_Usuario'];
+        }
+    }
     public static function getClientes() {
         $db = Database::getConnection();
         $stmt = $db->prepare("SELECT ID_Usuario, CIF, Username, Email, Tipo FROM usuarios WHERE Tipo = 'Cliente'");

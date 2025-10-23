@@ -22,7 +22,13 @@ class AnuncioModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-
+    // Insertar anuncios con datos completos
+    public static function insertarAnuncio($data){
+        $dba = Database::getConnection();
+        $stmt= $dba -> prepare("INSERT INTO anuncios (ID_Usuario,ID_Categoria,Nombre,Descripcion,Fecha_pub,Precio,Stock,Url_imagen) 
+        VALUES (:usuario,:categoria,:nombre,:descripcion,:fecha,:precio,:stock,:imagen)");
+        $stmt->execute($data);
+    }
     // Filtrar anuncios por nombre de categoría
     public static function getByCategoryName($nameCategory) {
         $db = Database::getConnection();
@@ -146,6 +152,5 @@ class AnuncioModel {
         $stmt=$db->prepare($sql);
         return $stmt->execute(['id_usuario'=>$idUsuario],
         ['id_anuncio'=>$idAnuncio]);
-       
-}
+    }
 }

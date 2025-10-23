@@ -125,7 +125,7 @@ class AnuncioModel {
     //Buscar anuncios por id de usuario del comerciante
     public static function getByIdUser($user){
         $db = Database::getConnection();
-        $sql="SELECT a.Nombre AS nombreAnuncio, 
+        $sql="SELECT a.Nombre AS nombreAnuncio,
         a.Descripcion AS descAnuncio,
         a.Fecha_pub AS fechaAnuncio, 
         a.Precio AS precioAnuncio, 
@@ -139,4 +139,13 @@ class AnuncioModel {
         $stmt->execute(['idUser'=>$user]);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public static function EliminarById($idUsuario, $idAnuncio){
+        $db = Database::getConnection();
+        $sql="DELETE FROM Anuncios WHERE ID_Usuario=:id_usuario AND ID_Anuncio=:id_anuncio";
+        $stmt=$db->prepare($sql);
+        return $stmt->execute(['id_usuario'=>$idUsuario],
+        ['id_anuncio'=>$idAnuncio]);
+       
+}
 }

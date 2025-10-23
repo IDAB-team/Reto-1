@@ -44,6 +44,25 @@ class UsuariosController extends BaseController {
          'gestores' => $gestores]);
     }
 
+    public function eliminar(){
+        if (isset($_GET["usuario"])) {
+            $usuarioEmail = $_GET["usuario"];
+            UsuarioModel::deleteById($usuarioEmail);
+        }
+
+        $this->index();
+    }
+
+        public function eliminarg(){
+        if (isset($_GET["usuario"])) {
+            $usuarioEmail = $_GET["usuario"];
+            AdminModel::deleteById($usuarioEmail);
+        }
+
+        $this->index();
+    }
+
+
     public function show() {
         
     }

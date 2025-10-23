@@ -6,9 +6,10 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     gap: 2em;
+    min-height: 37.2em;
 }
 
 .usuariosTipos {
@@ -37,9 +38,8 @@
     gap: 1em;
 }
 
-
 .usuariosDatos {
-    width: 60%;
+    width: 32%;
     display: flex;
     justify-content: center;
 }
@@ -56,6 +56,25 @@
 }
 
 
+.usuariosEdicion{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.2em;
+}
+
+.usuariosEdicion a {
+    border: none;
+    color: black;
+}
+.usuariosEdicion a :hover{
+    color: #1156CC;
+}
+
+.usuarioInformacion :nth-child(1){
+    color: #1156CC;
+    font-weight: bold;
+}
 
 
 .selected {

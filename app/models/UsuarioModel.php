@@ -98,12 +98,11 @@ class UsuarioModel {
         
     }
     
-    public static function getById($id) {
-        
-    }
-    
-    public static function deleteById($id) {
-        
+    public static function deleteById($email) {
+        $db = Database::getConnection();
+        $sql = "DELETE FROM usuarios WHERE Email = :email";
+        $stmt = $db->prepare($sql);
+        return $stmt->execute(['email' => $email]);
     }
     
     public static function deleteAll() {

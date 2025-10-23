@@ -19,4 +19,10 @@ class AdminModel {
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    public static function getGestores() {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT ID_Admin, Username, Email, Tipo FROM administradores WHERE Tipo = 'Gestor'");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

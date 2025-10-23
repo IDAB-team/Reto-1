@@ -75,18 +75,19 @@ selectOrden.addEventListener('change', async () => {
 function activarFavoritos() {
   document.querySelectorAll('.favoritoToggle').forEach(link => {
     link.addEventListener('click', async (e) => {
-      e.preventDefault();
-      const idAnuncio = link.dataset.id;
+      e.preventDefault(); // Evita que el navegador siga el enlace
+      const url = link.getAttribute('href'); // Obtiene la URL completa
 
       try {
-        await axios.get(`index.php?controller=FavoritosController&accion=existeFavorito&ID_Anuncio=${idAnuncio}`);
-        location.reload(); // Recarga toda la página después de la acción
+        await axios.get(url); // Llama al backend usando la URL del enlace
+        location.reload(); // Recarga la página para reflejar el cambio
       } catch (error) {
         console.error('Error al cambiar favorito:', error);
       }
     });
   });
 }
+
 
 
 

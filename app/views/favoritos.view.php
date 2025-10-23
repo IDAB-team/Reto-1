@@ -75,8 +75,8 @@
                             <p><?= $anuncio->precioAnuncio ?> €</p>
                         </div>
 
-                        <a href="#" class="favoritoToggle favoritoActivo" data-id="<?= $anuncio->ID_Anuncio ?>">Eliminar de favoritos</a>
-
+                        <a href="index.php?controller=FavoritosController&accion=existeFavorito&ID_Anuncio=<?= $anuncio->ID_Anuncio ?>" class="favoritoToggle favoritoActivo" >Eliminar de favoritos</a>
+                        
                     </div>
                 </div>    
             <?php endforeach; ?>
@@ -101,7 +101,8 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="assets/scripts/filtrado.js" ></script>
+ 
 
+    <script src="/app/assets/scripts/filtrado.js"></script>
 
     </html>

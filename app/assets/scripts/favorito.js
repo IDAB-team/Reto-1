@@ -65,12 +65,12 @@ function activarFavoritos() {
   
   document.querySelectorAll('.favoritoToggle').forEach(link => {
     link.addEventListener('click', async (e) => {
-      e.preventDefault(); // Solo funciona si href="#"
-      const idAnuncio = link.dataset.id;
+      e.preventDefault(); // Evita que el navegador siga el enlace
+      const url = link.getAtributte(href);
 
       try {
-        await axios.get(`index.php?controller=FavoritosController&accion=existeFavorito&ID_Anuncio=${idAnuncio}`);
-        location.reload(); // Recarga la página
+        await axios.get(url);
+        location.reload(); // Recarga la página para ver los cambios
       } catch (error) {
         console.error('Error al cambiar favorito:', error);
       }

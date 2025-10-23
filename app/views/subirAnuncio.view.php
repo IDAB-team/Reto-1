@@ -46,11 +46,9 @@
             </div>
             <div class="subirBotones">  
                 <button type="submit" class="subirBoton">Guardar cambios</button>
-                <button type="submit" class="subirBotonAtras">
-                    <a href="index.php?controller=InicioController">
-                        Volver a página principal
-                    </a>
-                </button>
+                <a href="index.php?controller=InicioController" class="subirBotonAtras">
+                    Volver a página principal
+                </a>
             </div>
         </form>
     </main>

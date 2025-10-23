@@ -116,15 +116,27 @@ class AnuncioModel {
             LIMIT :limite
         ";
 
-
-
-
-
-
-
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    //Buscar anuncios por id de usuario del comerciante
+    public static function getByIdUser($user){
+        $db = Database::getConnection();
+        $sql="SELECT a.Nombre AS nombreAnuncio, 
+        a.Descripcion AS descAnuncio,
+        a.Fecha_pub AS fechaAnuncio, 
+        a.Precio AS precioAnuncio, 
+        a. Url_Imagen AS urlImagen,
+        u.Username AS userName
+        FROM anuncios a 
+        JOIN usuarios u ON a.ID_Usuario=u.ID_Usuario
+        WHERE u.ID_Usuario=:idUser";
+
+        $stmt =$db->prepare($sql);
+        $stmt->execute(['idUser'=>$user]);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 }

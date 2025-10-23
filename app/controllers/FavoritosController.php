@@ -38,7 +38,7 @@ class FavoritosController extends BaseController {
         ]);
     }
 
-    /*SOY EL ADMIN DEL GRUPO . IDAB TEAM ENTERPTISE BRYAN DEP USO EL SESSION_START() EN CADA FUNCION PORQUE PHP 
+    /* USO EL SESSION_START() EN CADA FUNCION PORQUE PHP 
     NO MANTIENE LA SESION AUTOMATICAMENTE, SI NO LO HAGO
     $_SESSION['USER'] ESTARIA VACIO */
     
@@ -78,5 +78,8 @@ public function ordenarPorPrecio() {
     echo json_encode($resultados);
     exit;
 }
+
+
+
 
 }

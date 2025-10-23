@@ -69,7 +69,9 @@ selectOrden.addEventListener('change', async () => {
   }
 });
 
-//Función para activarBotonesFavorito
+// Esta función añade el evento de clic a cada botón de favoritos
+// Al hacer clic, se llama al backend para añadir o eliminar el favorito
+// Luego se recarga la página para reflejar el cambio
 function activarFavoritos() {
   document.querySelectorAll('.favoritoToggle').forEach(link => {
     link.addEventListener('click', async (e) => {
@@ -77,16 +79,8 @@ function activarFavoritos() {
       const idAnuncio = link.dataset.id;
 
       try {
-        const response = await axios.get(`index.php?controller=FavoritosController&accion=existeFavorito&ID_Anuncio=${idAnuncio}`);
-        const estado = response.data.estado;
-
-        if (estado === 'agregado') {
-          link.classList.add('favoritoActivo');
-          link.textContent = 'Favorito añadido';
-        } else if (estado === 'eliminado') {
-          link.classList.remove('favoritoActivo');
-          link.textContent = 'Añadir a favoritos';
-        }
+        await axios.get(`index.php?controller=FavoritosController&accion=existeFavorito&ID_Anuncio=${idAnuncio}`);
+        location.reload(); // Recarga toda la página después de la acción
       } catch (error) {
         console.error('Error al cambiar favorito:', error);
       }
@@ -95,7 +89,9 @@ function activarFavoritos() {
 }
 
 
-//Función para renderizar los anuncios en el DOM
+
+// Esta función se llama cada vez que se renderizan anuncios dinámicamente (por búsqueda, filtro, orden)
+// Activa los botones de favoritos en los nuevos anuncios
 function renderAnuncios(anuncios) {
   contenedor.innerHTML = '';
 
@@ -120,6 +116,8 @@ function renderAnuncios(anuncios) {
         <div class="filtradoAnunciosPrecio">
           <p>${anuncio.precioAnuncio} €</p>
         </div>
+
+        // Si el usuario está logueado, se genera el botón de favoritos
        ${usuarioLogueado ?
           `
             <a href="#" class="favoritoToggle ${favoritosUsuario.includes(anuncio.ID_Anuncio) ? 'favoritoActivo' : ''}" data-id="${anuncio.ID_Anuncio}">
@@ -134,7 +132,13 @@ function renderAnuncios(anuncios) {
     contenedor.appendChild(box);
   });
 
-  // Activar favoritos si hay sesión
+  // Activa favoritos en los anuncios recién renderizados
   if (usuarioLogueado) activarFavoritos();
 }
+
+//Al cargar la página, activar favoritos en los anuncios que vienen desde PHP
+document.addEventListener('DOMContentLoaded', () => {
+  if (usuarioLogueado) activarFavoritos();
+});
+
 

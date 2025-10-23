@@ -13,7 +13,7 @@
             <?php foreach ($listaCategorias as $categoria): ?>
             <li>
                 <a href="#" data-categoria="<?= urlencode($categoria['Nombre']) ?>">
-                <div class="misAnunciosCategoria">
+                <div class="filtradoAnunciosCategoria">
                     <img src="./<?= $categoria['Url_icono'] ?>" alt="icono <?= htmlspecialchars($categoria['Nombre']) ?>">
                     <p><?= htmlspecialchars($categoria['Nombre']) ?></p>
                 </div>
@@ -30,10 +30,7 @@
 
     <!-- Contenido principal -->
     <section class="favoritoAnuncioContenido">
-        <h3>Anuncios</h3>
-        <h3>
-        <?= $user['tipo'] === 'Cliente' ? 'Mis anuncios favoritos' : 'Favoritos guardados como comerciante' ?>
-        </h3>
+        <h3>Favoritos</h3>
 
 
         <!-- Buscador y orden -->
@@ -68,7 +65,7 @@
                     <div class="favoritoAnunciosImagen">
                         <img src="./<?= $anuncio->Url_imagen ?>" alt="<?= $anuncio->nombreAnuncio ?>">
                     </div>
-                    <div class="favortioAnunciosInfo">
+                    <div class="favoritoAnunciosInfo">
                         <h4><?= $anuncio->nombreAnuncio ?></h4>
                         <h5><?= $anuncio->usernameAnuncio ?></h5>
                         <p><?= $anuncio->descripcionAnuncio ?></p>
@@ -79,6 +76,7 @@
                         </div>
 
                         <a href="#" class="favoritoToggle favoritoActivo" data-id="<?= $anuncio->ID_Anuncio ?>">Eliminar de favoritos</a>
+
                     </div>
                 </div>    
             <?php endforeach; ?>
@@ -103,7 +101,7 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="assets/scripts/favorito.js"></script>
+    <script src="assets/scripts/filtrado.js" ></script>
 
-    <script src="/app/assets/scripts/favorito.js"></script>
+
     </html>

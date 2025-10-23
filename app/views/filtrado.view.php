@@ -64,9 +64,15 @@
             <p><?= $anuncio->precioAnuncio ?> €</p>
             </div>
 
+            <!-- Esto marca los favoritos ya añadidos y aplica la clase para que se vean en rojo.-->
             <?php if (!empty($user)): ?>
-                <a href="#" class="favoritoToggle" data-id="<?= $anuncio->ID_Anuncio ?>">Añadir a favoritos</a>
+            <a href="#"
+                class="favoritoToggle <?= in_array($anuncio->ID_Anuncio, $favoritos ?? []) ? 'favoritoActivo' : '' ?>"
+                data-id="<?= $anuncio->ID_Anuncio ?>">
+                <?= in_array($anuncio->ID_Anuncio, $favoritos ?? []) ? 'Favorito añadido' : 'Añadir a favoritos' ?>
+            </a>
             <?php endif; ?>
+
 
             
         </div>
@@ -99,5 +105,4 @@
   <script src="assets/scripts/filtrado.js" ></script>
 
 
-  <script src="/app/assets/scripts/filtrado.js"></script>
 </html>

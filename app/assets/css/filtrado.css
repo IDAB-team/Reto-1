@@ -203,3 +203,16 @@ body {
   background-color: #1156CC;
   color: white;
 }
+
+.favoritoToggle {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 0.5em;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.favoritoToggle.favoritoActivo {
+  color: red;
+}

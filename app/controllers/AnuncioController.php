@@ -25,9 +25,7 @@ public function index() {
         
         $categorias = CategoriaModel::getAll();
 
-        $this->render('misAnuncios.view.php', ['header' => $header,
-        'user' => $user,
-        'categorias' => $categorias,
-        'listaAnuncios'=>$listaAnuncios]);
+        $this->render('anuncio.view.php', ['header' => $header,
+        'user' => $user]);
     }
 }

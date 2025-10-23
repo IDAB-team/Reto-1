@@ -143,7 +143,6 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
-    
 }
     .misAnunciosInfo {
     padding: 1em;
@@ -178,6 +177,7 @@
         border-radius: 1em;
         position: relative;
         transition: transform 0.2s ease; 
+        height: 20%;
         max-height: 20%;
     }
     .misAnunciosAnuncioCard:hover{

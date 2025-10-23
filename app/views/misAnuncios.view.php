@@ -23,7 +23,7 @@ include __DIR__ . '/layout/' . $header;
     <section class="misAnunciosContenido">
         <h3>Mis anuncios</h3>
             <!--Ordenar-->
-        <form method="GET" action="" class="misAnunciosformularioBusqueda">
+        <div class="misAnunciosformularioBusqueda">
             <select name="misAnunciosOrden">
                 <option value="ordenar" selected disabled hidden>Ordenar por</option>
                 <option value="fecha">Fecha de publicación</option>
@@ -31,13 +31,13 @@ include __DIR__ . '/layout/' . $header;
             </select>
 
             <input type="search" name="buscar" placeholder="Buscar...">
-            <button type="submit" name="buscarAnuncio">
+            <button type="button" name="buscarAnuncio">
                 <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M21 21L16.65 16.65M11 6C13.7614 6 16 8.23858 16 11M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 Buscar
             </button>
-        </form>
+            </div>
 
         <div class="misAnunciosLista">
         

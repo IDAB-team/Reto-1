@@ -25,4 +25,11 @@ class AdminModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function deleteById($email) {
+        $db = Database::getConnection();
+        $sql = "DELETE FROM administradores WHERE Email = :email";
+        $stmt = $db->prepare($sql);
+        return $stmt->execute(['email' => $email]);
+    }
 }

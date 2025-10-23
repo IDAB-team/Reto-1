@@ -13,7 +13,7 @@
     padding: 0;
     background-color: #f9f9f9;
 }
-    .misAnunciosMain {
+.misAnunciosMain {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -229,6 +229,11 @@
     .misAnunciosEdicion [type="button"] :hover{
         background-color: #1156CC;
         color: white;
+    }
+
+    .usuarioInformacion {
+        display: flex;
+        flex-direction: column;
     }
 
 /* Paginación */

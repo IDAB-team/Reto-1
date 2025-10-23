@@ -55,11 +55,9 @@
             </div>
             <div class="ajustesBotones">  
                 <button type="submit" class="ajustesBoton">Guardar cambios</button>
-                <button type="submit" class="ajustesBotonAtras">
-                    <a href="index.php?controller=InicioController">
-                        Volver a página principal
-                    </a>
-                </button>
+                <a href="index.php?controller=InicioController" class="ajustesBotonAtras">
+                    Volver a página principal
+                </a>
             </div>
         </form>
     </main>

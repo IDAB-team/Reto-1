@@ -135,7 +135,7 @@ textarea.editarInput::placeholder {
     justify-content: center;
 }
 
-.editarBotonAtras{
+.editarBotonAtras {
     display: block;
     margin: 3rem 1em 0;
     background-color: white;
@@ -146,11 +146,10 @@ textarea.editarInput::placeholder {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;  
-}
 
-.editarBotonAtras a {
-    text-decoration: none;
-    color: #2563eb;
+    text-decoration: none;  /* quitar subrayado */
+    color: #2563eb;         /* mantener color azul */
+    text-align: center;     /* opcional para centrar texto */
 }
 
 @media (max-width: 768px) {

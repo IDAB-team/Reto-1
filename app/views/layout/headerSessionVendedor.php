@@ -30,8 +30,10 @@
 <body>
     <header>
         <div class="headerTitulo">
-            <img src="./assets/images/Logo_azul.png" alt="Logotipo" class="headerGogotipo">
-            <h1>ComerciaGasteiz</h1>
+            <a href="index.php?controller=InicioController">
+                <img src="./assets/images/Logo_azul.png" alt="Logotipo" class="logotipo">
+                <h1>ComerciaGasteiz</h1>
+            </a>
         </div>
         <div class="headerBotones">
             <div class="headerMenu">

@@ -44,11 +44,9 @@
             </div>
             <div class="editarBotones">  
                 <button type="submit" class="editarBoton">Guardar cambios</button>
-                <button type="submit" class="editarBotonAtras">
-                    <a href="index.php?controller=InicioController">
-                        Volver a página principal
-                    </a>
-                </button>
+                <a href="index.php?controller=InicioController" class="editarBotonAtras">
+                    Volver a página principal
+                </a>
             </div>
         </form>
     </main>

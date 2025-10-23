@@ -69,6 +69,21 @@ class UsuarioModel {
             return $resultado['Password'];
         }
     }
+
+    public static function getClientes() {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT ID_Usuario, CIF, Username, Email, Tipo FROM usuarios WHERE Tipo = 'Cliente'");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function getComerciantes() {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT ID_Usuario, CIF, Username, Email, Tipo FROM usuarios WHERE Tipo = 'Comerciante'");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function getAll() {
         
     }

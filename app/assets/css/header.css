@@ -29,16 +29,22 @@ header {
 .headerTitulo {
     display: flex;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.5em;  
 }
 
 .headerLogotipo{
     width: 4em;
 }
 
+.headerTitulo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
 .headerTitulo h1 {
-    color: #1156CC;
     font-size: 1.5em;
+    color: #1156CC;
 }
 
 .headerTitulo img{

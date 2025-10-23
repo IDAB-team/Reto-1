@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-//require_once __DIR__ . '/../models/XxxxxModel.php';
+require_once __DIR__ . '/../models/UsuarioModel.php';
+require_once __DIR__ . '/../models/AdminModel.php';
+
 
 class UsuariosController extends BaseController {
     
@@ -16,12 +18,6 @@ class UsuariosController extends BaseController {
 
             // Dependiendo del tipo de usuario, mostramos el header correspondiente
             switch ($user['tipo']) {
-                case 'Cliente':
-                    $header = 'headerSessionComprador.php';
-                    break;
-                case 'Comerciante':
-                    $header = 'headerSessionVendedor.php';
-                    break;
                 case 'Gestor':
                     $header = 'headerSessionGestor.php';
                     break;
@@ -34,9 +30,20 @@ class UsuariosController extends BaseController {
             }
         }
 
-        $this->render('usuarios.view.php', ['header' => $header, 'user' => $user]);
+
+        $clientes = UsuarioModel::getClientes();
+        $comerciantes = UsuarioModel::getComerciantes();
+        $gestores = $user['tipo'] === 'SuperAdmin' ? AdminModel::getGestores() : [];
+
+
+        $this->render('usuarios.view.php', 
+        ['header' => $header, 
+         'user' => $user, 
+         'clientes' => $clientes, 
+         'comerciantes' => $comerciantes, 
+         'gestores' => $gestores]);
     }
-    
+
     public function show() {
         
     }

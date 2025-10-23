@@ -3,9 +3,67 @@
 ================================================================================================================== */
 
 .usuariosMain {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 2em;
 }
 
+.usuariosTipos {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+.usuariosClientes,
+.usuariosComerciantes,
+.usuariosGestores {
+    border: 1px solid #1156CC;
+    border-radius: 20px;
+    padding: 2em;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.usuariosDatosClientes,
+.usuariosDatosComerciantes,
+.usuariosDatosGestores {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+
+.usuariosDatos {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.cliente,
+.comerciante,
+.gestor {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border: 2px solid #1156CC;
+    border-radius: 10px;
+    padding: 0.5em 1em;
+}
+
+
+
+
+.selected {
+    border: 2px solid #1156CC;
+    color: #1156CC;
+}
+
+/* Ocultar elementos por defecto */
+.hidden {
+    display: none;
+}

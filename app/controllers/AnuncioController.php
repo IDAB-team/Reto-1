@@ -21,9 +21,8 @@ public function index() {
             }
             $listaAnuncios=AnuncioModel::getByIdUser($user['id']);
         }
-
-        
         $categorias = CategoriaModel::getAll();
+
 
         $this->render('anuncio.view.php', ['header' => $header,
         'user' => $user]);

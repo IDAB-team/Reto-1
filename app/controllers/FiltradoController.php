@@ -34,8 +34,8 @@ class FiltradoController extends BaseController {
 
 
         // Si hay texto de búsqueda
-        if (!empty($_GET['texto'])) {
-            $listaAnuncios = AnuncioModel::getByName($_GET['texto']);
+        if (!empty($_GET['buscarAnuncio'])) {
+            $listaAnuncios = AnuncioModel::getByName($_GET['buscarAnuncio']);
         }
         // Si hay una categoría seleccionada
         elseif (!empty($_GET['categoria'])) {
@@ -69,7 +69,7 @@ class FiltradoController extends BaseController {
     //Buscar anuncios por nombre
     public function apiBuscarPorNombre() {
         header('Content-Type: application/json');
-        $texto = $_GET['texto'] ?? '';
+        $texto = $_GET['buscarAnuncio'] ?? '';
         $resultados = AnuncioModel::getByName($texto);
         echo json_encode($resultados);
         exit;
@@ -99,4 +99,5 @@ class FiltradoController extends BaseController {
         echo json_encode($resultados);
         exit;
     }
+    
 }

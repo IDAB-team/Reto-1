@@ -27,11 +27,18 @@
 }
 /*Filtros: */
     .FavoritoCategorias{
-    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     padding: .5rem;
-    height: fit-content;
     
+}
+    .favoritoAnunciosCategoria{
+    display: flex;
+    align-items: center; /* centra imagen + texto */
+    gap: 0.6rem;
+    white-space: nowrap; /* evita wrap de texto */  
 }
     .FavoritoCategorias h4 {
     text-align: center;
@@ -65,15 +72,23 @@
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    flex-wrap: nowrap;
     padding: 0.1rem 0.5rem;
     border-radius: 8px;
 }
     .FavoritoCategorias li:hover {
     border-bottom: solid #1156CC thin;
 }
+    .FavoritoCategorias img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+    }
+/* ===================== CONTENIDO ===================== */
 
     .favoritoAnuncioContenido{
-        max-width: 60%;
+    min-width: 80%;
     }
     .favoritoAnuncioContenido h3{
         color:#1156CC;
@@ -82,75 +97,121 @@
         
     }
 /*Búsqueda:*/
-    .favoritoFormularioBusqueda select{
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    border: 1px solid #1156CC;
-    font-size: 0.95rem;
-    color: white;
-    background-color: #1156CC;
-}
-    .favoritoFormularioBusqueda select option{
-    background-color: white;
-    color: #1156CC;
-}
-    .favoritoFormularioBusqueda [type="search"]{
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    border: .2em solid #1156CC;
-    font-size: 0.95rem;
-    width: 60%;
-}
+    .favoritoAnunciosBusqueda {
+    margin-bottom: 2rem;
+    }
+
     .favoritoFormularioBusqueda {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    justify-content: center;
+    width: 100%;
+    background: white;
+    overflow: hidden;
+    gap: 0;
+    border-radius: 1em;
+    margin-bottom: 1em;
     }
+
+    .favoritoFormularioBusqueda select {
+    padding: .5em;
+    margin: none;
+    font-size: 0.95rem;
+    border: .1em solid black;
+    color: white;
+    background-color: #1156CC;
+    border-radius: 1em 0em 0em 1em;
+    width: 40%;
+    }
+
+    .favoritoFormularioBusqueda select option {
+    background-color: white;
+    color: #1156CC;
+    }
+
+    .favoritoFormularioBusqueda input[type="search"] {
+    padding: .5em;
+    border: .1em solid #1156CC;
+    font-size: 0.95rem;
+    width: 60%;
+    border-radius: 0;
+    }
+
     .favoritoFormularioBusqueda button {
     background-color: #1156CC;
+    width: 20%;
     color: white;
-    border: none;
-    padding: .5em ;
-    border-radius: 6px;
+    border: .1em solid black;
+    padding: .7em ;
     cursor: pointer;
-}
+    display: flex;
+    align-items: center;
+    border-radius: 0em 1em 1em 0em;
+    font-weight: 500;
+    }
 /*Anuncios: */
-    .favoritoAnuncioListado{
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    
+.favoritoAnuncioListado {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
-    .favoritoAnuncioCard{
-        display: flex;  
-        overflow: hidden;   /*Recorta la imagen a los bordes */
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        border-radius: 1em;
 
-    }
-    .favoritoAnunciosImagen{
-        width: 50%;
-        min-width: 180px;
-        
-    }
-    .favoritoAnunciosImagen img {
-    display: block;           /* elimina gaps por inline images */
+.favoritoAnuncioCard {
+  display: flex;
+  overflow: hidden; /*Recorta la imagen a los bordes */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+}
+
+.favoritoAnuncioCard:hover {
+  transform: scale(1.03);
+}
+
+.favoritoAnunciosImagen {
+  width: 50%;
+  min-width: 180px;
+}
+
+.favoritoAnunciosImagen img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;        /* <- ocupa todo y recorta sin deformar */
-    object-position: center; 
-    
-}
-    .favortioAnunciosInfo {
-    padding: 1rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    height: 100%;       /* ocupa todo el contenedor */
+    object-fit: cover;  /* recorta la imagen si es necesario */
 }
 
+.favoritoAnunciosInfo {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-/* Paginación */
+.favoritoAnunciosPrecio p {
+  font-weight: bold;
+  color: #1156CC;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.favoritoFechaAnuncio {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.3rem;
+}
+.favoritoToggle {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 0.5em;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.favoritoToggle.favoritoActivo {
+  color: #FFBB00;
+}
+
+ /* ===================== PAGINACIÓN ===================== */
+
     .favoritoAnunciosPaginas {
     display: flex;
     justify-content: center;
@@ -177,15 +238,4 @@
     color: white;
 }
     
-.favoritoToggle {
-  color: black;
-  text-decoration: none;
-  font-weight: 500;
-  margin-top: 0.5em;
-  display: inline-block;
-  transition: color 0.3s ease;
-}
 
-.favoritoToggle.favoritoActivo {
-  color: red;
-}

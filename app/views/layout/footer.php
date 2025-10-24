@@ -19,4 +19,3 @@
 </body>
 <script src="./assets/scripts/header.js"></script>
 <script src="./assets/scripts/headerSinSession.js"></script>
-<script src="./assets/scripts/ajustes.js"></script>

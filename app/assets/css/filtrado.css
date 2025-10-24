@@ -212,7 +212,7 @@ body {
 }
 
 .favoritoToggle.favoritoActivo {
-  color: yellow;
+  color: #FFBB00;
 }
 
 /* ===================== PAGINACIÓN ===================== */

@@ -62,5 +62,6 @@
         </form>
     </main>
     <?php include __DIR__ . '/layout/footer.php'; ?>
+    <script src="./assets/scripts/ajustes.js"></script>
 </html>
 

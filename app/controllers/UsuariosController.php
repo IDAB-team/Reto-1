@@ -53,7 +53,25 @@ class UsuariosController extends BaseController {
         $this->index();
     }
 
-        public function eliminarg(){
+    public function eliminarg(){
+        if (isset($_GET["usuario"])) {
+            $usuarioEmail = $_GET["usuario"];
+            AdminModel::deleteById($usuarioEmail);
+        }
+
+        $this->index();
+    }
+
+    public function editar(){
+        if (isset($_GET["usuario"])) {
+            $usuarioEmail = $_GET["usuario"];
+            UsuarioModel::deleteById($usuarioEmail);
+        }
+
+        $this->index();
+    }
+
+    public function editarg(){
         if (isset($_GET["usuario"])) {
             $usuarioEmail = $_GET["usuario"];
             AdminModel::deleteById($usuarioEmail);

@@ -12,7 +12,8 @@
             <h1>¿Qué quieres encontrar?</h1>
             <form class="inicioBuscar" action="index.php" method="get">
                 <input type="hidden" name="controller" value="FiltradoController">
-                <input type="text" name="texto" id="busquedaInput" placeholder="Escribe aquí...">
+                <input type="hidden" name="accion" value="index"> 
+                <input type="text" name="buscarAnuncio" id="busquedaInput" placeholder="Escribe aquí...">
 
                 <button type="submit" class="inicioBotonBuscar">
                     <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"

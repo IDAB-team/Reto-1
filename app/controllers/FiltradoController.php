@@ -99,4 +99,5 @@ class FiltradoController extends BaseController {
         echo json_encode($resultados);
         exit;
     }
+    
 }

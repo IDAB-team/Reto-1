@@ -95,5 +95,30 @@ public static function ordenarPorPrecio($id_usuario, $orden = 'ASC') {
     return $stmt->fetchAll(PDO::FETCH_OBJ);
 }
 
+public static function buscarFavoritosPorNombre($id_usuario, $texto) {
+    $db = Database::getConnection();
+    $sql = "SELECT 
+        a.ID_Anuncio,
+        a.Nombre AS nombreAnuncio,
+        a.Descripcion AS descripcionAnuncio,
+        a.Fecha_pub,
+        a.Precio AS precioAnuncio,
+        a.Url_imagen,
+        u.Username AS usernameAnuncio,
+        c.Nombre AS nombreCategoria
+        FROM favoritos f
+        JOIN anuncios a ON f.ID_Anuncio = a.ID_Anuncio
+        JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
+        JOIN categorias c ON a.ID_Categoria = c.ID_Categoria
+        WHERE f.ID_Usuario = :id_usuario AND a.Nombre LIKE :texto";
+    
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        'id_usuario' => $id_usuario,
+        'texto' => "%$texto%"
+    ]);
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+}
+
     
 }

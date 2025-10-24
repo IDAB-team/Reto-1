@@ -1,86 +1,78 @@
-//Selección de elementos del DOM
-const contenedor = document.querySelector('.filtradoAnuncioListado'); // Contenedor donde se mostrarán los anuncios
-const buscarBtn = document.querySelector('button[name="bBuscarAnuncio"]'); // Botón de búsqueda por nombre
-const buscarInput = document.querySelector('input[name="buscarAnuncio"]'); // Campo de texto para escribir el nombre del anuncio
-const categoriaLinks = document.querySelectorAll('.anuncioFiltroCategorias a'); // Enlaces de las categorías para filtrar
-const selectOrden = document.querySelector('#anuncioOrdenar'); // Selector para ordenar los anuncios por precio
+// Selección de elementos del DOM
+// Contenedor donde se mostrarán los anuncios filtrados
+const contenedor = document.querySelector('.filtradoAnuncioListado'); 
 
+// Botón para buscar anuncios por nombre
+const buscarBtn = document.querySelector('button[name="bBuscarAnuncio"]'); 
 
+// Campo de texto donde el usuario escribe el nombre del anuncio a buscar
+const buscarInput = document.querySelector('input[name="buscarAnuncio"]'); 
 
-// Buscar por nombre al hacer clic en el botón
+// Selector para ordenar los anuncios por fecha o precio
+const selectOrden = document.querySelector('#anuncioOrdenar'); 
+
+//BÚSQUEDA POR NOMBRE
+
 buscarBtn.addEventListener('click', async () => {
-  const texto = buscarInput.value.trim(); // Obtiene el texto ingresado y elimina espacios
+  // Obtener el texto ingresado y eliminar espacios al inicio y final
+  const texto = buscarInput.value.trim();
 
   try {
     let response;
 
     if (!texto) {
-      // Si el campo está vacío, se hace una petición para obtener todos los anuncios
+      // Si el campo de búsqueda está vacío, obtener todos los anuncios
       response = await axios.get('index.php?controller=FiltradoController&accion=getAll');
     } else {
-      // Si hay texto, se hace una búsqueda por nombre
-      response = await axios.get(`index.php?controller=FiltradoController&accion=apiBuscarPorNombre&texto=${encodeURIComponent(texto)}`);
+      // Si hay texto, buscar anuncios que coincidan con el nombre
+      response = await axios.get(`index.php?controller=FiltradoController&accion=apiBuscarPorNombre&buscarAnuncio=${encodeURIComponent(texto)}`);
     }
 
-    renderAnuncios(response.data); // Muestra los resultados en pantalla
+    // Renderizar los anuncios obtenidos
+    renderAnuncios(response.data);
   } catch (error) {
-    console.error("Error al buscar por nombre:", error); // Muestra error por consola si la petición falla
+    console.error("Error al buscar por nombre:", error);
   }
 });
 
+//ORDENAR ANUNCIOS
 
-// Filtrar por categoría al hacer clic en un enlace
-categoriaLinks.forEach(link => {
-  link.addEventListener('click', async (e) => {
-    e.preventDefault(); // Evita que el enlace recargue la página
-    const categoria = link.textContent.trim(); // Obtiene el nombre de la categoría desde el texto del enlace
+if (selectOrden) {
+  selectOrden.addEventListener('change', async () => {
+    const valor = selectOrden.value; // Obtener la opción seleccionada
 
     try {
-      // Realiza una petición GET al backend para filtrar anuncios por categoría
-      const response = await axios.get(`index.php?controller=FiltradoController&accion=apiPorCategoria&categoria=${encodeURIComponent(categoria)}`);
-      renderAnuncios(response.data); // Muestra los resultados filtrados
+      let response;
+
+      if (valor === 'Por fecha') {
+        // Ordenar por fecha más reciente
+        response = await axios.get('index.php?controller=FiltradoController&accion=apiOrdenarPorFecha');
+      } else {
+        // Ordenar por precio, ASC o DESC según la opción
+        let orden = valor === 'Precio más alto' ? 'DESC' : 'ASC';
+        response = await axios.get(`index.php?controller=FiltradoController&accion=apiOrdenarPorPrecio&orden=${orden}`);
+      }
+
+      // Renderizar los anuncios ordenados
+      renderAnuncios(response.data);
     } catch (error) {
-      console.error("Error al filtrar por categoría:", error); // Muestra error en consola si la petición falla
+      console.error("Error al ordenar los anuncios:", error);
     }
   });
-});
+}
 
-// Ordenar por precio o fecha al cambiar el valor del selector
-selectOrden.addEventListener('change', async () => {
-  const valor = selectOrden.value; // Obtiene el valor seleccionado
+//FUNCIONALIDAD DE FAVORITOS
 
-  try {
-    let response;
-
-    if (valor === 'Por fecha') {
-      // Si se selecciona "Por fecha", hace la petición correspondiente
-      response = await axios.get('index.php?controller=FiltradoController&accion=apiOrdenarPorFecha');
-    } else {
-      // Si se selecciona orden por precio
-      let orden = 'ASC'; // Por defecto, ascendente
-      if (valor === 'Precio más alto') orden = 'DESC'; // Cambia a descendente si se selecciona esa opción
-
-      response = await axios.get(`index.php?controller=FiltradoController&accion=apiOrdenarPorPrecio&orden=${orden}`);
-    }
-
-    renderAnuncios(response.data); // Renderiza los anuncios según la respuesta
-  } catch (error) {
-    console.error("Error al ordenar los anuncios:", error); // Muestra error en consola si la petición falla
-  }
-});
-
-// Esta función añade el evento de clic a cada botón de favoritos
-// Al hacer clic, se llama al backend para añadir o eliminar el favorito
-// Luego se recarga la página para reflejar el cambio
 function activarFavoritos() {
+  // Selecciona todos los botones de "favorito" y les añade un evento click
   document.querySelectorAll('.favoritoToggle').forEach(link => {
     link.addEventListener('click', async (e) => {
-      e.preventDefault(); // Evita que el navegador siga el enlace
-      const url = link.getAttribute('href'); // Obtiene la URL completa
+      e.preventDefault(); // Evitar que el enlace recargue la página
+      const url = link.getAttribute('href'); // Obtener la URL que activa el favorito en el backend
 
       try {
-        await axios.get(url); // Llama al backend usando la URL del enlace
-        location.reload(); // Recarga la página para reflejar el cambio
+        await axios.get(url); // Llamada al backend para añadir o quitar favorito
+        location.reload(); // Recarga la página para reflejar los cambios
       } catch (error) {
         console.error('Error al cambiar favorito:', error);
       }
@@ -88,22 +80,21 @@ function activarFavoritos() {
   });
 }
 
+//RENDERIZAR ANUNCIOS DINÁMICAMENTE
 
-
-
-// Esta función se llama cada vez que se renderizan anuncios dinámicamente (por búsqueda, filtro, orden)
-// Activa los botones de favoritos en los nuevos anuncios
 function renderAnuncios(anuncios) {
-  contenedor.innerHTML = '';
+  contenedor.innerHTML = ''; // Limpiar contenedor antes de mostrar nuevos resultados
 
   if (anuncios.length === 0) {
+    // Si no hay anuncios, mostrar mensaje
     contenedor.innerHTML = '<p>No se encontraron anuncios.</p>';
     return;
   }
 
+  // Recorrer los anuncios y crear elementos HTML dinámicamente
   anuncios.forEach(anuncio => {
     const box = document.createElement('div');
-    box.classList.add('anuncioIndividual');
+    box.classList.add('filtradoAnunciosAnuncioCard');
 
     box.innerHTML = `
       <div class="filtradoAnunciosImagen">
@@ -118,28 +109,25 @@ function renderAnuncios(anuncios) {
           <p>${anuncio.precioAnuncio} €</p>
         </div>
 
-        // Si el usuario está logueado, se genera el botón de favoritos
-       ${usuarioLogueado ?
-          `
-            <a href="#" class="favoritoToggle ${favoritosUsuario.includes(anuncio.ID_Anuncio) ? 'favoritoActivo' : ''}" data-id="${anuncio.ID_Anuncio}">
-              ${favoritosUsuario.includes(anuncio.ID_Anuncio) ? 'Favorito añadido' : 'Añadir a favoritos'}
-            </a>
-          ` 
-        : ''}
-
-        </div>
+        ${usuarioLogueado ? `
+        <a href="index.php?controller=FavoritosController&accion=existeFavorito&ID_Anuncio=${anuncio.ID_Anuncio}" 
+          class="favoritoToggle ${favoritosUsuario.includes(anuncio.ID_Anuncio) ? 'favoritoActivo' : ''}" 
+          data-id="${anuncio.ID_Anuncio}">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d='M9 10.5L11 12.5L15.5 8M19 21V7.8C19 6.11984 19 5.27976 18.673 4.63803C18.3854 4.07354 17.9265 3.6146 17.362 3.32698C16.7202 3 15.8802 3 14.2 3H9.8C8.11984 3 7.27976 3 6.63803 3.32698C6.07354 3.6146 5.6146 4.07354 5.32698 4.63803C5 5.27976 5 6.11984 5 7.8V21L12 17L19 21Z' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+          </svg>
+        </a>
+      ` : ''}
+      </div>
     `;
 
-    contenedor.appendChild(box);
+    contenedor.appendChild(box); // Añadir anuncio al contenedor
   });
 
-  // Activa favoritos en los anuncios recién renderizados
+  // Activar botones de favoritos en los anuncios recién renderizados
   if (usuarioLogueado) activarFavoritos();
 }
 
-//Al cargar la página, activar favoritos en los anuncios que vienen desde PHP
-document.addEventListener('DOMContentLoaded', () => {
-  if (usuarioLogueado) activarFavoritos();
-});
 
-
+//ACTIVAR FAVORITOS AL CARGAR LA PÁGINA
+if (usuarioLogueado) activarFavoritos(); 

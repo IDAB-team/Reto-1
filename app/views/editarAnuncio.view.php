@@ -6,27 +6,27 @@
     ?>
     <main class="editarMain">
         <h1 class="editarTitulo">Editar anuncio</h1>
-        <form action="ejer1.php" method="post" class="editarFormulario">
+        <form action="index.php?controller=editarAnuncioController&accion=editarCategoria" enctype="multipart/form-data" method="post" class="editarFormulario">
             <div class="editarCampo">
                 <label for="imagen" class="editarLabel">Imagen: *</label>
                 <div class="editarImagen" onclick="document.getElementById('imagen').click();">
                     <span>+</span>
                     <img id="preview" src="" alt="" style="display:none;">
                 </div>
-                <input type="file" id="imagen" name="imagen" accept="image/*" style="display:none;" required>
+                <input type="file" id="imagen" name="imagen" accept="image/*" style="display:none;" >
             </div>
             <div class="editarCampo">
                 <label for="nombre" class="editarLabel">Nombre: * </label>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre del producto" required class="editarInput">
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre del producto" class="editarInput">
             </div>    
             <div class="editarCampo">
                 <label for="descripcion" class="editarLabel">Descripción: * </label>
-                <textarea id="descripcion" placeholder="Escribe la descripción" rows="10" cols="80" style="resize: none" required class="editarInput"></textarea>
+                <textarea id="descripcion" name="descripcion" placeholder="Escribe la descripción" rows="10" cols="80" style="resize: none" required class="editarInput"></textarea>
             </div>
             <div class="editarFila">
                 <div class="editarCampo">
                     <label for="categoria" class="editarLabel">Categoría: *</label>
-                    <select id="categoria" name="categoria" required class="editarInput">
+                    <select id="categoria" name="categoria" class="editarInput">
                         <option value="">Selecciona una categoría ▼</option>
                         <?php foreach($categorias as $categoria):?>
                             <option value="<?=$categoria["Nombre"]?>"><?=$categoria["Nombre"]?></option>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="editarCampo">
                     <label for="precio" class="editarLabel">Precio: *</label>
-                    <input type="text" id="precio" name="precio" placeholder="€" required class="editarInput">
+                    <input type="text" id="precio" name="precio" placeholder="€"  class="editarInput">
                 </div>
                 <div class="editarCampo">
                     <label for="stock" class="editarLabel">Stock:</label>

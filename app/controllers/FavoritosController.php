@@ -10,10 +10,9 @@ class FavoritosController extends BaseController {
     public function index() {
         session_start(); 
 
-        // Header según tipo de usuario
         $header = 'headerSinSession.php';
         $user = null;
-        $listaAnunciosFavoritos=[];
+        $listaAnunciosFavoritos = [];
 
         if (isset($_SESSION['user'])) {
             $user = $_SESSION['user'];
@@ -24,8 +23,14 @@ class FavoritosController extends BaseController {
                 $header = 'headerSessionVendedor.php';
             }
 
-            $listaAnunciosFavoritos=FavoritoModel::obtenerFavoritos($user['id']);
+            $texto = $_GET['buscarAnuncio'] ?? null;
+            $categoria = $_GET['categoria'] ?? null;
 
+            if (!empty($texto)) {
+                $listaAnunciosFavoritos = FavoritoModel::buscarFavoritosPorNombre($user['id'], $texto);
+            } else {
+                $listaAnunciosFavoritos = FavoritoModel::obtenerFavoritos($user['id'], $categoria);
+            }
         }
 
         $listaCategorias = CategoriaModel::getAll();
@@ -38,10 +43,26 @@ class FavoritosController extends BaseController {
         ]);
     }
 
+
     /* USO EL SESSION_START() EN CADA FUNCION PORQUE PHP 
     NO MANTIENE LA SESION AUTOMATICAMENTE, SI NO LO HAGO
     $_SESSION['USER'] ESTARIA VACIO */
-    
+
+    public function getAll() {
+    session_start();
+    $id_usuario = $_SESSION['user']['id'] ?? null;
+
+    if ($id_usuario) {
+        $resultados = FavoritoModel::obtenerFavoritos($id_usuario);
+        header('Content-Type: application/json');
+        echo json_encode($resultados);
+        exit;
+    }
+
+    echo json_encode([]); // Si no hay sesión o resultados
+    exit;
+}
+
     public function existeFavorito() {
         session_start();
         $id_usuario = $_SESSION['user']['id'] ?? null;
@@ -78,7 +99,20 @@ public function ordenarPorPrecio() {
     exit;
 }
 
+public function apiBuscarFavoritosPorNombre() {
+    session_start();
+    $id_usuario = $_SESSION['user']['id'] ?? null;
+    $texto = $_GET['texto'] ?? '';
 
+    if ($id_usuario && $texto) {
+        $resultados = FavoritoModel::buscarFavoritosPorNombre($id_usuario, $texto);
+        header('Content-Type: application/json');
+        echo json_encode($resultados);
+        exit;
+    }
 
+    echo json_encode([]);
+    exit;
+}
 
 }

@@ -153,4 +153,5 @@ class AnuncioModel {
         return $stmt->execute(['id_usuario'=>$idUsuario],
         ['id_anuncio'=>$idAnuncio]);
     }
+   
 }

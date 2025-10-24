@@ -25,7 +25,7 @@ include __DIR__ . '/layout/' . $header;
             <!--Ordenar-->
         <div class="misAnunciosformularioBusqueda">
             <select name="misAnunciosOrden">
-                <option value="ordenar" selected disabled hidden>Ordenar por</option>
+                <option value="ordenar" selected disabled hidden>Ordenar por ▽	</option>
                 <option value="fecha">Fecha de publicación</option>
                 <option value="precio">Precio</option>
             </select>

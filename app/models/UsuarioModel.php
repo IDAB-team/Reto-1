@@ -80,6 +80,14 @@ class UsuarioModel {
             return $resultado['ID_Usuario'];
         }
     }
+    public static function devolverDatosUsuario($idUser){
+        $dba = Database::getConnection();
+        $stmt=$dba->prepare("SELECT Username as username, 
+        Tipo as tipo, Email as email FROM Usuarios WHERE ID_usuario=:idUser");
+        $stmt->execute(['idUser'=>$idUser]);
+        return $stmt->fetch(PDO::FETCH_OBJ);
+        
+    }
     public static function getClientes() {
         $db = Database::getConnection();
         $stmt = $db->prepare("SELECT ID_Usuario, CIF, Username, Email, Tipo FROM usuarios WHERE Tipo = 'Cliente'");

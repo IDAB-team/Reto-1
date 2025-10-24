@@ -1,11 +1,110 @@
 /* ==================================================================================================================
     ------------------------------------------------- VENDEDOR SIEMPRE -------------------------------------------------
 ================================================================================================================== */
-
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
 .vendedorMain {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+.vendedorIcono{
+    color: #1156CC;
+    font-weight: 200;
+}
+.vendedorInfo{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+.vendedorTexto{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    
+}
+.vendedorTexto h4{
+    color: #1156CC;
+}
+.vendedorTipo h5{
+    display: inline;
+    
+}
+.tipoValor{
+    color:#1156CC;
+}
+.vendedorFiltro{
+    margin-bottom: 1em;
+}
 
+.vendedorFiltro select{
+    appearance: none;         /* Estándar */
+    -webkit-appearance: none; /* Safari/Chrome */
+    -moz-appearance: none;    /* Firefox */
+    background: none;         /* Opcional: elimina fondo */
+    padding-right: 1.5em;
+    border: none;
+}
+.vendedorContenido{
+    max-width: 80%;
+    }
+.vendedorLista{
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente línea si no caben */
+    gap: 1em;         /* Espacio entre tarjetas */
+    justify-content: space-evenly;
+    row-gap: 2em;
+
+    }
+.vendedorAnuncioCard{
+    display: flex;
+    flex-direction: column; /* Imagen arriba, detalles abajo */
+    width: 250px;           /* Tamaño fijo para todas las tarjetas */
+    height: 350px;          /* Altura uniforme */
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 1em;
+    transition: transform 0.2s ease;
+    
+}
+.vendedorAnuncioCard:hover{
+    transform: scale(1.03);
+    }
+.vendedorAnuncioImagen{
+    height: 60%; /* Mitad superior */
+    width: 100%;
+    }
+.vendedorAnuncioImagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;; 
+    
+}
+.vendedorAnuncioDetalles {
+  height: 40%; /* Mitad inferior */
+  padding: 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.vendedorAnuncioDetalles .desc{
+    font-style: italic;
+    font-size: small;
+    text-align: justify;
+}
+.vendedorAnuncioDetalles .fecha{
+    font-size: x-small;
+}

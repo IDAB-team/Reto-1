@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="./assets/css/usuarios.css">
     <link rel="stylesheet" href="./assets/css/anuncios.css">
     <link rel="stylesheet" href="./assets/css/crearGestor.css">
-    
+    <link rel="stylesheet" href="./assets/css/editarUsuario.css">
 </head>
 <body>
     <header>

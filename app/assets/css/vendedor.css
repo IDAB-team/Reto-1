@@ -70,13 +70,14 @@ body{
 .vendedorAnuncioCard{
     display: flex;
     flex-direction: column; /* Imagen arriba, detalles abajo */
-    width: 250px;           /* Tamaño fijo para todas las tarjetas */
-    height: 350px;          /* Altura uniforme */
+    width: 200px;           /* Tamaño fijo para todas las tarjetas */
+    height: 150px;          /* Altura uniforme */
     background-color: white;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     border-radius: 1em;
     transition: transform 0.2s ease;
+    justify-content: space-between;
     
 }
 .vendedorAnuncioCard:hover{
@@ -94,17 +95,27 @@ body{
     
 }
 .vendedorAnuncioDetalles {
+    position: relative;
   height: 40%; /* Mitad inferior */
   padding: 0.5em;
+  margin-left: 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 .vendedorAnuncioDetalles .desc{
-    font-style: italic;
-    font-size: small;
-    text-align: justify;
+    font-size: x-small;
+   
 }
 .vendedorAnuncioDetalles .fecha{
-    font-size: x-small;
+    position: absolute;
+  top: 0.3em;
+  right: 0.7em;
+  font-size: xx-small;
+  color: #888; 
+}
+.vendedorPrecio{
+    align-self: center;
+    margin-right: 1em;
 }

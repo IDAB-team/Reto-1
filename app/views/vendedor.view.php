@@ -37,6 +37,7 @@
         <?php if(!empty($listaAnuncios)): ?>
 
         <?php foreach($listaAnuncios as $anuncio): ?>
+        <!--    <a href="index.php?controller=AnuncioController&id=<?=$anuncio->id ?>"> -->
             <div class="vendedorAnuncioCard">
                 <div class="vendedorAnuncioImagen">
                 <img src="./<?= $anuncio->urlImagen ?>" alt="<?= $anuncio->nombreAnuncio ?>">
@@ -50,12 +51,13 @@
                     </div>
                     
                     <div class="vendedorPrecio">
-                    <h3><?= $anuncio ->precioAnuncio ?>€</h3>
+                    <h4><?= intval($anuncio ->precioAnuncio) ?>€</h4>
                     </div>
                 </div>
 
                 
             </div>
+           <!-- </a> -->
     <?php endforeach; ?>
 
     <?php else: ?>

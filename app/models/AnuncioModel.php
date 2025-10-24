@@ -167,4 +167,25 @@ class AnuncioModel {
         return $stmt->execute(['id_usuario'=>$idUsuario],
         ['id_anuncio'=>$idAnuncio]);
     }
+    
+    public static function getAnuncioById($idAnuncio){
+        $db = Database::getConnection();
+        $sql="SELECT 
+                a.ID_Anuncio,
+                a.Nombre AS nombreAnuncio,
+                a.Descripcion AS descAnuncio,
+                a.Fecha_pub AS fechaAnuncio, 
+                a.Precio AS precioAnuncio, 
+                a.Url_Imagen AS urlImagen,
+                u.Username AS userName
+            FROM anuncios a
+            JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
+            WHERE a.ID_Anuncio = :idAnuncio";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute(['idAnuncio' => $idAnuncio]);
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+
 }

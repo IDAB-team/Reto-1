@@ -167,7 +167,7 @@ class AnuncioModel {
         return $stmt->execute(['id_usuario'=>$idUsuario],
         ['id_anuncio'=>$idAnuncio]);
     }
-    
+
     public static function getAnuncioById($idAnuncio){
         $db = Database::getConnection();
         $sql="SELECT 

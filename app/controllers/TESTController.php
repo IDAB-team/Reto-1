@@ -16,7 +16,6 @@ class TESTController extends BaseController {
                 $header = 'headerSessionVendedor.php';
             }
         }
-
         $this->render('TEST.view.php', ['header' => $header]);
     }
 }

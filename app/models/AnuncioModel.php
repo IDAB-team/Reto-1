@@ -29,6 +29,20 @@ class AnuncioModel {
         VALUES (:usuario,:categoria,:nombre,:descripcion,:fecha,:precio,:stock,:imagen)");
         $stmt->execute($data);
     }
+    public static function modificarCategoria($data){
+        $dba = Database::getConnection();
+        $stmt = $dba->prepare("UPDATE anuncios SET 
+            ID_Usuario = :usuario,
+            ID_Categoria = :categoria,
+            Nombre = :nombre,
+            Descripcion = :descripcion,
+            Fecha_pub = :fecha,
+            Precio = :precio,
+            Stock = :stock,
+            Url_imagen = :imagen
+            WHERE ID_Anuncio = :idAnuncio");
+        $stmt->execute($data);
+    }
     // Filtrar anuncios por nombre de categoría
     public static function getByCategoryName($nameCategory) {
         $db = Database::getConnection();

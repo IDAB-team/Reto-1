@@ -21,7 +21,7 @@
     gap: 1.5em;
     width: 100%;
     max-width: 1200px;   
-     margin: 2em auto;
+    margin: 2em auto;
     padding: 0 2em;
 }
 /*Filtros: */
@@ -79,17 +79,23 @@
     padding: 0.1rem 0.5rem;
     border-radius: 8px;
 }
+.misAnunciosformularioBusqueda select{
+    appearance: none;         /* Estándar */
+    -webkit-appearance: none; /* Safari/Chrome */
+    -moz-appearance: none;    /* Firefox */
+    background: none;         /* Opcional: elimina fondo */
+    padding-right: 1.5em;
+    border: none;
+}
     .misAnunciosFiltros li:hover {
     border-bottom: solid #1156CC thin;
 }
     .misAnunciosContenido{
-        max-width: 80%;
+    max-width: 80%;
     }
     .misAnunciosContenido h3{
-        color:#1156CC;
-        margin-bottom: .3em;
-        
-        
+    color:#1156CC;
+    margin-bottom: .3em;    
     }
 /*Búsqueda:*/
     .misAnunciosformularioBusqueda {
@@ -160,7 +166,7 @@
     width: 100%;
     
 }
-.misAnunciosTexto{
+    .misAnunciosTexto{
     width: 70%;
     padding: .5em;
     display: flex;
@@ -168,24 +174,25 @@
     justify-content: space-between;
     line-height: 1.4; /* 🔹 separa las líneas del texto */
     overflow: hidden; 
+    max-height: 150px;
 }
 
     .misAnunciosAnuncioCard{
-        display: flex;  
-        overflow: hidden;   /*Recorta la imagen a los bordes */
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        border-radius: 1em;
-        position: relative;
-        transition: transform 0.2s ease; 
-        height: 20%;
-        max-height: 20%;
+    display: flex;  
+    overflow: hidden;   /*Recorta la imagen a los bordes */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 1em;
+    position: relative;
+    transition: transform 0.2s ease; 
+    height: 20%;
+    max-height: 20%;
     }
     .misAnunciosAnuncioCard:hover{
-       transform: scale(1.03);
+    transform: scale(1.03);
     }
     .misAnunciosImagen{
-        width: 50%;
-        min-width: 180px;
+    width: 50%;
+    min-width: 180px;
         
     }
     .misAnunciosImagen img {
@@ -196,12 +203,17 @@
     object-position: center; 
     
 }
-    .desc p{
-        font-size: small;
-        font-style: italic;
-        line-height: 1.4; /* 🔹 mejora legibilidad del texto descriptivo */
-    text-align: justify; 
-
+    .desc p {
+    font-size: small;
+    font-style: italic;
+    line-height: 1.4;
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Número de líneas visibles */
+    -webkit-box-orient: vertical;
+    max-height: 6.5em; /* Aproximado según line-height */
     }
     .misAnunciosPrecio{
     font-weight: bolder;
@@ -211,29 +223,29 @@
     position: absolute;
     top: 0.6em;
     right: 0.8em;
-    color: #1156CC;
+    color: #989898;
     padding: 0.3em 0.6em;
     border-radius: 0.4em;
-    font-size:xx-small;
+    font-size:x-small;
     font-weight: 300;
     }
     .misAnunciosEdicion{
-        display: flex;
-        justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
     }
     
     .misAnunciosEdicion [type="button"] {
-        border: none;
-        color:#1156CC;
+    border: none;
+    color:#1156CC;
     }
     .misAnunciosEdicion [type="button"] :hover{
-        background-color: #1156CC;
-        color: white;
+    background-color: #1156CC;
+    color: white;
     }
 
     .usuarioInformacion {
-        display: flex;
-        flex-direction: column;
+    display: flex;
+    flex-direction: column;
     }
 
 /* Paginación */

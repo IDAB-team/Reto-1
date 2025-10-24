@@ -7,7 +7,7 @@ include __DIR__ . '/layout/' . $header;
 
 <main class="misAnunciosMain">
     <aside class="misAnunciosFiltros">
-        <h4>Filtros</h4>
+        <h4>Categor&iacuteas</h4>
         <ul>
             <?php foreach ($categorias as $categoria): ?>
                 <li>
@@ -25,7 +25,7 @@ include __DIR__ . '/layout/' . $header;
             <!--Ordenar-->
         <div class="misAnunciosformularioBusqueda">
             <select name="misAnunciosOrden">
-                <option value="ordenar" selected disabled hidden>Ordenar por</option>
+                <option value="ordenar" selected disabled hidden>Ordenar por ▽	</option>
                 <option value="fecha">Fecha de publicación</option>
                 <option value="precio">Precio</option>
             </select>
@@ -61,11 +61,12 @@ include __DIR__ . '/layout/' . $header;
                             </div>
                         </div>
                         <div class="misAnunciosPrecio">
-                            <p><?=$anuncio->precioAnuncio ?> €</p>
+                            <p><?=intval($anuncio->precioAnuncio) ?> €</p>
                         </div>
                     </div>
                     <div class="misAnunciosEdicion">
-                        <a href="index.php?controller=EditarAnuncioController" class="btnEditar"> <!--Falta pasar el ID del anuncio-->
+        <!-- Este link le pasa el id del anuncio a la págima editar: -->
+                        <a href="index.php?controller=EditarAnuncioController&id=<?=$anuncio->id ?>" class="btnEditar"> <!--Falta pasar el ID del anuncio-->
                         <button type="button">
                             <!-- icono editar -->
                             <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

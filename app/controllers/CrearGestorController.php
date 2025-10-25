@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
+require_once __DIR__ . '/../models/AdminModel.php';
 //require_once __DIR__ . '/../models/XxxxxModel.php';
 
 class CrearGestorController extends BaseController {
@@ -36,7 +37,31 @@ class CrearGestorController extends BaseController {
 
         $this->render('crearGestor.view.php', ['header' => $header, 'user' => $user]);
     }
-    
+    public function crear(){
+        session_start();
+        if(!empty($_POST["username"]) && !empty($_POST["email"]) && !empty($_POST["contraseña"]) && !empty($_POST["repetirContraseñaGestor"])){
+            if($_POST["contraseña"] == $_POST["repetirContraseñaGestor"]){
+                $data = array(
+                "username" => $_POST["username"],
+                "email" => $_POST["email"],
+                "password" => $_POST["contraseña"],
+                "tipo" =>"Gestor"
+                );
+                $resultado = AdminModel::crearGestor($data);
+                if ($resultado) {
+                    $_SESSION["error"] = "El gestor se ha insertado con éxito";
+                    $_SESSION["tipoMensaje"] = "exito";
+                } else {
+                    $_SESSION["error"] = " El username ya existe, prueba con otro";
+                    $_SESSION["tipoMensaje"] = "error";
+                }
+            } else {
+                $_SESSION["error"] = "Las contraseñas no coinciden";
+                $_SESSION["tipoMensaje"] = "error";
+            } 
+        header("Location: index.php?controller=CrearGestorController");   
+        }
+    }
     public function show() {
         
     }

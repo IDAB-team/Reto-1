@@ -18,7 +18,20 @@ class AdminModel {
         ]);
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
-
+    public static function crearGestor($data){
+        $db = Database::getConnection();
+        $stmt = $db -> prepare("INSERT INTO administradores (Username,Password,Email,Tipo) VALUES (:username,:password,:email,:tipo)");
+        try {
+            $stmt->execute($data);
+            return true; 
+        } catch (PDOException $e) {
+            if ($e->getCode() == 23000) {
+                return false; // username duplicado
+            } else {
+                throw $e; 
+            }
+        }
+    }
     public static function getGestores() {
         $db = Database::getConnection();
         $stmt = $db->prepare("SELECT ID_Admin, Username, Email, Tipo FROM administradores WHERE Tipo = 'Gestor'");

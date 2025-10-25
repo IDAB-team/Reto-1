@@ -50,7 +50,7 @@
                             <div class="info">
                                 <h3><?= htmlspecialchars($anuncio['Nombre']) ?></h3>
                                 <p><?= ucfirst(htmlspecialchars($anuncio['comerciante'])) ?></p>
-                                <a href="">Ver más</a>
+                                <a href="index.php?controller=AnunciosController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">Ver más</a>
                             </div>
                             <div class="infoPrecio">
                                 <p><strong><?= number_format($anuncio['Precio'], 2) ?> €</strong></p>

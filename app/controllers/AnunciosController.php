@@ -1,78 +1,64 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-require_once __DIR__ . '/../models/FavoritoModel.php';
-require_once __DIR__ . '/../models/AnuncioModel.php';
+//require_once __DIR__ . '/../models/XxxxxModel.php';
+
 
 class AnunciosController extends BaseController {
 
-    // Página principal del anuncio
     public function index() {
-        session_start(); 
-
-        $infoUsuario = $this->obtenerHeaderYUsuario();
-
-        // No cargamos un anuncio específico aquí
-        $this->render('anuncio.view.php', [
-            'header' => $infoUsuario['header'],
-            'user' => $infoUsuario['user'],
-            'anuncio' => null
-        ]);
-    }
-
-    // Método privado para evitar repetir código
-    private function obtenerHeaderYUsuario() {
-        $header = 'headerSinSession.php';
-        $user = null;
-
-        if (isset($_SESSION['user'])) {
-            $user = $_SESSION['user'];
-            if ($user['tipo'] === 'Cliente') {
-                $header = 'headerSessionComprador.php';
-            } elseif ($user['tipo'] === 'Comerciante') {
-                $header = 'headerSessionVendedor.php';
-            }
-        }
-
-        return ['header' => $header, 'user' => $user];
-    }
-
-    // Obtener un anuncio específico por ID
-    public function getAnuncioById() {
         session_start();
 
-        $idAnuncio = $_GET['idAnuncio'] ?? null;
-        if (!$idAnuncio) {
-            die("No se proporcionó el ID del anuncio");
-        }
+        try {
+            // Header y usuario por defecto
+            $header = 'headerSinSession.php';
+            $user = null;
 
-        $anuncio = AnuncioModel::getAnuncioById($idAnuncio);
-        $infoUsuario = $this->obtenerHeaderYUsuario();
+            if (isset($_SESSION['user'])) {
+                $user = $_SESSION['user'];
 
-        $this->render('anuncio.view.php', [
-            'header' => $infoUsuario['header'],
-            'user' => $infoUsuario['user'],
-            'anuncio' => $anuncio
-        ]);
-    }
+                // Solo permitimos Gestores y SuperAdmin
+                if (!in_array($user['tipo'], ['Gestor', 'SuperAdmin'])) {
+                    header('Location: index.php?controller=ErrorController');
+                    exit;
+                }
 
-    // Activar/desactivar favorito
-    public function existeFavorito() {
-        session_start();
-        $id_usuario = $_SESSION['user']['id'] ?? null;
-        $id_anuncio = $_GET['ID_Anuncio'] ?? null;
-
-        if ($id_usuario && $id_anuncio) {
-            $existe = FavoritoModel::existeFavorito($id_usuario, $id_anuncio);
-            if ($existe) {
-                FavoritoModel::eliminarFavorito($id_usuario, $id_anuncio);
+                // Header según tipo
+                switch ($user['tipo']) {
+                    case 'Gestor':
+                        $header = 'headerSessionGestor.php';
+                        break;
+                    case 'SuperAdmin':
+                        $header = 'headerSessionAdmin.php';
+                        break;
+                }
             } else {
-                FavoritoModel::agregarFavorito($id_usuario, $id_anuncio);
+                // Si no hay sesión, mostramos error
+                $this->render('error.view.php', [
+                    'header' => 'headerSinSession.php',
+                    'mensaje' => 'No tienes permisos para acceder a esta página.'
+                ]);
+                return;
             }
+
+            // Renderizamos la vista principal de anuncios
+            $this->render('anuncios.view.php', [
+                'header' => $header,
+                'user' => $user
+            ]);
+
+        } catch (Exception $e) {
+            $this->render('error.view.php', [
+                'header' => 'headerSinSession.php',
+                'mensaje' => $e->getMessage()
+            ]);
         }
-
-        header('Location: index.php?controller=AnunciosController&accion=getAnuncioById&idAnuncio=' . $id_anuncio);
-        exit;
     }
-
-
+    
+    public function show() {}
+    
+    public function store() {}
+    
+    public function destroy() {}
+    
+    public function destroyAll() {}
 }

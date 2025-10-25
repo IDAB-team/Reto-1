@@ -9,39 +9,51 @@ class UsuariosController extends BaseController {
     public function index() {
         session_start(); 
 
-        // Header por defecto
-        $header = 'headerSinSession.php';
-        $user = null;
+        try {
+            // Header y usuario por defecto
+            $header = 'headerSinSession.php';
+            $user = null;
 
-        if (isset($_SESSION['user'])) {
-            $user = $_SESSION['user'];
+            if (isset($_SESSION['user'])) {
+                $user = $_SESSION['user'];
 
-            // Dependiendo del tipo de usuario, mostramos el header correspondiente
-            switch ($user['tipo']) {
-                case 'Gestor':
-                    $header = 'headerSessionGestor.php';
-                    break;
-                case 'SuperAdmin':
-                    $header = 'headerSessionAdmin.php';
-                    break;
-                default:
-                    $header = 'headerSinSession.php';
-                    break;
+                // Solo permitimos Gestor y SuperAdmin
+                if (!in_array($user['tipo'], ['Gestor', 'SuperAdmin'])) {
+                    header('Location: index.php?controller=ErrorController');
+                    exit;                
+                }
+
+                // Elegir header según tipo
+                switch ($user['tipo']) {
+                    case 'Gestor':
+                        $header = 'headerSessionGestor.php';
+                        break;
+                    case 'SuperAdmin':
+                        $header = 'headerSessionAdmin.php';
+                        break;
+                }
             }
+
+            // Obtener datos según permisos
+            $clientes = UsuarioModel::getClientes();
+            $comerciantes = UsuarioModel::getComerciantes();
+            $gestores = ($user && $user['tipo'] === 'SuperAdmin') ? AdminModel::getGestores() : [];
+
+            $this->render('usuarios.view.php', [
+                'header' => $header,
+                'user' => $user,
+                'clientes' => $clientes,
+                'comerciantes' => $comerciantes,
+                'gestores' => $gestores
+            ]);
+
+        } catch (Exception $e) {
+            // Renderizamos la vista de error solo si hay usuario con permisos inválidos
+            $this->render('error.view.php', [
+                'header' => 'headerSinSession.php',
+                'mensaje' => $e->getMessage()
+            ]);
         }
-
-
-        $clientes = UsuarioModel::getClientes();
-        $comerciantes = UsuarioModel::getComerciantes();
-        $gestores = $user['tipo'] === 'SuperAdmin' ? AdminModel::getGestores() : [];
-
-
-        $this->render('usuarios.view.php', 
-        ['header' => $header, 
-         'user' => $user, 
-         'clientes' => $clientes, 
-         'comerciantes' => $comerciantes, 
-         'gestores' => $gestores]);
     }
 
     public function eliminar(){

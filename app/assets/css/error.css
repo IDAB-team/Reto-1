@@ -1,0 +1,32 @@
+.errorMain {
+    text-align: center;
+    padding: 4em 2em;
+    font-family: Arial, sans-serif;
+    min-height: 36em;
+}
+
+.errorMain h1 {
+    font-size: 2em;
+    color: #cc0000;
+    margin-bottom: 1em;
+}
+
+.errorMain p {
+    font-size: 1.2em;
+    margin-bottom: 2em;
+}
+
+.btn-volver {
+    display: inline-block;
+    background-color: #1156CC;
+    color: white;
+    padding: 0.6em 1.2em;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.btn-volver:hover {
+    background-color: #0c45a3;
+}

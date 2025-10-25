@@ -44,13 +44,19 @@
                 <?php foreach ($anuncios as $anuncio): ?>
                     <div class="anuncioCard">
                         <div class="imagenCard">
-                            <img src="./<?= $anuncio['Url_imagen'] ?>" alt="imagen <?= htmlspecialchars($anuncio['Nombre']) ?>">
+                            <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">
+                                <img src="./<?= $anuncio['Url_imagen'] ?>" alt="imagen <?= htmlspecialchars($anuncio['Nombre']) ?>">
+                            </a>
                         </div>
                         <div class="infoCard">
                             <div class="info">
-                                <h3><?= htmlspecialchars($anuncio['Nombre']) ?></h3>
+                                <h3>
+                                    <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">
+                                        <?= htmlspecialchars($anuncio['Nombre']) ?>
+                                    </a>
+                                </h3>
                                 <p><?= ucfirst(htmlspecialchars($anuncio['comerciante'])) ?></p>
-                                <a href="index.php?controller=AnunciosController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">Ver más</a>
+                                <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">Ver más</a>
                             </div>
                             <div class="infoPrecio">
                                 <p><strong><?= number_format($anuncio['Precio'], 2) ?> €</strong></p>

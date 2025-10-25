@@ -7,31 +7,47 @@
         public function index() {
             session_start(); 
 
-            // Header por defecto
-            $header = 'headerSinSession.php';
-            $user = null;
+            try {
+                // Header y usuario por defecto
+                $header = 'headerSinSession.php';
+                $user = null;
 
-            if (isset($_SESSION['user'])) {
-                $user = $_SESSION['user'];
+                if (isset($_SESSION['user'])) {
+                    $user = $_SESSION['user'];
 
-                // Dependiendo del tipo de usuario, mostramos el header correspondiente
-                switch ($user['tipo']) {
-                    case 'Gestor':
-                        $header = 'headerSessionGestor.php';
-                        break;
-                    case 'SuperAdmin':
-                        $header = 'headerSessionAdmin.php';
-                        break;
-                    default:
-                        $header = 'headerSinSession.php';
-                        break;
+                    // Solo permitimos Gestores y SuperAdmin
+                    if (!in_array($user['tipo'], ['Gestor', 'SuperAdmin'])) {
+                        header('Location: index.php?controller=ErrorController');
+                        exit;
+                    }
+
+                    // Header según tipo
+                    switch ($user['tipo']) {
+                        case 'Gestor':
+                            $header = 'headerSessionGestor.php';
+                            break;
+                        case 'SuperAdmin':
+                            $header = 'headerSessionAdmin.php';
+                            break;
+                    }
+                } else {
+                    // Sin sesión → redirigir a error
+                    header('Location: index.php?controller=ErrorController');
+                    exit;
                 }
+
+                // Renderizamos la vista de edición
+                $this->render('editarUsuario.view.php', [
+                    'header' => $header,
+                    'user' => $user
+                ]);
+
+            } catch (Exception $e) {
+                $this->render('error.view.php', [
+                    'header' => 'headerSinSession.php',
+                    'mensaje' => $e->getMessage()
+                ]);
             }
-
-
-            $this->render('editarUsuario.view.php', 
-            ['header' => $header, 
-            'user' => $user]);
         }
 
         public function editar(){

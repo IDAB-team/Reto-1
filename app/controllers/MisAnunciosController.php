@@ -9,36 +9,55 @@ class MisAnunciosController extends BaseController {
     public function index() {
         session_start(); 
 
-        // Header según tipo de usuario
-        $header = 'headerSinSession.php';
-        $user = null;
-        $listaAnuncios=[];
+        try {
+            $header = 'headerSinSession.php';
+            $user = null;
+            $listaAnuncios = [];
 
-        if (isset($_SESSION['user'])) {
-            $user = $_SESSION['user'];
+            if (isset($_SESSION['user'])) {
+                $user = $_SESSION['user'];
 
-            if ($user['tipo'] === 'Cliente') {
-                $header = 'headerSessionComprador.php';
-            } elseif ($user['tipo'] === 'Comerciante') {
+                // Solo Comerciantes
+                if ($user['tipo'] !== 'Comerciante') {
+                    header('Location: index.php?controller=ErrorController');
+                    exit;
+                }
+
+                // Header para Comerciantes
                 $header = 'headerSessionVendedor.php';
+
+                // Obtener anuncios del usuario
+                $listaAnuncios = AnuncioModel::getByIdUser($user['id']);
+            } else {
+                // Sin sesión → redirigir a error
+                header('Location: index.php?controller=ErrorController');
+                exit;
             }
-            $listaAnuncios=AnuncioModel::getByIdUser($user['id']);
+
+            $categorias = CategoriaModel::getAll();
+
+            $this->render('misAnuncios.view.php', [
+                'header' => $header,
+                'user' => $user,
+                'categorias' => $categorias,
+                'listaAnuncios' => $listaAnuncios
+            ]);
+
+        } catch (Exception $e) {
+            $this->render('error.view.php', [
+                'header' => 'headerSinSession.php',
+                'mensaje' => $e->getMessage()
+            ]);
         }
-
-        
-        $categorias = CategoriaModel::getAll();
-
-        $this->render('misAnuncios.view.php', ['header' => $header,
-        'user' => $user,
-        'categorias' => $categorias,
-        'listaAnuncios'=>$listaAnuncios]);
     }
+
     public function getAll() {
         header('Content-Type: application/json');
         $resultados = AnuncioModel::getAll();
         echo json_encode($resultados);
         exit;
     }
+
     public function buscarPorId() {
         session_start();
         header('Content-Type: application/json');
@@ -59,7 +78,5 @@ class MisAnunciosController extends BaseController {
         exit;
     }
     
-    public function destroyAll() {
-        
-    }
+    public function destroyAll() {}
 }

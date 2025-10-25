@@ -10,37 +10,59 @@ class FavoritosController extends BaseController {
     public function index() {
         session_start(); 
 
-        $header = 'headerSinSession.php';
-        $user = null;
-        $listaAnunciosFavoritos = [];
+        try {
+            $header = 'headerSinSession.php';
+            $user = null;
+            $listaAnunciosFavoritos = [];
 
-        if (isset($_SESSION['user'])) {
-            $user = $_SESSION['user'];
+            if (isset($_SESSION['user'])) {
+                $user = $_SESSION['user'];
 
-            if ($user['tipo'] === 'Cliente') {
-                $header = 'headerSessionComprador.php';
-            } elseif ($user['tipo'] === 'Comerciante') {
-                $header = 'headerSessionVendedor.php';
-            }
+                // Solo Clientes y Comerciantes
+                if (!in_array($user['tipo'], ['Cliente', 'Comerciante'])) {
+                    header('Location: index.php?controller=ErrorController');
+                    exit;
+                }
 
-            $texto = $_GET['buscarAnuncio'] ?? null;
-            $categoria = $_GET['categoria'] ?? null;
+                // Header según tipo
+                switch ($user['tipo']) {
+                    case 'Cliente':
+                        $header = 'headerSessionComprador.php';
+                        break;
+                    case 'Comerciante':
+                        $header = 'headerSessionVendedor.php';
+                        break;
+                }
 
-            if (!empty($texto)) {
-                $listaAnunciosFavoritos = FavoritoModel::buscarFavoritosPorNombre($user['id'], $texto);
+                $texto = $_GET['buscarAnuncio'] ?? null;
+                $categoria = $_GET['categoria'] ?? null;
+
+                if (!empty($texto)) {
+                    $listaAnunciosFavoritos = FavoritoModel::buscarFavoritosPorNombre($user['id'], $texto);
+                } else {
+                    $listaAnunciosFavoritos = FavoritoModel::obtenerFavoritos($user['id'], $categoria);
+                }
             } else {
-                $listaAnunciosFavoritos = FavoritoModel::obtenerFavoritos($user['id'], $categoria);
+                // Sin sesión → redirigir a error
+                header('Location: index.php?controller=ErrorController');
+                exit;
             }
+
+            $listaCategorias = CategoriaModel::getAll();
+
+            $this->render('favoritos.view.php', [
+                'header' => $header,
+                'user' => $user,
+                'listaAnuncios' => $listaAnunciosFavoritos,
+                'listaCategorias' => $listaCategorias
+            ]);
+
+        } catch (Exception $e) {
+            $this->render('error.view.php', [
+                'header' => 'headerSinSession.php',
+                'mensaje' => $e->getMessage()
+            ]);
         }
-
-        $listaCategorias = CategoriaModel::getAll();
-
-        $this->render('favoritos.view.php', [
-            'header' => $header,
-            'user' => $user,
-            'listaAnuncios' => $listaAnunciosFavoritos,
-            'listaCategorias' => $listaCategorias
-        ]);
     }
 
 

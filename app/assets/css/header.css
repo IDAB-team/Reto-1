@@ -68,11 +68,23 @@ header {
     align-items: center;
 }
 
+.headerBoton:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: ease-in-out 0.5s;
+}
+
 .headerIcono {
     display: flex;
     align-items:center;
     color: #1156CC;
     gap: 0.5em;
+}
+
+.headerIcono:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: ease-in-out 0.5s;
 }
 
 

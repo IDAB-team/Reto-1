@@ -45,4 +45,19 @@ class AdminModel {
         $stmt = $db->prepare($sql);
         return $stmt->execute(['email' => $email]);
     }
+
+    public static function editarGestor($data) {
+        $db = Database::getConnection();
+        $sql = "UPDATE administradores 
+                SET Email = :email, Password = :password 
+                WHERE Email = :emailAnterior";
+        $stmt = $db->prepare($sql);
+        return $stmt->execute([
+            ':email' => $data['email'],
+            ':password' => $data['nuevaContraseña'],  
+            ':emailAnterior' => $data['emailAnterior'],
+        ]);
+    }
+
+
 }

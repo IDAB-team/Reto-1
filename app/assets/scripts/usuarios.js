@@ -55,3 +55,11 @@ if (btnGestores) {
         }
     });
 }
+
+document.querySelectorAll('.usuariosEdicion a[href*="eliminar"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        if(!confirm('¿Estás seguro de que quieres eliminar este usuario?')) {
+            e.preventDefault(); // Cancela si pulsa "Cancelar"
+        }
+    });
+});

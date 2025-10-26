@@ -1,7 +1,7 @@
 /* ==================================================================================================================
     ------------------------------------------------- MIS ANUNCIOS SIEMPRE -------------------------------------------------
 ================================================================================================================== */
-    *{
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;font-family: 'Montserrat', sans-serif;
@@ -203,7 +203,7 @@
     object-position: center; 
     
 }
-    .desc p {
+.desc p {
     font-size: small;
     font-style: italic;
     line-height: 1.4;
@@ -211,7 +211,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4; /* Número de líneas visibles */
+    /*-webkit-line-clamp: 4; /* Número de líneas visibles */
     -webkit-box-orient: vertical;
     max-height: 6.5em; /* Aproximado según line-height */
     }

@@ -70,16 +70,20 @@ class UsuarioModel {
         }
     }
 
-    public static function editarUsuario($datos){
-        $db = Database::getConnection();
-        $sql = "UPDATE usuarios SET Email = :email, Password = :nuevaContrasena WHERE Email = :emailAnterior";
+    public static function editarUsuario($data) {
+        $db = Database::getConnection(); // o como sea tu conexión
+        $sql = "UPDATE usuarios 
+                SET Email = :email, Password = :nuevaContrasena 
+                WHERE Email = :emailAnterior";
         $stmt = $db->prepare($sql);
         return $stmt->execute([
-            "emailAnterior" => $datos["emailAnterior"],
-            "nuevaContrasena" => $datos['nuevaContraseña'],
-            "email" => $datos['email'],
+            ':email' => $data['email'],
+            ':nuevaContrasena' => $data['nuevaContraseña'],
+            ':emailAnterior' => $data['emailAnterior']
         ]);
+
     }
+
     
     public static function devolverIdUsuario(){
         $dba = Database::getConnection();

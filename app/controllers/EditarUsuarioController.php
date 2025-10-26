@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__ . '/BaseController.php';
     require_once __DIR__ . '/../models/UsuarioModel.php';
+    require_once __DIR__ . '/../models/AdminModel.php';
 
 
     class EditarUsuarioController extends BaseController {
@@ -11,6 +12,7 @@
                 // Header y usuario por defecto
                 $header = 'headerSinSession.php';
                 $user = null;
+                $tipo = $_GET['tipo'] ?? 'Usuario';
 
                 if (isset($_SESSION['user'])) {
                     $user = $_SESSION['user'];
@@ -39,7 +41,10 @@
                 // Renderizamos la vista de edición
                 $this->render('editarUsuario.view.php', [
                     'header' => $header,
-                    'user' => $user
+                    'user' => $user,
+                    'email' => $_GET['email'] ?? '',
+                    'usuario' => $_GET['usuario'] ?? '',
+                    'tipo' => $tipo
                 ]);
 
             } catch (Exception $e) {
@@ -50,30 +55,50 @@
             }
         }
 
-        public function editar(){
+        public function editar() {
             session_start();
 
-            if(!empty($_POST["email"]) && !empty($_POST["nuevaContraseña"]) && !empty($_POST["repetirNuevaContraseña"])){
-                if(($_POST["nuevaContraseña"]==$_POST["repetirNuevaContraseña"])){
-                    $data = array(
-                        "emailAnterior" => $_GET["email"],
+            if (
+                !empty($_POST["email"]) &&
+                !empty($_POST["nuevaContraseña"]) &&
+                !empty($_POST["repetirNuevaContraseña"])
+            ) {
+                if ($_POST["nuevaContraseña"] == $_POST["repetirNuevaContraseña"]) {
+                    $data = [
+                        "emailAnterior" => $_POST["emailAnterior"], // ← ahora viene del hidden input
                         "email" => $_POST["email"],
-                        "nuevaContraseña" => $_POST["nuevaContraseña"], 
-                        "repetirNuevaContraseña" => $_POST["repetirNuevaContraseña"]
-                    );
-                    UsuarioModel::editarUsuario($data);
-                    $_SESSION["error"] ="Los cambios se han guardado con éxito";
-                    $_SESSION["tipoMensaje"] = "exito";
-                }else {
-                    $_SESSION["error"]= "Las contraseñas no coinciden o la actual es incorrecta";
+                        "nuevaContraseña" => $_POST["nuevaContraseña"]
+                    ];
+
+
+
+                    $tipo = $_POST['tipo'] ?? 'Usuario';
+                    if ($tipo === 'Gestor') {
+                        $resultado = AdminModel::editarGestor($data);
+                    } else {
+                        $resultado = UsuarioModel::editarUsuario($data);
+                    }
+
+
+
+                    if ($resultado) {
+                        $_SESSION["error"] = "Los cambios se han guardado con éxito";
+                        $_SESSION["tipoMensaje"] = "exito";
+                    } else {
+                        $_SESSION["error"] = "No se pudo actualizar el usuario (verifica los datos)";
+                        $_SESSION["tipoMensaje"] = "error";
+                    }
+
+                } else {
+                    $_SESSION["error"] = "Las contraseñas no coinciden";
                     $_SESSION["tipoMensaje"] = "error";
-                }    
-                header("Location: index.php?controller=EditarUsuarioController&usuario=" . $_GET['usuario'] . "&email=" . $_GET['email']);
+                }
+
+                header("Location: index.php?controller=EditarUsuarioController&usuario=" . urlencode($_POST['usuario']) . "&email=" . urlencode($_POST['email']) . "&tipo=" . urlencode($_POST['tipo']));
                 exit;
             }
-
-
         }
+
     }
 
     

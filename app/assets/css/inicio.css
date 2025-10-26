@@ -52,6 +52,10 @@
     border-bottom-left-radius: 0px;
 }
 
+.inicioBotonBuscar:hover{
+    cursor: pointer;
+}
+
 .inicioCategorias {
     width: 100%;
     display: flex;

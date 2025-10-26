@@ -7,21 +7,47 @@ class AjustesController extends BaseController {
     public function index() {
         session_start();
 
-        // Header según tipo de usuario
-        $header = 'headerSinSession.php';
-        $user = null;
+        try {
+            // Header y usuario por defecto
+            $header = 'headerSinSession.php';
+            $user = null;
 
-        if (isset($_SESSION['user'])) {
-            $user = $_SESSION['user'];
+            if (isset($_SESSION['user'])) {
+                $user = $_SESSION['user'];
 
-            if ($user['tipo'] === 'Cliente') {
-                $header = 'headerSessionComprador.php';
-            } elseif ($user['tipo'] === 'Comerciante') {
-                $header = 'headerSessionVendedor.php';
+                // Solo permitimos Clientes y Comerciantes
+                if (!in_array($user['tipo'], ['Cliente', 'Comerciante'])) {
+                    header('Location: index.php?controller=ErrorController');
+                    exit;
+                }
+
+                // Header según tipo
+                switch ($user['tipo']) {
+                    case 'Cliente':
+                        $header = 'headerSessionComprador.php';
+                        break;
+                    case 'Comerciante':
+                        $header = 'headerSessionVendedor.php';
+                        break;
+                }
+            } else {
+                // Sin sesión → redirigir a error
+                header('Location: index.php?controller=ErrorController');
+                exit;
             }
-        }
 
-        $this->render('ajustes.view.php', ['header' => $header, 'user' => $user]);
+            // Renderizamos la vista de ajustes
+            $this->render('ajustes.view.php', [
+                'header' => $header,
+                'user' => $user
+            ]);
+
+        } catch (Exception $e) {
+            $this->render('error.view.php', [
+                'header' => 'headerSinSession.php',
+                'mensaje' => $e->getMessage()
+            ]);
+        }
     }
 
     public function editar(){

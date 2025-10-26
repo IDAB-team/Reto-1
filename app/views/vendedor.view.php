@@ -12,16 +12,21 @@
  <path d="M5.3163 19.4384C5.92462 18.0052 7.34492 17 9 17H15C16.6551 17 18.0754 18.0052 18.6837 19.4384M16 9.5C16 11.7091 14.2091 13.5 12 13.5C9.79086 13.5 8 11.7091 8 9.5C8 7.29086 9.79086 5.5 12 5.5C14.2091 5.5 16 7.29086 16 9.5ZM22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
  </svg>
             </div>
-            <h4>Vendedor</h4>
-            <p>Tipo: </p>
-            <p class="vendedorTipo">vendedor</p>
-            <p>Email</p>
+            <div class="vendedorTexto">
+                <h4><?=$datosUsuario->username ?></h4>
+            <div class="vendedorDetalles">
+                <div class="vendedorTipo">
+                <h5>Tipo: <span class="tipoValor"><?=$datosUsuario->tipo ?></span></h5>
+                </div>
+                <h5><?=$datosUsuario->email ?></h5>
+            </div>
+            </div>
         </div>
     <section class="vendedorContenido">
 <!--Ordenar-->
     <div class="vendedorFiltro">    
         <select name="vendedorOrden">
-            <option value="ordenar" selected disabled hidden>Ordenar por</option>
+            <option value="ordenar" selected disabled hidden>Anuncios ▽</option>
             <option value="fecha">Fecha de publicación</option>
             <option value="precio">Precio</option>
         </select>    
@@ -32,19 +37,27 @@
         <?php if(!empty($listaAnuncios)): ?>
 
         <?php foreach($listaAnuncios as $anuncio): ?>
+        <!--    <a href="index.php?controller=AnuncioController&id=<?=$anuncio->id ?>"> -->
             <div class="vendedorAnuncioCard">
                 <div class="vendedorAnuncioImagen">
                 <img src="./<?= $anuncio->urlImagen ?>" alt="<?= $anuncio->nombreAnuncio ?>">
-            
-                <p><?= $anuncio->nombreAnuncio ?></p>
-                <p><?= $anuncio->descAnuncio ?></p>
+                </div>
                 
-                <div class="vendedorPrecio">
-                <p><?= $anuncio ->precioAnuncio ?></p>
+                <div class="vendedorAnuncioDetalles">
+                    <div class="vendedorAnuncioTexto">
+                    <h5><?= $anuncio->nombreAnuncio ?></h5>
+                    <p class="desc"><?= $anuncio->descAnuncio ?></p>
+                    <p class="fecha"><?=date('d/m/Y', strtotime($anuncio->fechaAnuncio)) ?></p>
+                    </div>
+                    
+                    <div class="vendedorPrecio">
+                    <h4><?= intval($anuncio ->precioAnuncio) ?>€</h4>
+                    </div>
                 </div>
 
-                </div>
+                
             </div>
+           <!-- </a> -->
     <?php endforeach; ?>
 
     <?php else: ?>

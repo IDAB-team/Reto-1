@@ -12,7 +12,8 @@
             <h1>¿Qué quieres encontrar?</h1>
             <form class="inicioBuscar" action="index.php" method="get">
                 <input type="hidden" name="controller" value="FiltradoController">
-                <input type="text" name="texto" id="busquedaInput" placeholder="Escribe aquí...">
+                <input type="hidden" name="accion" value="index"> 
+                <input type="text" name="buscarAnuncio" id="busquedaInput" placeholder="Escribe aquí...">
 
                 <button type="submit" class="inicioBotonBuscar">
                     <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none"
@@ -43,13 +44,19 @@
                 <?php foreach ($anuncios as $anuncio): ?>
                     <div class="anuncioCard">
                         <div class="imagenCard">
-                            <img src="./<?= $anuncio['Url_imagen'] ?>" alt="imagen <?= htmlspecialchars($anuncio['Nombre']) ?>">
+                            <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">
+                                <img src="./<?= $anuncio['Url_imagen'] ?>" alt="imagen <?= htmlspecialchars($anuncio['Nombre']) ?>">
+                            </a>
                         </div>
                         <div class="infoCard">
                             <div class="info">
-                                <h3><?= htmlspecialchars($anuncio['Nombre']) ?></h3>
+                                <h3>
+                                    <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">
+                                        <?= htmlspecialchars($anuncio['Nombre']) ?>
+                                    </a>
+                                </h3>
                                 <p><?= ucfirst(htmlspecialchars($anuncio['comerciante'])) ?></p>
-                                <a href="">Ver más</a>
+                                <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">Ver más</a>
                             </div>
                             <div class="infoPrecio">
                                 <p><strong><?= number_format($anuncio['Precio'], 2) ?> €</strong></p>

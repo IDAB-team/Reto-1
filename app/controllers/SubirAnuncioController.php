@@ -9,36 +9,47 @@ class SubirAnuncioController extends BaseController {
     public function index() {
         session_start(); 
 
-        // Header según tipo de usuario
-        $header = 'headerSinSession.php';
-        $user = null;
+        try {
+            $header = 'headerSinSession.php';
+            $user = null;
 
-        if (isset($_SESSION['user'])) {
-            $user = $_SESSION['user'];
+            if (isset($_SESSION['user'])) {
+                $user = $_SESSION['user'];
 
-            if ($user['tipo'] === 'Cliente') {
-                $header = 'headerSessionComprador.php';
-            } elseif ($user['tipo'] === 'Comerciante') {
+                // Solo Comerciantes
+                if ($user['tipo'] !== 'Comerciante') {
+                    header('Location: index.php?controller=ErrorController');
+                    exit;
+                }
+
+                // Header para Comerciantes
                 $header = 'headerSessionVendedor.php';
+            } else {
+                // Sin sesión → redirigir a error
+                header('Location: index.php?controller=ErrorController');
+                exit;
             }
+
+            $categorias = CategoriaModel::getAll();
+            $this->render('subirAnuncio.view.php', [
+                'header' => $header,
+                'user' => $user,
+                'categorias' => $categorias
+            ]);
+
+        } catch (Exception $e) {
+            $this->render('error.view.php', [
+                'header' => 'headerSinSession.php',
+                'mensaje' => $e->getMessage()
+            ]);
         }
-        $categorias = CategoriaModel::getAll();
-        $this->render('subirAnuncio.view.php', ['header' => $header, 'user' => $user,'categorias' => $categorias]);
     }
     
-    public function show() {
-        
-    }
+    public function show() {}
     
-    public function store() {
-        
-    }
+    public function store() {}
     
-    public function destroy() {
-        
-    }
+    public function destroy() {}
     
-    public function destroyAll() {
-        
-    }
+    public function destroyAll() {}
 }

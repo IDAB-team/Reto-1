@@ -69,6 +69,17 @@ class UsuarioModel {
             return $resultado['Password'];
         }
     }
+
+    public static function editarUsuario($datos){
+        $db = Database::getConnection();
+        $sql = "UPDATE usuarios SET Email = :email, Password = :nuevaContrasena WHERE Email = :emailAnterior";
+        $stmt = $db->prepare($sql);
+        return $stmt->execute([
+            "emailAnterior" => $datos["emailAnterior"],
+            "nuevaContrasena" => $datos['nuevaContraseña'],
+            "email" => $datos['email'],
+        ]);
+    }
     
     public static function devolverIdUsuario(){
         $dba = Database::getConnection();
@@ -79,6 +90,14 @@ class UsuarioModel {
         if ($resultado) {
             return $resultado['ID_Usuario'];
         }
+    }
+    public static function devolverDatosUsuario($idUser){
+        $dba = Database::getConnection();
+        $stmt=$dba->prepare("SELECT Username as username, 
+        Tipo as tipo, Email as email FROM Usuarios WHERE ID_usuario=:idUser");
+        $stmt->execute(['idUser'=>$idUser]);
+        return $stmt->fetch(PDO::FETCH_OBJ);
+        
     }
     public static function getClientes() {
         $db = Database::getConnection();

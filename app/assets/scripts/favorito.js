@@ -13,7 +13,6 @@ const buscarInput = document.querySelector('input[name="buscarAnuncio"]'); // In
 const selectOrden = document.querySelector('#anuncioOrdenar'); // Selector para ordenar favoritos
 
 //FUNCIONALIDAD DE ELIMINAR FAVORITOS
-
 function activarEliminarFavoritos() {
   if (!contenedorFavoritos) return; // Si no existe el contenedor, salir
 

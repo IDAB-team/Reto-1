@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="./assets/css/editarAnuncio.css">
     <link rel="stylesheet" href="./assets/css/ajustes.css">
     <link rel="stylesheet" href="./assets/css/vendedor.css">
+    <link rel="stylesheet" href="./assets/css/error.css">
+
 </head>
 <body>
     <header>

@@ -187,5 +187,32 @@ class AnuncioModel {
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    public static function getTodos() {
+        $db = Database::getConnection();
+        $sql = "SELECT 
+                    a.ID_Anuncio AS idAnuncio,
+                    a.Nombre AS nombreAnuncio,
+                    a.Descripcion AS descAnuncio,
+                    a.Fecha_pub AS fechaAnuncio,
+                    a.Precio AS precioAnuncio,
+                    a.Url_imagen AS urlImagen,
+                    u.Username AS userName,
+                    c.Nombre AS nombreCategoria
+                FROM anuncios a
+                JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
+                JOIN categorias c ON a.ID_Categoria = c.ID_Categoria
+                ORDER BY a.Fecha_pub DESC"; // opcional: ordenar por fecha
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public static function deleteById($id) {
+        $db = Database::getConnection();
+        $sql = "DELETE FROM anuncios WHERE ID_Anuncio = :id"; 
+        $stmt = $db->prepare($sql);
+        $stmt->execute([':id' => $id]);
+    }
+
 
 }

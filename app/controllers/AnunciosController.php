@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-//require_once __DIR__ . '/../models/XxxxxModel.php';
+require_once __DIR__ . '/../models/CategoriaModel.php';
+require_once __DIR__ . '/../models/AnuncioModel.php';
 
 
 class AnunciosController extends BaseController {
@@ -40,10 +41,15 @@ class AnunciosController extends BaseController {
                 return;
             }
 
+            $listaAnuncios = AnuncioModel::getTodos();
+            $categorias = CategoriaModel::getAll();
+
             // Renderizamos la vista principal de anuncios
             $this->render('anuncios.view.php', [
                 'header' => $header,
-                'user' => $user
+                'user' => $user,
+                'categorias' => $categorias,
+                'listaAnuncios' => $listaAnuncios
             ]);
 
         } catch (Exception $e) {
@@ -61,4 +67,14 @@ class AnunciosController extends BaseController {
     public function destroy() {}
     
     public function destroyAll() {}
+
+    public function eliminar(){
+        if (!empty($_GET["anuncio"])) {
+            $idAnuncio = $_GET["anuncio"];
+            AnuncioModel::deleteById($idAnuncio);
+        }
+
+        header("Location: index.php?controller=AnunciosController");
+        exit;
+    }
 }

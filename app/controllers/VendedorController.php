@@ -17,13 +17,24 @@ class VendedorController extends BaseController {
         if (isset($_SESSION['user'])) {
             $user = $_SESSION['user'];
 
-            if ($user['tipo'] === 'Cliente') {
-                $header = 'headerSessionComprador.php';
-            } elseif ($user['tipo'] === 'Comerciante') {
-                $header = 'headerSessionVendedor.php';
+            switch ($user['tipo']) {
+                case 'Cliente':
+                    $header = 'headerSessionComprador.php';
+                    break;
+                case 'Comerciante':
+                    $header = 'headerSessionVendedor.php';
+                    break;
+                case 'Gestor':
+                    $header = 'headerSessionGestor.php';
+                    break;
+                case 'SuperAdmin':
+                    $header = 'headerSessionAdmin.php';
+                    break;
+                default:
+                    $header = 'headerSinSession.php';
             }
-        $listaAnuncios=AnuncioModel::getByIdUser($user['id']);
-        $datosUsuario=UsuarioModel::devolverDatosUsuario($user['id']);
+            $listaAnuncios=AnuncioModel::getByIdUser($user['id']);
+            $datosUsuario=UsuarioModel::devolverDatosUsuario($user['id']);
         }
         
 

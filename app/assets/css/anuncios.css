@@ -36,3 +36,31 @@ body {
 .misAnunciosEdicion div a:hover {
     color: #1156CC;
 }
+
+/* Tablets medianas */
+@media (max-width: 1024px) {
+    .anunciosMain {
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media (max-width: 768px) {
+    .anunciosMain {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        gap: 1rem;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .anunciosMain {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.8rem;
+        gap: 0.8rem;
+    }
+}

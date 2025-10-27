@@ -183,3 +183,96 @@
 .infoPrecio {
     font-size: 1.5em;
 }
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+    .inicioBusqueda {
+        width: 60%;
+    }
+
+    .anunciosGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+    }
+
+    .anuncioCard {
+        height: 220px;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media (max-width: 768px) {
+    .inicioBusqueda {
+        width: 80%;
+        padding-top: 1.5em;
+    }
+
+    .inicioCategorias {
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+
+    .anunciosGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1em;
+    }
+
+    .anuncioCard {
+        height: 200px;
+    }
+
+    .infoCard {
+        padding: 0.8em 1em;
+    }
+
+    .infoPrecio {
+        font-size: 1.3em;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .inicioBusqueda {
+        width: 95%;
+        padding-top: 1em;
+    }
+
+    .inicioBuscar {
+        flex-direction: column;
+    }
+
+    .inicioBuscar input {
+        border-radius: 30px 30px 0 0;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 0;
+    }
+
+    .inicioBotonBuscar {
+        border-radius: 0 0 30px 30px;
+        border-top-left-radius: 0;
+        margin-top: 0.3em;
+    }
+
+    .inicioCategorias {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .anunciosGrid {
+        grid-template-columns: 1fr;
+        gap: 1em;
+    }
+
+    .anuncioCard {
+        height: auto;
+    }
+
+    .infoPrecio {
+        font-size: 1.2em;
+    }
+
+    .infoCard {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+}

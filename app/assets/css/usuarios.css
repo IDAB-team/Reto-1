@@ -86,3 +86,94 @@
 .hidden {
     display: none;
 }
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+    .usuariosTipos {
+        width: 80%;
+        gap: 1.5em;
+        flex-wrap: wrap;
+    }
+
+    .usuariosDatos {
+        width: 48%;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media (max-width: 768px) {
+    .usuariosMain {
+        gap: 1.5em;
+    }
+
+    .usuariosTipos {
+        width: 90%;
+        flex-direction: column;
+        gap: 1em;
+        align-items: center;
+    }
+
+    .usuariosClientes,
+    .usuariosComerciantes,
+    .usuariosGestores {
+        width: 100%;
+        padding: 1.5em;
+        font-size: 1em;
+    }
+
+    .usuariosDatos {
+        width: 100%;
+    }
+
+    .cliente,
+    .comerciante,
+    .gestor {
+        flex-direction: column;
+        gap: 0.5em;
+        padding: 0.5em;
+    }
+
+    .usuariosEdicion {
+        justify-content: flex-start;
+        gap: 0.5em;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .usuariosTipos {
+        width: 95%;
+        flex-direction: column;
+        gap: 0.8em;
+    }
+
+    .usuariosClientes,
+    .usuariosComerciantes,
+    .usuariosGestores {
+        padding: 1em;
+        font-size: 0.95em;
+    }
+
+    .usuariosDatosClientes,
+    .usuariosDatosComerciantes,
+    .usuariosDatosGestores {
+        gap: 0.8em;
+    }
+
+    .cliente,
+    .comerciante,
+    .gestor {
+        flex-direction: column;
+        gap: 0.3em;
+        padding: 0.4em;
+    }
+
+    .usuariosEdicion {
+        justify-content: flex-start;
+        gap: 0.3em;
+    }
+
+    .usuariosDatos {
+        width: 100%;
+    }
+}

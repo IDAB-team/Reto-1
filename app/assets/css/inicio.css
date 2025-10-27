@@ -171,6 +171,7 @@
 
 .info p:hover {
     color: #1156CC; 
+    cursor: pointer;
 }
 
 .info a {

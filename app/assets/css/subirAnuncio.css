@@ -152,6 +152,23 @@ textarea.subirInput::placeholder {
     text-align: center;     /* opcional para centrar texto */
 }
 
+/* Tablets medianas */
+@media (max-width: 1024px) {
+    .subirFormulario {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+
+    .subirTitulo {
+        font-size: 1.4rem;
+    }
+
+    .subirFila {
+        gap: 1rem;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
     .subirFormulario {
         padding: 1rem;
@@ -163,5 +180,64 @@ textarea.subirInput::placeholder {
 
     .subirFila {
         flex-direction: column;
+        gap: 1rem;
+    }
+
+    .subirInput[type="text"],
+    .subirInput[type="file"],
+    .subirInput[type="textarea"],
+    select.subirInput,
+    textarea.subirInput {
+        font-size: 0.9rem;
+    }
+
+    #descripcion {
+        height: 120px;
+    }
+
+    .subirBoton,
+    .subirBotonAtras {
+        padding: 0.75rem 2rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .subirFormulario {
+        padding: 0.75rem;
+    }
+
+    .subirTitulo {
+        font-size: 1.1rem;
+    }
+
+    .subirFila {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .subirInput[type="text"],
+    .subirInput[type="file"],
+    .subirInput[type="textarea"],
+    select.subirInput,
+    textarea.subirInput {
+        font-size: 0.85rem;
+    }
+
+    #descripcion {
+        height: 100px;
+    }
+
+    .subirBoton,
+    .subirBotonAtras {
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    .subirBotones {
+        flex-direction: column;
+        gap: 1rem;
     }
 }

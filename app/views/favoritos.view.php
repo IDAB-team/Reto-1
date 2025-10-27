@@ -63,7 +63,9 @@
                 <div class="favoritoAnuncioCard">
 
                     <div class="favoritoAnunciosImagen">
+                        <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio->ID_Anuncio ?>">
                         <img src="./<?= $anuncio->Url_imagen ?>" alt="<?= $anuncio->nombreAnuncio ?>">
+                        </a>
                     </div>
                     <div class="favoritoAnunciosInfo">
                         <h4><?= $anuncio->nombreAnuncio ?></h4>

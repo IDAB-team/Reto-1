@@ -48,3 +48,61 @@ footer {
   font-size: 0.9em;
   color: #333;
 }
+
+@media (max-width: 1024px) {
+    .footerRedes {
+        gap: 0.8em;
+    }
+
+    .footerRedes img {
+        width: 1.8em;
+    }
+
+    .footerTexto,
+    .footerDerechos {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 0.8em 0;
+    }
+
+    .footerRedes {
+        flex-wrap: wrap;
+        gap: 0.5em;
+    }
+
+    .footerRedes img {
+        width: 1.6em;
+    }
+
+    .footerTexto,
+    .footerDerechos {
+        font-size: 0.9em;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footerRedes {
+        flex-direction: column;
+        gap: 0.4em;
+    }
+
+    .footerRedes div {
+        width: 2.5em;
+        height: 2.5em;
+        padding: 0.2em;
+    }
+
+    .footerRedes img {
+        width: 1.5em;
+    }
+
+    .footerTexto,
+    .footerDerechos {
+        font-size: 0.85em;
+    }
+}

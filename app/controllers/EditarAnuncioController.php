@@ -1,28 +1,65 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/CategoriaModel.php';
-//require_once __DIR__ . '/../models/XxxxxModel.php';
+require_once __DIR__ . '/../models/UsuarioModel.php';
+require_once __DIR__ . '/../models/AnuncioModel.php';
+
 
 class EditarAnuncioController extends BaseController {
     
     public function index() {
         session_start();
-        
-        // Header según tipo de usuario
-        $header = 'headerSinSession.php';
-        $user = null;
 
-        if (isset($_SESSION['user'])) {
-            $user = $_SESSION['user'];
+        try {
+            $header = 'headerSinSession.php';
+            $user = null;
 
-            if ($user['tipo'] === 'Cliente') {
-                $header = 'headerSessionComprador.php';
-            } elseif ($user['tipo'] === 'Comerciante') {
-                $header = 'headerSessionVendedor.php';
+            if (isset($_SESSION['user'])) {
+                $user = $_SESSION['user'];
+
+                // Solo permitimos Gestores, SuperAdmin y Comerciantes
+                if (!in_array($user['tipo'], ['Gestor', 'SuperAdmin', 'Comerciante'])) {
+                    $this->render('error.view.php', [
+                        'header' => 'headerSinSession.php',
+                        'mensaje' => 'No tienes permisos para editar anuncios.'
+                    ]);
+                    return;
+                }
+
+                // Header según tipo
+                switch ($user['tipo']) {
+                    case 'Gestor':
+                        $header = 'headerSessionGestor.php';
+                        break;
+                    case 'SuperAdmin':
+                        $header = 'headerSessionAdmin.php';
+                        break;
+                    case 'Comerciante':
+                        $header = 'headerSessionVendedor.php';
+                        break;
+                }
+            } else {
+                // Sin sesión → redirigir a error
+                $this->render('error.view.php', [
+                    'header' => 'headerSinSession.php',
+                    'mensaje' => 'Debes iniciar sesión para acceder a esta página.'
+                ]);
+                return;
             }
+
+            $categorias = CategoriaModel::getAll();
+            $this->render('editarAnuncio.view.php', [
+                'header' => $header,
+                'user' => $user,
+                'categorias' => $categorias
+            ]);
+
+        } catch (Exception $e) {
+            $this->render('error.view.php', [
+                'header' => 'headerSinSession.php',
+                'mensaje' => $e->getMessage()
+            ]);
         }
-        $categorias = CategoriaModel::getAll();
-        $this->render('editarAnuncio.view.php', ['header' => $header, 'user' => $user,'categorias' => $categorias]);
     }
 
     public function editarCategoria(){

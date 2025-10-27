@@ -242,3 +242,116 @@ body {
   color: white;
 }
 
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+    .FiltradoMain {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 2em;
+        margin-right: 2em;
+        gap: 1rem;
+    }
+
+    .filtradoCategorias {
+        width: 80%;
+        margin-bottom: 1.5em;
+    }
+
+    .filtradoAnuncioContenido {
+        min-width: 95%;
+    }
+
+    .filtradoAnunciosAnuncioCard {
+        flex-direction: row;
+        height: auto;
+    }
+
+    .filtradoAnunciosImagen {
+        width: 40%;
+        min-width: 150px;
+    }
+
+    .filtradoAnunciosInfo {
+        width: 60%;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media (max-width: 768px) {
+    .filtradoFormularioBusqueda {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .filtradoFormularioBusqueda select,
+    .filtradoFormularioBusqueda input[type="search"],
+    .filtradoFormularioBusqueda button {
+        width: 100%;
+        border-radius: 0.5rem;
+    }
+
+    .filtradoAnunciosAnuncioCard {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .filtradoAnunciosImagen {
+        width: 100%;
+        min-width: 0;
+        height: 180px;
+    }
+
+    .filtradoAnunciosInfo {
+        width: 100%;
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .FiltradoMain {
+        margin: 1em;
+        gap: 0.8rem;
+    }
+
+    .filtradoCategorias {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .filtradoFormularioBusqueda {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .filtradoFormularioBusqueda select,
+    .filtradoFormularioBusqueda input[type="search"],
+    .filtradoFormularioBusqueda button {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .filtradoAnunciosAnuncioCard {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .filtradoAnunciosImagen {
+        width: 100%;
+        height: 150px;
+    }
+
+    .filtradoAnunciosInfo {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .filtradoAnunciosPrecio p {
+        font-size: 1rem;
+    }
+
+    .filtradoFechaAnuncio {
+        font-size: 0.75rem;
+    }
+}

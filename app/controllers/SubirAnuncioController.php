@@ -1,8 +1,10 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/CategoriaModel.php';
+require_once __DIR__ . '/../models/UsuarioModel.php';
+require_once __DIR__ . '/../models/AnuncioModel.php';
 
-//require_once __DIR__ . '/../models/XxxxxModel.php';
+
 
 class SubirAnuncioController extends BaseController {
     
@@ -44,12 +46,51 @@ class SubirAnuncioController extends BaseController {
             ]);
         }
     }
-    
-    public function show() {}
-    
-    public function store() {}
-    
-    public function destroy() {}
-    
-    public function destroyAll() {}
+
+    public function subirCategoria(){
+            session_start();
+            if(!empty($_POST["nombre"]) && !empty($_POST["descripcion"]) && !empty($_POST["imagen"]) && !empty($_POST["descripcion"]) && !empty($_POST["categoria"]) && !empty($_POST["precio"]) && !empty($_POST["stock"])){
+                $nombreTmp = $_FILES["imagen"]["tmp_name"];
+                $nombreOriginal = $_FILES["imagen"]["name"];
+                $rutaFisica = __DIR__ . "/../assets/images/anuncios/" . time() . "_" . $nombreOriginal;
+                $rutaWeb = "assets/images/anuncios/" . time() . "_" . $nombreOriginal;
+                $carpeta = __DIR__ . "/../assets/images/anuncios/";
+                if (!file_exists($carpeta)) {
+                    mkdir($carpeta, 0777, true);
+                }
+                move_uploaded_file($nombreTmp, $rutaFisica);
+                $idCategoria=CategoriaModel::devolverIdCategoria($_POST["categoria"]);
+                $idUsuario = UsuarioModel::devolverIdUsuario();
+                $data=array("imagen" => $rutaWeb,
+                    "usuario"=> $idUsuario,
+                    "nombre" => $_POST["nombre"],
+                    "descripcion" => $_POST["descripcion"],
+                    "categoria" => "$idCategoria",
+                    "fecha" => date("Y-m-d H:i:s"),
+                    "precio" => $_POST["precio"],
+                    "stock" => $_POST["stock"]
+            );
+            var_dump($data);
+            AnuncioModel::insertarAnuncio($data);
+            header("Location: index.php?controller=SubirAnuncioController");
+            exit;
+        }
+    }
+
+    public function show() {
+        $id_categoria=CategoriaModel::devolverIdCategoria($_POST["categoria"]);
+        echo $id_categoria;
+        $id_usuario = UsuarioModel::devolverIdUsuario();
+        echo $id_usuario;
+        $data=array("imagen" => "assets/images/iconos/categorias/Moda.png",
+        "usuario"=> $id_usuario,
+        "nombre" => $_POST["nombre"],
+        "descripcion" => $_POST["descripcion"],
+        "categoria" => $id_categoria,
+        "fecha" => date("Y-m-d H:i:s"),
+        "precio" => $_POST["precio"],
+        "stock" => $_POST["stock"]
+        );
+        var_export($data);
+    }
 }

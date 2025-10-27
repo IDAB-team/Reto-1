@@ -61,7 +61,7 @@ include __DIR__ . '/layout/' . $header;
                             </div>
                         </div>
                         <div class="misAnunciosPrecio">
-                            <p><?=intval($anuncio->precioAnuncio) ?> €</p>
+                            <p><?=$anuncio->precioAnuncio ?> €</p>
                         </div>
                     </div>
                     <div class="misAnunciosEdicion">

@@ -8,3 +8,8 @@
 .anuncioMain{
     justify-content:center;
 }
+
+.anuncioDivision{
+    display:flex;
+    
+}

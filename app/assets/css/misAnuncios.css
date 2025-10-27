@@ -176,6 +176,13 @@
     overflow: hidden; 
     max-height: 150px;
 }
+.misAnunciosTexto h4{
+    font-size: large;
+}
+.misAnunciosTexto h5{
+    font-size: medium;
+    color: #1156CC;
+}
 
     .misAnunciosAnuncioCard{
     display: flex;  
@@ -203,7 +210,7 @@
     object-position: center; 
     
 }
-.desc p {
+    .desc p {
     font-size: small;
     font-style: italic;
     line-height: 1.4;
@@ -217,6 +224,7 @@
     }
     .misAnunciosPrecio{
     font-weight: bolder;
+    font-size: x-large;
     align-items: left;
 }
     .misAnunciosFecha{
@@ -234,14 +242,13 @@
     justify-content: flex-end;
     }
     
-    .misAnunciosEdicion [type="button"] {
-    border: none;
-    color:#1156CC;
+    .misAnunciosEdicion a{
+        text-decoration: none;
+        color: black;
     }
-    .misAnunciosEdicion [type="button"] :hover{
-    background-color: #1156CC;
-    color: white;
-    }
+    .misAnunciosEdicion :hover{
+    color: #1156CC;
+    } 
 
     .usuarioInformacion {
     display: flex;

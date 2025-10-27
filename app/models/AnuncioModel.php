@@ -146,6 +146,7 @@ class AnuncioModel {
     public static function getByIdUser($user){
         $db = Database::getConnection();
         $sql="SELECT a.Nombre AS nombreAnuncio,
+        a.ID_Anuncio AS idAnuncio,
         a.Descripcion AS descAnuncio,
         a.Fecha_pub AS fechaAnuncio, 
         a.Precio AS precioAnuncio, 
@@ -171,7 +172,7 @@ class AnuncioModel {
     public static function getAnuncioById($idAnuncio){
         $db = Database::getConnection();
         $sql="SELECT 
-                a.ID_Anuncio,
+                a.ID_Anuncio AS idAnuncio,
                 a.Nombre AS nombreAnuncio,
                 a.Descripcion AS descAnuncio,
                 a.Fecha_pub AS fechaAnuncio, 

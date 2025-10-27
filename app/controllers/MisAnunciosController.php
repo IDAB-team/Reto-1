@@ -77,8 +77,6 @@ class MisAnunciosController extends BaseController {
         header('Location : index.php?controller=MisAnunciosController&accion=index');
         exit;
     }
-    
-    public function destroyAll() {}
 
     public function eliminar(){
         if (!empty($_GET["anuncio"])) {
@@ -89,4 +87,22 @@ class MisAnunciosController extends BaseController {
         header("Location: index.php?controller=MisAnunciosController");
         exit;
     }
+    public function getPaginas() {
+    session_start();
+    header('Content-Type: application/json');
+
+    if (!isset($_SESSION['user'])) {
+        echo json_encode(['error' => 'Usuario no autenticado']);
+        exit;
+    }
+
+    $user = $_SESSION['user'];
+    $pagina = isset($_GET['pagina']) ? intval($_GET['pagina']) : 1;
+    $limit = 1;
+    $offset = ($pagina - 1) * $limit;
+
+    $listaAnuncios = AnuncioModel::getByIdUser($user['id'], $limit, $offset);
+    echo json_encode($listaAnuncios);
+    exit;
+}
 }

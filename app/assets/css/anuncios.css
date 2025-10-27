@@ -27,3 +27,12 @@ body {
     margin: 2em auto;
     padding: 0 2em;
 }
+
+.misAnunciosEdicion div a {
+    text-decoration: none;
+    color: black;
+}
+
+.misAnunciosEdicion div a:hover {
+    color: #1156CC;
+}

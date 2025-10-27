@@ -274,6 +274,12 @@
     background-color: #1156CC;
     color: white;
 }
-    
 
+.misAnunciosEdicion div a {
+    text-decoration: none;
+    color: black;
+}
 
+.misAnunciosEdicion div a:hover {
+    color: #1156CC;
+}

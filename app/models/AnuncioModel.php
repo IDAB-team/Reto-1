@@ -204,7 +204,7 @@ class AnuncioModel {
                 ORDER BY a.Fecha_pub DESC"; // opcional: ordenar por fecha
         $stmt = $db->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function deleteById($id) {

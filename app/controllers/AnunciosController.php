@@ -3,37 +3,16 @@ require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/CategoriaModel.php';
 require_once __DIR__ . '/../models/AnuncioModel.php';
 
-
 class AnunciosController extends BaseController {
 
     public function index() {
         session_start();
 
         try {
-            // Header y usuario por defecto
             $header = 'headerSinSession.php';
-            $user = null;
+            $user = $_SESSION['user'] ?? null;
 
-            if (isset($_SESSION['user'])) {
-                $user = $_SESSION['user'];
-
-                // Solo permitimos Gestores y SuperAdmin
-                if (!in_array($user['tipo'], ['Gestor', 'SuperAdmin'])) {
-                    header('Location: index.php?controller=ErrorController');
-                    exit;
-                }
-
-                // Header según tipo
-                switch ($user['tipo']) {
-                    case 'Gestor':
-                        $header = 'headerSessionGestor.php';
-                        break;
-                    case 'SuperAdmin':
-                        $header = 'headerSessionAdmin.php';
-                        break;
-                }
-            } else {
-                // Si no hay sesión, mostramos error
+            if (!$user || !in_array($user['tipo'], ['Gestor', 'SuperAdmin'])) {
                 $this->render('error.view.php', [
                     'header' => 'headerSinSession.php',
                     'mensaje' => 'No tienes permisos para acceder a esta página.'
@@ -41,10 +20,13 @@ class AnunciosController extends BaseController {
                 return;
             }
 
+            $header = $user['tipo'] === 'SuperAdmin'
+                ? 'headerSessionAdmin.php'
+                : 'headerSessionGestor.php';
+
             $listaAnuncios = AnuncioModel::getTodos();
             $categorias = CategoriaModel::getAll();
 
-            // Renderizamos la vista principal de anuncios
             $this->render('anuncios.view.php', [
                 'header' => $header,
                 'user' => $user,
@@ -59,21 +41,12 @@ class AnunciosController extends BaseController {
             ]);
         }
     }
-    
-    public function show() {}
-    
-    public function store() {}
-    
-    public function destroy() {}
-    
-    public function destroyAll() {}
 
-    public function eliminar(){
+    public function eliminar() {
         if (!empty($_GET["anuncio"])) {
             $idAnuncio = $_GET["anuncio"];
             AnuncioModel::deleteById($idAnuncio);
         }
-
         header("Location: index.php?controller=AnunciosController");
         exit;
     }

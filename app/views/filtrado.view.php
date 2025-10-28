@@ -94,16 +94,14 @@
 
   <?php include __DIR__ . '/layout/footer.php'; ?>
 
-  <!-- Variable global para saber si hay sesión iniciada -->
-    <script>
-    const usuarioLogueado = <?= isset($user) ? 'true' : 'false' ?>;
-    const favoritosUsuario = <?= json_encode($favoritos ?? []) ?>;
-    </script>
-
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/scripts/filtrado.js" ></script>
 
+  <!-- Variables globales para el JS -->
+  <script>
+  const usuarioLogueado = <?= !empty($user) ? 'true' : 'false' ?>;
+  const favoritosUsuario = <?= json_encode($favoritos ?? []) ?>;
+  </script>  
 
-  <script src="/app/assets/scripts/filtrado.js"></script>
 </html>

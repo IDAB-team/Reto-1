@@ -9,7 +9,174 @@
     justify-content:center;
 }
 
-.anuncioDivision{
-    display:flex;
-    
+.anuncioDivision {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* hace que ambas columnas sean igual de altas */
+    gap: 40px; /* separación entre columnas */
+}
+.anuncioIzquierda,
+.contactoDerecha {
+    flex: 1; /* permite que se estiren proporcionalmente */
+}
+
+/*izquierda*/
+.anuncioIzquierda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid #1156CC;
+    padding-right: 30px;
+    margin-right: 30px;
+    position: relative; /* necesario para posicionar .abajodos respecto a este contenedor */
+}
+.anuncioArriba{
+    display: flex;
+    justify-content: space-between; /* separa el título y el icono */
+    align-items: center; /* alinea verticalmente */
+}
+
+/* Contenedor del título + favorito */
+.tituloFavorito {
+    display: flex;
+    align-items: center; /* centra verticalmente el icono con el h1 */
+    gap: 20em;           /* espacio entre h1 y el icono */
+}
+
+/* Asegura que el h1 no tenga margen inesperado */
+.tituloFavorito h1 {
+    margin: 0;
+    font-size: 24px; /* ajusta según tu diseño */
+}
+
+/* Ajusta el tamaño del icono para que sea igual de alto que el h1 */
+.iconoFavorito {
+    height: 100%;   /* toma la altura del contenedor flex */
+    width: auto;    /* mantiene proporción */
+}
+
+/* limitar la altura máxima para que no se deforme */
+.tituloFavorito .iconoFavorito svg {
+    max-height: 4em; /* opcional, ajusta según diseño */
+}
+
+/*favorito*/
+.favoritoToggle {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 0.5em;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.favoritoToggle.favoritoActivo {
+  color: #FFBB00;
+}
+
+.anuncioMedio img{
+    width: 100%;
+    max-width: 700px; /* limita tamaño */
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    margin-top:5px;
+}
+
+/* Descripción centrada, igual ancho que la imagen */
+.anuncioAbajo {
+    text-align: center;
+    max-width: 700px; /* mismo ancho que la imagen */
+    margin-top: 20px;
+}
+
+/* Contenedor del precio y fecha — abajo a la derecha */
+.abajodos {
+    position: absolute;
+    bottom: 0;          /* fija al fondo de la columna izquierda */
+    right: 50px;        /* ajusta la distancia al borde */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    font-weight: 500;
+}
+
+/* Ajustes visuales */
+.abajodos label {
+    margin: 3px 0;
+}
+
+/*anuncio derecha*/
+.contactoDerecha{
+    display: flex;
+    flex-direction: column;   /* columna para centrar verticalmente los elementos internos */
+    padding-left: 5px;
+    margin-left: 10px;
+}
+.contactoDerecha h1{
+    font-weight:normal;
+    font-size:20px;
+    text-align: center;
+}
+.contactoDerecha h2{
+    text-align: center;
+    margin-bottom: 30px;
+    text-decoration: none;
+}
+.contactoDerecha h2 .linkComerciante{
+    text-decoration: none; /*elimina el subrayado */
+    color: #1156CC;   
+}
+.contactoDerecha .anuncioFormulario{
+    display: flex;
+    flex-direction: column;
+    width: 100%;              /* opcional para que ocupen todo el ancho disponible */
+}
+.contactoDerecha label{
+    color:#1156CC;
+}
+
+/*Estilos compartidos por todos los campos de entrada */
+.contactoDerecha .inputLabel,
+.contactoDerecha .inputTextArea {
+    max-width: 800px; /* ajusta según diseño */
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: #1156CC;
+    font-size: 14px;
+    padding: 5px 5px;
+    margin-left: 5px;
+    margin-bottom: 15px;
+}
+
+/*Ajustes específicos para inputs */
+.contactoDerecha .inputLabel {
+    height: 45px;
+}
+
+/*Ajustes específicos para textarea */
+.contactoDerecha .inputTextArea {
+    height: 150px;
+    resize: none;
+}
+
+.contactoDerecha .bEnviar{
+    display:block;
+    order: none;
+    padding: 0.875rem 3rem;
+    width: 40%; /* deja que el botón se ajuste al contenido */
+    min-width: 150px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color:#1156CC;
+    color:white;
+    cursor:pointer;
+    margin: 0 auto; /* centra horizontalmente el botón */
+}
+.contactoDerecha .bEnviar:hover{
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }

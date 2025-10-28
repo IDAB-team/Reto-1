@@ -50,12 +50,13 @@
                         </div>
                         <div class="infoCard">
                             <div class="info">
-                                <h3>
-                                    <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">
+                                <div class="nombreAnuncio">
+                                   <h3> <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">
                                         <?= htmlspecialchars($anuncio['Nombre']) ?>
-                                    </a>
-                                </h3>
-                                <p><?= ucfirst(htmlspecialchars($anuncio['comerciante'])) ?></p>
+                                    </a> </h3>
+                                </div>
+                                <p><a href="index.php?controller=VendedorController&accion=index&id=<?= $anuncio['ID_Anuncio']?>"><?= $anuncio['comerciante'] ?>
+                                </p></a>
                                 <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">Ver más</a>
                             </div>
                             <div class="infoPrecio">

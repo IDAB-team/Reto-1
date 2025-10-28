@@ -46,12 +46,12 @@ class EditarAnuncioController extends BaseController {
                 return;
             }
 
+            $idAnuncio = $_GET['anuncio'];
+            $anuncio=AnuncioModel::getAnuncioById($idAnuncio);
+            $nombreArray=CategoriaModel::devolverNombreCategoria($anuncio->ID_Categoria);
+            $nombre = $nombreArray['Nombre'];
             $categorias = CategoriaModel::getAll();
-            $this->render('editarAnuncio.view.php', [
-                'header' => $header,
-                'user' => $user,
-                'categorias' => $categorias
-            ]);
+            $this->render('editarAnuncio.view.php', ['header' => $header, 'user' => $user,'categorias' => $categorias,'anuncio' => $anuncio,'nombre' =>$nombre,'idAnuncio' => $idAnuncio]);
 
         } catch (Exception $e) {
             $this->render('error.view.php', [
@@ -60,18 +60,13 @@ class EditarAnuncioController extends BaseController {
             ]);
         }
 
-        $idAnuncio = $_GET['id'];
-        $anuncio=AnuncioModel::getAnuncioById($idAnuncio);
-        $nombreArray=CategoriaModel::devolverNombreCategoria($anuncio->ID_Categoria);
-        $nombre = $nombreArray['Nombre'];
-        $categorias = CategoriaModel::getAll();
-        $this->render('editarAnuncio.view.php', ['header' => $header, 'user' => $user,'categorias' => $categorias,'anuncio' => $anuncio,'nombre' =>$nombre,'idAnuncio' => $idAnuncio]);
+        
     }
 
     public function editarAnuncio(){
         session_start();
         if(!empty($_POST["nombre"]) || !empty($_POST["descripcion"]) || !empty($_POST["imagen"]) || !empty($_POST["categoria"]) || !empty($_POST["precio"]) || !empty($_POST["stock"])){
-            $anuncioActual = AnuncioModel::getAnuncioById($_GET["id"]);
+            $anuncioActual = AnuncioModel::getAnuncioById($_GET["anuncio"]);
             if (!empty($_FILES["imagen"]["name"])) {
                 $nombreTmp = $_FILES["imagen"]["tmp_name"];
                 $nombreOriginal = $_FILES["imagen"]["name"];
@@ -94,7 +89,7 @@ class EditarAnuncioController extends BaseController {
                 "fecha" => date("Y-m-d H:i:s"), 
                 "precio" => $_POST["precio"],
                 "stock" => $_POST["stock"],
-                "idAnuncio" => $_GET["id"] 
+                "idAnuncio" => $_GET["anuncio"] 
             );
             var_dump($data);
             AnuncioModel::modificarAnuncio($data);
@@ -104,7 +99,7 @@ class EditarAnuncioController extends BaseController {
             $_SESSION["error"]= "Error al editar el anuncio";
             $_SESSION["tipoMensaje"] = "error";
         }  
-            header("Location: http://localhost/reto-1/app/index.php?controller=EditarAnuncioController&id=".$data['idAnuncio']);
+            header("Location: index.php?controller=EditarAnuncioController&anuncio=".$data['idAnuncio']);
             exit;
     } 
     

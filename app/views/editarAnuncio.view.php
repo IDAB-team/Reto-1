@@ -6,7 +6,7 @@
     ?>
     <main class="editarMain">
         <h1 class="editarTitulo">Editar anuncio</h1>
-        <form action="index.php?controller=editarAnuncioController&accion=editarAnuncio&id=<?=$idAnuncio?>" 
+        <form action="index.php?controller=editarAnuncioController&accion=editarAnuncio&anuncio=<?=$idAnuncio?>" 
             enctype="multipart/form-data" 
             method="post" 
             class="editarFormulario">

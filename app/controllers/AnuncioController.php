@@ -31,12 +31,21 @@ class AnuncioController extends BaseController {
         $anuncio = AnuncioModel::getAnuncioById($idAnuncio);
         $infoUsuario = $this->obtenerHeaderYUsuario();
 
+        // Revisar si el anuncio es favorito del usuario
+        $esFavorito = false;
+        if ($infoUsuario['user']) {
+            $idUsuario = $infoUsuario['user']['id'];
+            $esFavorito = FavoritoModel::existeFavorito($idUsuario, $idAnuncio);
+        }
+
         $this->render('anuncio.view.php', [
             'header' => $infoUsuario['header'],
             'user' => $infoUsuario['user'],
-            'anuncio' => $anuncio
+            'anuncio' => $anuncio,
+            'esFavorito' => $esFavorito
         ]);
     }
+
 
     // Activar/desactivar favorito
     public function existeFavorito() {

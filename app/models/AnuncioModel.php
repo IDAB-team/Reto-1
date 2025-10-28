@@ -182,7 +182,8 @@ class AnuncioModel {
                 a.Fecha_pub AS fechaAnuncio, 
                 a.Precio AS precioAnuncio, 
                 a.Url_Imagen AS urlImagen,
-                u.Username AS userName
+                u.Username AS userName,
+                u.ID_Usuario AS idComerciante
             FROM anuncios a
             JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
             WHERE a.ID_Anuncio = :idAnuncio";

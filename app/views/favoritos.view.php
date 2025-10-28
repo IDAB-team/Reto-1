@@ -108,8 +108,11 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
- 
-
-    <script src="/app/assets/scripts/favorito.js"></script>
+    <script src="assets/scripts/favorito.js"></script>
+    <!-- Variables globales para el JS -->
+    <script>
+    const usuarioLogueado = <?= !empty($user) ? 'true' : 'false' ?>;
+    const favoritosUsuario = <?= json_encode($favoritos ?? []) ?>;
+    </script>
 
     </html>

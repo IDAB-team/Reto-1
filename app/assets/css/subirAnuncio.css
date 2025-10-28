@@ -147,9 +147,35 @@ textarea.subirInput::placeholder {
     cursor: pointer;
     transition: all 0.3s ease;  
 
-    text-decoration: none;  /* quitar subrayado */
-    color: #2563eb;         /* mantener color azul */
-    text-align: center;     /* opcional para centrar texto */
+    text-decoration: none;
+    color: #2563eb;   
+    text-align: center;    
+}
+
+#mensajeResultado {
+    max-width: 1100px;
+    margin: 1rem auto;
+    padding: 1rem 0rem;
+    border-radius: 8px;
+    font-weight: 700;
+    text-align: left;
+    transition: opacity 0.5s ease;
+}
+
+.visible {
+    display: block;
+}
+
+#mensajeResultado.exito {
+    color: #166534;
+}
+
+#mensajeResultado.error {
+    color: #991b1b
+}
+
+#mensajeResultado.oculto {
+    display: none;
 }
 
 /* Tablets medianas */

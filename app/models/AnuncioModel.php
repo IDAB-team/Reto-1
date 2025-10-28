@@ -29,7 +29,7 @@ class AnuncioModel {
         VALUES (:usuario,:categoria,:nombre,:descripcion,:fecha,:precio,:stock,:imagen)");
         $stmt->execute($data);
     }
-    public static function modificarCategoria($data){
+    public static function modificarAnuncio($data){
         $dba = Database::getConnection();
         $stmt = $dba->prepare("UPDATE anuncios SET 
             ID_Usuario = :usuario,
@@ -175,8 +175,11 @@ class AnuncioModel {
 
     public static function getAnuncioById($idAnuncio){
         $db = Database::getConnection();
+        //se añadio id_categoria en el ultimo update si da error algo mirar aqui
         $sql="SELECT 
-                a.ID_Anuncio AS idAnuncio,
+                a.ID_Anuncio,
+                a.ID_Categoria,
+                a.ID_Usuario,
                 a.Nombre AS nombreAnuncio,
                 a.Descripcion AS descAnuncio,
                 a.Fecha_pub AS fechaAnuncio, 

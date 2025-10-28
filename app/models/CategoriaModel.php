@@ -20,4 +20,13 @@ class CategoriaModel {
             return $resultado['ID_Categoria'];
         }
     }
+    public static function devolverNombreCategoria($id){
+        $dba= Database::getConnection();
+        $stmt = $dba ->prepare("SELECT Nombre FROM categorias WHERE ID_Categoria = :id");
+        $stmt -> execute(["id" => $id]);
+        $resultado = $stmt ->fetch(PDO::FETCH_ASSOC);
+        if ($resultado) {
+            return $resultado;
+        }
+    }
 }

@@ -108,6 +108,10 @@ body{
     font-size: x-small;
    
 }
+.vendedorAnuncioDetalles a{
+    text-decoration: none;
+    color:#1156CC
+}
 .vendedorAnuncioDetalles .fecha{
     position: absolute;
   top: 0.3em;
@@ -118,4 +122,101 @@ body{
 .vendedorPrecio{
     align-self: center;
     margin-right: 1em;
+}
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+    .vendedorContenido {
+        max-width: 90%;
+    }
+
+    .vendedorAnuncioCard {
+        width: 180px;
+        height: 140px;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media (max-width: 768px) {
+    .vendedorInfo {
+        flex-direction: column;
+        gap: 0.5em;
+        align-items: center;
+    }
+
+    .vendedorContenido {
+        max-width: 95%;
+    }
+
+    .vendedorAnuncioCard {
+        width: 150px;
+        height: 130px;
+    }
+
+    .vendedorAnuncioDetalles {
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.3em;
+    }
+
+    .vendedorAnuncioDetalles .desc {
+        font-size: smaller;
+    }
+
+    .vendedorAnuncioDetalles .fecha {
+        font-size: xx-small;
+        top: 0.2em;
+        right: 0.5em;
+    }
+
+    .vendedorPrecio {
+        margin-right: 0.5em;
+        font-size: 0.9em;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .vendedorInfo {
+        flex-direction: column;
+        gap: 0.5em;
+        align-items: center;
+    }
+
+    .vendedorAnuncioCard {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .vendedorAnuncioImagen {
+        height: 150px;
+    }
+
+    .vendedorAnuncioDetalles {
+        flex-direction: column;
+        position: static;
+        padding: 0.5em;
+        margin-left: 0;
+    }
+
+    .vendedorAnuncioDetalles .desc {
+        font-size: small;
+    }
+
+    .vendedorAnuncioDetalles .fecha {
+        position: static;
+        text-align: right;
+        margin-top: 0.2em;
+    }
+
+    .vendedorPrecio {
+        align-self: flex-start;
+        margin: 0.3em 0;
+    }
+
+    .vendedorLista {
+        flex-direction: column;
+        align-items: center;
+    }
 }

@@ -30,3 +30,63 @@
 .btn-volver:hover {
     background-color: #0c45a3;
 }
+
+/* Tablets medianas */
+@media (max-width: 1024px) {
+    .errorMain {
+        padding: 3em 2em;
+    }
+
+    .errorMain h1 {
+        font-size: 1.8em;
+    }
+
+    .errorMain p {
+        font-size: 1.1em;
+    }
+
+    .btn-volver {
+        padding: 0.5em 1em;
+        font-size: 0.95em;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media (max-width: 768px) {
+    .errorMain {
+        padding: 2.5em 1.5em;
+    }
+
+    .errorMain h1 {
+        font-size: 1.6em;
+    }
+
+    .errorMain p {
+        font-size: 1em;
+    }
+
+    .btn-volver {
+        padding: 0.5em 0.9em;
+        font-size: 0.9em;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .errorMain {
+        padding: 2em 1em;
+    }
+
+    .errorMain h1 {
+        font-size: 1.4em;
+    }
+
+    .errorMain p {
+        font-size: 0.95em;
+    }
+
+    .btn-volver {
+        padding: 0.4em 0.8em;
+        font-size: 0.85em;
+    }
+}

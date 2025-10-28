@@ -143,22 +143,27 @@ class AnuncioModel {
     }
 
     //Buscar anuncios por id de usuario del comerciante
-    public static function getByIdUser($user){
-        $db = Database::getConnection();
-        $sql="SELECT a.Nombre AS nombreAnuncio,
-        a.Descripcion AS descAnuncio,
-        a.Fecha_pub AS fechaAnuncio, 
-        a.Precio AS precioAnuncio, 
-        a. Url_Imagen AS urlImagen,
-        u.Username AS userName
-        FROM anuncios a 
-        JOIN usuarios u ON a.ID_Usuario=u.ID_Usuario
-        WHERE u.ID_Usuario=:idUser";
+    public static function getByIdUser($user, $limit = 1, $offset = 0){
+    $db = Database::getConnection(); 
 
-        $stmt =$db->prepare($sql);
-        $stmt->execute(['idUser'=>$user]);
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
-    }
+    $sql = "SELECT a.Nombre AS nombreAnuncio,
+                   a.ID_Anuncio AS idAnuncio,
+                   a.Descripcion AS descAnuncio,
+                   a.Fecha_pub AS fechaAnuncio, 
+                   a.Precio AS precioAnuncio, 
+                   a.Url_Imagen AS urlImagen,
+                   u.Username AS userName
+            FROM anuncios a 
+            JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
+            WHERE u.ID_Usuario = :idUser
+            LIMIT $limit OFFSET $offset";
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':idUser', $user, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+}
 
     public static function EliminarById($idUsuario, $idAnuncio){
         $db = Database::getConnection();
@@ -180,7 +185,8 @@ class AnuncioModel {
                 a.Fecha_pub AS fechaAnuncio, 
                 a.Precio AS precioAnuncio, 
                 a.Url_Imagen AS urlImagen,
-                u.Username AS userName
+                u.Username AS userName,
+                u.ID_Usuario AS idComerciante
             FROM anuncios a
             JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
             WHERE a.ID_Anuncio = :idAnuncio";
@@ -207,7 +213,7 @@ class AnuncioModel {
                 ORDER BY a.Fecha_pub DESC"; // opcional: ordenar por fecha
         $stmt = $db->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function deleteById($id) {

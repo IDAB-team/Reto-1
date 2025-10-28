@@ -185,7 +185,30 @@
     transform: scale(1.1);
 }
 
-/* ============================== RESPONSIVE ============================== */
+/* Tablets medianas */
+@media (max-width: 1024px) {
+    .crearGestorFormulario {
+        padding: 1.5rem;
+    }
+
+    .crearGestorTitulo {
+        font-size: 1.35rem;
+        margin: 1.5rem 0;
+    }
+
+    .crearGestorBoton,
+    .crearGestorBotonAtras {
+        padding: 0.8rem 2.5rem;
+        font-size: 0.95rem;
+    }
+
+    .crearGestorInput[type="text"],
+    .crearGestorInput[type="password"] {
+        font-size: 0.95rem;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
     .crearGestorFormulario {
         padding: 1rem;
@@ -193,6 +216,18 @@
 
     .crearGestorTitulo {
         font-size: 1.25rem;
+        margin: 1.2rem 0;
+    }
+
+    .crearGestorBoton,
+    .crearGestorBotonAtras {
+        padding: 0.75rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .crearGestorInput[type="text"],
+    .crearGestorInput[type="password"] {
+        font-size: 0.9rem;
     }
 
     .crearGestorInput[type="password"].crearGestorPasswordInput {
@@ -202,6 +237,38 @@
     .crearGestorTogglePassword {
         right: 0.75rem;
         font-size: 0.95rem;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .crearGestorFormulario {
+        padding: 0.8rem;
+    }
+
+    .crearGestorTitulo {
+        font-size: 1.1rem;
+        margin: 1rem 0;
+    }
+
+    .crearGestorBoton,
+    .crearGestorBotonAtras {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.85rem;
+    }
+
+    .crearGestorInput[type="text"],
+    .crearGestorInput[type="password"] {
+        font-size: 0.85rem;
+    }
+
+    .crearGestorInput[type="password"].crearGestorPasswordInput {
+        padding-right: 2rem;
+    }
+
+    .crearGestorTogglePassword {
+        right: 0.65rem;
+        font-size: 0.9rem;
     }
 }
 

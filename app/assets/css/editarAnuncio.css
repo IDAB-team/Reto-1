@@ -185,6 +185,30 @@ textarea.editarInput::placeholder {
     display: none;
 }
 
+/* Tablets medianas */
+@media (max-width: 1024px) {
+    .editarFormulario {
+        padding: 1.5rem;
+    }
+
+    .editarTitulo {
+        font-size: 1.35rem;
+        margin: 1.5rem 0;
+    }
+
+    .editarFila {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .editarBoton,
+    .editarBotonAtras {
+        padding: 0.8rem 2.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
     .editarFormulario {
         padding: 1rem;
@@ -192,9 +216,49 @@ textarea.editarInput::placeholder {
 
     .editarTitulo {
         font-size: 1.25rem;
+        margin: 1.2rem 0;
     }
 
     .editarFila {
         flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .editarBoton,
+    .editarBotonAtras {
+        padding: 0.75rem 2rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .editarFormulario {
+        padding: 0.8rem;
+    }
+
+    .editarTitulo {
+        font-size: 1.1rem;
+        margin: 1rem 0;
+    }
+
+    .editarFila {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .editarBoton,
+    .editarBotonAtras {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .editarImagen {
+        height: 120px;
+        font-size: 1.5rem;
+    }
+
+    #descripcion {
+        height: 120px;
     }
 }

@@ -4,8 +4,6 @@ require_once __DIR__ . '/../models/CategoriaModel.php';
 require_once __DIR__ . '/../models/UsuarioModel.php';
 require_once __DIR__ . '/../models/AnuncioModel.php';
 
-//require_once __DIR__ . '/../models/XxxxxModel.php';
-
 class SubirAnuncioController extends BaseController {
     
     public function index() {
@@ -103,4 +101,5 @@ class SubirAnuncioController extends BaseController {
     public function destroy() {}
     
     public function destroyAll() {}
+
 }

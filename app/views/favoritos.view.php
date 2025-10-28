@@ -63,7 +63,9 @@
                 <div class="favoritoAnuncioCard">
 
                     <div class="favoritoAnunciosImagen">
+                        <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio->ID_Anuncio ?>">
                         <img src="./<?= $anuncio->Url_imagen ?>" alt="<?= $anuncio->nombreAnuncio ?>">
+                        </a>
                     </div>
                     <div class="favoritoAnunciosInfo">
                         <h4><?= $anuncio->nombreAnuncio ?></h4>
@@ -106,8 +108,11 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
- 
-
-    <script src="/app/assets/scripts/favorito.js"></script>
+    <script src="assets/scripts/favorito.js"></script>
+    <!-- Variables globales para el JS -->
+    <script>
+    const usuarioLogueado = <?= !empty($user) ? 'true' : 'false' ?>;
+    const favoritosUsuario = <?= json_encode($favoritos ?? []) ?>;
+    </script>
 
     </html>

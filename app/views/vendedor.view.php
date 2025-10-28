@@ -25,10 +25,11 @@
     <section class="vendedorContenido">
 <!--Ordenar-->
     <div class="vendedorFiltro">    
-        <select name="vendedorOrden">
+        <select id="vendedorOrden" name="vendedorOrden">
             <option value="ordenar" selected disabled hidden>Anuncios ▽</option>
-            <option value="fecha">Fecha de publicación</option>
-            <option value="precio">Precio</option>
+            <option value="Por fecha">Fecha de publicación</option>
+            <option value="Precio más bajo">Precio más bajo</option>
+            <option value="Precio más alto">Precio más alto</option>
         </select>    
     </div>
 
@@ -37,21 +38,24 @@
         <?php if(!empty($listaAnuncios)): ?>
 
         <?php foreach($listaAnuncios as $anuncio): ?>
-        <!--    <a href="index.php?controller=AnuncioController&id=<?=$anuncio->id ?>"> -->
             <div class="vendedorAnuncioCard">
                 <div class="vendedorAnuncioImagen">
-                <img src="./<?= $anuncio->urlImagen ?>" alt="<?= $anuncio->nombreAnuncio ?>">
+                    <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio->idAnuncio?>">  
+                    <img src="./<?= $anuncio->urlImagen ?>" alt="<?= $anuncio->nombreAnuncio ?>">
+                    </a>
                 </div>
                 
                 <div class="vendedorAnuncioDetalles">
                     <div class="vendedorAnuncioTexto">
                     <h5><?= $anuncio->nombreAnuncio ?></h5>
-                    <p class="desc"><?= $anuncio->descAnuncio ?></p>
+                    <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio->idAnuncio ?>"> 
+                        <p class="desc">Ver m&aacutes...</p> 
+                    </a>
                     <p class="fecha"><?=date('d/m/Y', strtotime($anuncio->fechaAnuncio)) ?></p>
                     </div>
                     
                     <div class="vendedorPrecio">
-                    <h4><?= intval($anuncio ->precioAnuncio) ?>€</h4>
+                    <h4><?= $anuncio ->precioAnuncio ?>€</h4>
                     </div>
                 </div>
 
@@ -84,4 +88,6 @@
 
     
     <?php include __DIR__ . '/layout/footer.php'; ?>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/app/assets/scripts/vendedor.js"></script>
 </html>

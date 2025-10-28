@@ -76,7 +76,7 @@
 
 .anuncioMedio img{
     width: 100%;
-    max-width: 700px; /* limita tamaño */
+    max-width: 500px; /* limita tamaño */
     height: auto;
     border-radius: 10px;
     display: block;
@@ -87,7 +87,7 @@
 /* Descripción centrada, igual ancho que la imagen */
 .anuncioAbajo {
     text-align: center;
-    max-width: 700px; /* mismo ancho que la imagen */
+    max-width: 500px; /* mismo ancho que la imagen */
     margin-top: 20px;
 }
 

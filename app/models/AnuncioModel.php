@@ -143,7 +143,7 @@ class AnuncioModel {
     }
 
     //Buscar anuncios por id de usuario del comerciante
-    public static function getByIdUser($user, $limit = 1, $offset = 0){
+    public static function getByIdUser($user, $limit = 6, $offset = 0){
     $db = Database::getConnection(); 
 
     $sql = "SELECT a.Nombre AS nombreAnuncio,

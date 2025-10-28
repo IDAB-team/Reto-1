@@ -179,6 +179,10 @@
     text-decoration: none;
     font-size: 0.8em;
 }
+.nombreAnuncio h3 {
+    color: black !important;
+    font-weight: bold;
+}
 
 .infoPrecio {
     font-size: 1.5em;

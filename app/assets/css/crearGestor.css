@@ -117,18 +117,6 @@
     display: block;
 }
 
-#mensajeResultado.exito {
-    color: #166534;
-}
-
-#mensajeResultado.error {
-    color: #991b1b;
-}
-
-#mensajeResultado.oculto {
-    display: none;
-}
-
 .crearGestorFormularioGrupo.crearGestorGrupoPassword {
     position: relative;
 }

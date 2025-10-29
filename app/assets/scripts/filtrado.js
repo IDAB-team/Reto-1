@@ -40,7 +40,7 @@ function renderAnuncios(anuncios) {
         <h4>${anuncio.nombreAnuncio}</h4>
         <h5>${anuncio.usernameAnuncio}</h5>
         <p>${anuncio.descripcionAnuncio}</p>
-        <p class="filtradoFechaAnuncio">${new Date(anuncio.Fecha_pub).toLocaleDateString()}</p>
+        <p class="filtradoFechaAnuncio">${new Date(anuncio.fechaAnuncio).toLocaleDateString()}</p>
         <div class="filtradoAnunciosPrecio">
           <p>${anuncio.precioAnuncio} €</p>
         </div>

@@ -36,7 +36,7 @@ function renderFavoritos(anuncios) {
         <h4>${anuncio.nombreAnuncio}</h4>
         <h5>${anuncio.usernameAnuncio}</h5>
         <p>${anuncio.descripcionAnuncio}</p>
-        <p class="favoritoFechaAnuncio">${new Date(anuncio.Fecha_pub).toLocaleDateString()}</p>
+        <p class="favoritoFechaAnuncio">${new Date(anuncio.fechaAnuncio).toLocaleDateString()}</p>
         <div class="favoritoAnunciosPrecio">
           <p>${anuncio.precioAnuncio} €</p>
         </div>

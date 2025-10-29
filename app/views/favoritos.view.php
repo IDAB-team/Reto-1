@@ -68,7 +68,7 @@
                         <h5><?= $anuncio->usernameAnuncio ?></h5>
                     </div>
                     <div class="favoritoAnunciosPrecio">
-                        <p class="favoritoFechaAnuncio"><?= date('d/m/Y', strtotime($anuncio->Fecha_pub)) ?></p>
+                        <p class="favoritoFechaAnuncio"><?= date('d/m/Y', strtotime($anuncio->fechaAnuncio)) ?></p>
                         <p><?= $anuncio->precioAnuncio ?> €</p>
                     </div>
                 </div>
@@ -110,4 +110,6 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/scripts/favorito.js"></script>
+  <script src="assets/scripts/filtrado.js"></script>
+  
 </html>

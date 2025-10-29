@@ -61,7 +61,9 @@
               <div class="filtradoInfoHeader">
                 <div class="filtradoInfoTextos">
                   <h4><?= $anuncio->nombreAnuncio ?></h4>
-                  <h5><?= $anuncio->usernameAnuncio ?></h5>
+                  <a href="index.php?controller=VendedorController&idAnuncio=<?= $anuncio->ID_Anuncio ?>">
+                      <?= $anuncio->usernameAnuncio ?>
+                  </a>
                 </div>
                 <div class="filtradoAnunciosPrecio">
                   <p><?= $anuncio->precioAnuncio ?> €</p>

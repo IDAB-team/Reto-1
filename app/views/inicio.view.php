@@ -61,7 +61,7 @@
                                     </a>
                                 </p>
 
-                                <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">Ver más</a>
+                                <a class="verMas" href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">Ver más</a>
                             </div>
                             <div class="infoPrecio">
                                 <p><strong><?= number_format($anuncio['Precio'], 2) ?> €</strong></p>

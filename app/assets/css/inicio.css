@@ -167,21 +167,18 @@
     flex-direction: column;
     justify-content: center;
     text-align: left;
-}
-
-.info p:hover {
-    color: #1156CC; 
-    cursor: pointer;
-}
-
-.info a {
-    color: #1156CC;
     text-decoration: none;
     font-size: 0.8em;
 }
-.nombreAnuncio a {
-    color: black;
+
+.nombreComerciante a:hover {
+    color: #1156CC;
+}
+
+.verMas {
+    color: #1156CC;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .infoPrecio {

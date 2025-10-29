@@ -50,7 +50,7 @@ class AnuncioModel {
                     a.ID_Anuncio,
                     a.Nombre AS nombreAnuncio,
                     a.Descripcion AS descripcionAnuncio,
-                    a.Fecha_pub,
+                    a.Fecha_pub AS fechaAnuncio,
                     a.Precio AS precioAnuncio,
                     a.Url_imagen,
                     u.Username AS usernameAnuncio,
@@ -186,7 +186,7 @@ class AnuncioModel {
                 a.Fecha_pub AS fechaAnuncio, 
                 a.Precio AS precioAnuncio, 
                 a.Url_Imagen AS urlImagen,
-                u.Username AS nameUser,
+                u.Username AS userName,
                 u.ID_Usuario AS idComerciante
             FROM anuncios a
             JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario

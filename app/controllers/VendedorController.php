@@ -5,20 +5,17 @@ require_once __DIR__ . '/../models/UsuarioModel.php';
 
 class VendedorController extends BaseController {
     
-    public function index() {
+public function index() {
     session_start(); 
 
     $header = 'headerSinSession.php';
     $user = $_SESSION['user'] ?? null;
     $listaAnuncios = [];
-    $datosUsuario = [];
+    $datosUsuario = null;
 
-    // Si se pasa un id por GET, lo usamos. Si no, usamos el id del usuario logueado (si lo hay)
+    // Intentamos obtener ID de usuario desde GET o sesión
     $idUsuario = $_GET['id'] ?? ($user['id'] ?? null);
-
-    if (!$idUsuario) {
-        die("No se especificó ningún usuario para mostrar anuncios.");
-    }
+    $idAnuncio = $_GET['idAnuncio'] ?? null;
 
     // Header según tipo de usuario logueado
     if ($user) {
@@ -38,12 +35,23 @@ class VendedorController extends BaseController {
         }
     }
 
-    // Obtener los datos y anuncios del comerciante cuyo ID queremos ver
-    $datosUsuario = UsuarioModel::devolverDatosUsuario($idUsuario);
+    // Si tenemos ID, obtenemos sus datos
+    if ($idUsuario) {
+        $datosUsuario = UsuarioModel::devolverDatosUsuario($idUsuario);
+    }
 
+    // Si no hay usuario pero hay idAnuncio, obtenemos datos por anuncio
+    if ($idAnuncio !== null) {
+        $datosUsuario = UsuarioModel::devolverDatosUsuarioPorAnuncio($idAnuncio);
+        if ($datosUsuario) {
+            $idUsuario = $datosUsuario->id; // Para guardar el ID
+        }
+    }
+
+    // Teniendo datos de usuario, obtener sus anuncios
     if ($datosUsuario) {
         $listaAnuncios = AnuncioModel::getAnunciosByUser($idUsuario);
-    }
+    } 
 
     $this->render('vendedor.view.php', [
         'header' => $header,
@@ -52,6 +60,7 @@ class VendedorController extends BaseController {
         'datosUsuario' => $datosUsuario
     ]);
 }
+
 
     
 public function getAnuncioByUser() {

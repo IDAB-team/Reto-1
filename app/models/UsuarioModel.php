@@ -95,14 +95,6 @@ class UsuarioModel {
             return $resultado['ID_Usuario'];
         }
     }
-    public static function devolverDatosUsuario($idUser){
-        $dba = Database::getConnection();
-        $stmt=$dba->prepare("SELECT Username as username, 
-        Tipo as tipo, Email as email FROM Usuarios WHERE ID_usuario=:idUser");
-        $stmt->execute(['idUser'=>$idUser]);
-        return $stmt->fetch(PDO::FETCH_OBJ);
-        
-    }
     public static function getClientes() {
         $db = Database::getConnection();
         $stmt = $db->prepare("SELECT ID_Usuario, CIF, Username, Email, Tipo FROM usuarios WHERE Tipo = 'Cliente'");
@@ -128,7 +120,28 @@ class UsuarioModel {
         return $stmt->execute(['email' => $email]);
     }
     
-    public static function deleteAll() {
+    public static function devolverDatosUsuario($idUser){
+        $dba = Database::getConnection();
+        $stmt=$dba->prepare("SELECT Username as username, 
+        Tipo as tipo, Email as email FROM Usuarios WHERE ID_usuario=:idUser");
+        $stmt->execute(['idUser'=>$idUser]);
+        return $stmt->fetch(PDO::FETCH_OBJ);
         
+    }
+
+    public static function devolverDatosUsuarioPorAnuncio($idAnuncio) {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("
+            SELECT u.ID_Usuario as id,
+                   u.Username as username, 
+                   u.Tipo as tipo, 
+                   u.Email as email
+            FROM usuarios u
+            INNER JOIN anuncios a ON u.ID_Usuario = a.ID_Usuario
+            WHERE a.ID_Anuncio = :idAnuncio
+            LIMIT 1
+        ");
+        $stmt->execute(['idAnuncio' => $idAnuncio]);
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 }

@@ -59,70 +59,81 @@ body{
 .vendedorContenido{
     max-width: 80%;
     }
-.vendedorLista{
-    display: flex;
-    flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente línea si no caben */
-    gap: 1em;         /* Espacio entre tarjetas */
-    justify-content: space-evenly;
-    row-gap: 2em;
 
-    }
-.vendedorAnuncioCard{
-    display: flex;
-    flex-direction: column; /* Imagen arriba, detalles abajo */
-    width: 200px;           /* Tamaño fijo para todas las tarjetas */
-    height: 150px;          /* Altura uniforme */
-    background-color: white;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    border-radius: 1em;
-    transition: transform 0.2s ease;
-    justify-content: space-between;
-    
+/* Grid de tarjetas */
+.vendedorLista {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5em;
 }
-.vendedorAnuncioCard:hover{
+
+/* Tarjeta de anuncio */
+.vendedorAnuncioCard {
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+    height: 250px;
+}
+
+.vendedorAnuncioCard:hover {
     transform: scale(1.03);
-    }
-.vendedorAnuncioImagen{
-    height: 60%; /* Mitad superior */
+}
+
+/* Imagen */
+.vendedorAnuncioCard .vendedorAnuncioImagen {
+    flex: 7;
     width: 100%;
-    }
-.vendedorAnuncioImagen img {
+    overflow: hidden;
+}
+
+.vendedorAnuncioCard .vendedorAnuncioImagen img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;; 
-    
-}
-.vendedorAnuncioDetalles {
-    position: relative;
-  height: 40%; /* Mitad inferior */
-  padding: 0.5em;
-  margin-left: 1em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 
-.vendedorAnuncioDetalles .desc{
-    font-size: x-small;
-   
+/* Detalles */
+.vendedorAnuncioCard .vendedorAnuncioDetalles {
+    flex: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    text-align: left;
 }
-.vendedorAnuncioDetalles a{
+
+.vendedorAnuncioCard .vendedorAnuncioTexto h5 {
+    color: black;
+    font-size: 1em;
+    margin-bottom: 0.3em;
+}
+
+.vendedorAnuncioCard .vendedorAnuncioTexto .desc {
+    color: #1156CC;
     text-decoration: none;
-    color:#1156CC
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.8em;
 }
-.vendedorAnuncioDetalles .fecha{
-    position: absolute;
-  top: 0.3em;
-  right: 0.7em;
-  font-size: xx-small;
-  color: #888; 
+
+.vendedorAnuncioCard .vendedorAnuncioTexto .fecha {
+    color: #666;
+    font-size: 0.6em;
 }
-.vendedorPrecio{
-    align-self: center;
-    margin-right: 1em;
+
+.vendedorAnuncioCard .vendedorPrecio h4 {
+    color: black;
+    font-weight: bold;
+    font-size: 1.3em;
 }
+
+
 
 /* Tablets y pantallas medianas */
 @media (max-width: 1024px) {

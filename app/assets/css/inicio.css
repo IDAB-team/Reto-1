@@ -241,30 +241,27 @@
         padding-top: 1em;
     }
 
-    .inicioBuscar {
-        flex-direction: column;
-    }
-
-    .inicioBuscar input {
-        border-radius: 30px 30px 0 0;
-        border-top-right-radius: 30px;
-        border-bottom-right-radius: 0;
-    }
-
-    .inicioBotonBuscar {
-        border-radius: 0 0 30px 30px;
-        border-top-left-radius: 0;
-        margin-top: 0.3em;
+    .inicioBusqueda h1{
+        font-size: 1.5em;
     }
 
     .inicioCategorias {
-        flex-direction: column;
         align-items: center;
+    }
+
+    .inicioCategoria img {
+        width: 2em;
+    }
+
+    .inicioCategoria a p {
+        font-size: 0.7em;
+        font-weight: bold;
+        color: #1156CC;
     }
 
     .anunciosGrid {
         grid-template-columns: 1fr;
-        gap: 1em;
+        gap: 0.5em;
     }
 
     .anuncioCard {
@@ -276,7 +273,6 @@
     }
 
     .infoCard {
-        flex-direction: column;
         gap: 0.5em;
     }
 }

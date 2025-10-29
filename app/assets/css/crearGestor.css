@@ -2,6 +2,14 @@
     ------------------------------------------------- CREAR GESTOR SIEMPRE -------------------------------------------------
 ================================================================================================================== */
 
+.crearGestorMain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .crearGestorTitulo {
     text-align: center;
     color: #2563eb;
@@ -115,18 +123,6 @@
 
 .visible {
     display: block;
-}
-
-#mensajeResultado.exito {
-    color: #166534;
-}
-
-#mensajeResultado.error {
-    color: #991b1b;
-}
-
-#mensajeResultado.oculto {
-    display: none;
 }
 
 .crearGestorFormularioGrupo.crearGestorGrupoPassword {
@@ -256,11 +252,6 @@
 @media (max-width: 480px) {
     .crearGestorFormulario {
         padding: 0.8rem;
-    }
-
-    .crearGestorTitulo {
-        font-size: 1.1rem;
-        margin: 1rem 0;
     }
 
     .crearGestorBoton,

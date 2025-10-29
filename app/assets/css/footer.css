@@ -87,7 +87,6 @@ footer {
 
 @media (max-width: 480px) {
     .footerRedes {
-        flex-direction: column;
         gap: 0.4em;
     }
 
@@ -103,6 +102,6 @@ footer {
 
     .footerTexto,
     .footerDerechos {
-        font-size: 0.85em;
+        font-size: 0.65em;
     }
 }

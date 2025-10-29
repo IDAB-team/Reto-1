@@ -14,24 +14,22 @@
     padding: 0;
     background-color: #f9f9f9;
 }
-    .FavoritoMain {
-    display: flex;
-    flex-direction: row;
-    gap: 2em;
-    padding: 2em 0;
-    
-    /* Estas tres líneas son la clave */
-    width: 100%;
-    max-width: 1200px;   /* limita el ancho total */
-    margin: 8em auto;  
+.FavoritoMain {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5em;
+  width: 60%;
 }
 /*Filtros: */
-    .FavoritoCategorias{
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    padding: .5rem;
+.FavoritoCategorias{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 0.5rem;
+  padding-right: 2.5em;
+  border-right: 2px solid #1156CC;
     
 }
     .favoritoAnunciosCategoria{

@@ -17,6 +17,8 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 2em;
 }
 
@@ -387,7 +389,24 @@ header {
     gap: 2em;
   }
 
+  .headerBotones{
+    width: 100%;
+    justify-content: right;
+  }
+
   .headerBoton {
-    font-size: 0.9em;
+    font-size: 0.8em;
+  }
+
+  .headerIcono span {
+    font-size: 0.8em;
+  }
+
+    .headerIcono p {
+    font-size: 0.8em;
+  }
+
+  .headerIcono svg{
+    width: 2em;
   }
 }

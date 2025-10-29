@@ -6,7 +6,7 @@
 
     <!-- Filtros por categoría -->
         <aside class="FavoritoCategorias">
-        <h4>Filtros</h4>
+        <h4>Categor&iacuteas</h4>
         <ul>
             <?php if (!empty($listaCategorias)): ?>
                 

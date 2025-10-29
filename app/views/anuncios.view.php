@@ -3,7 +3,7 @@
 <?php include __DIR__ . '/layout/' . $header; ?>
 
 <main class="anunciosMain">
-    <aside class="misAnunciosFiltros">
+    <aside class="misAnunciosCategorias">
         <h4>Categor&iacuteas</h4>
         <ul>
             <?php foreach ($categorias as $categoria): ?>

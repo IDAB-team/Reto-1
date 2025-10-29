@@ -293,21 +293,24 @@
     color: #1156CC;
 }
 
-/* Tablets y pantallas medianas */
 @media (max-width: 1024px) {
     .misAnunciosMain {
         flex-direction: column;
         align-items: center;
-        padding: 0 1rem;
+        margin-left: 2em;
+        margin-right: 2em;
+        gap: 1rem;
     }
 
     .misAnunciosCategorias {
         width: 80%;
         margin-bottom: 1.5em;
+        border-right: none;
+        border-bottom: 2px solid #1156CC;
     }
 
     .misAnunciosContenido {
-        max-width: 95%;
+        min-width: 95%;
     }
 
     .misAnunciosAnuncioCard {
@@ -327,10 +330,6 @@
 
 /* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
-    .misAnunciosCategorias {
-        width: 95%;
-    }
-
     .misAnunciosformularioBusqueda {
         flex-direction: column;
         gap: 0.5rem;
@@ -356,20 +355,42 @@
 
     .misAnunciosTexto {
         width: 100%;
-        max-height: none;
-        padding: 0.5em 0;
+        padding: 0.5rem 0;
+    }
+
+    .misAnunciosCategorias {
+        width: 160%;
+        justify-content: center;
+        padding: 1.5rem;
+        padding-right: 1.5em;
+    }
+
+    .misAnunciosCategorias ul {
+        flex-direction: row;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
 /* Móviles pequeños */
 @media (max-width: 480px) {
-    .misAnunciosCategorias {
-        width: 100%;
-        padding: 0.5rem;
+    .misAnunciosMain {
+        margin: 1em;
+        gap: 0.8rem;
     }
 
     .misAnunciosformularioBusqueda {
         flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .misAnunciosformularioBusqueda select,
+    .misAnunciosformularioBusqueda input[type="search"],
+    .misAnunciosformularioBusqueda button {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.5rem;
     }
 
     .misAnunciosAnuncioCard {
@@ -391,15 +412,10 @@
     }
 
     .misAnunciosPrecio {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .misAnunciosFecha {
-        font-size: xx-small;
-        padding: 0.2em 0.4em;
-    }
-
-    .misAnunciosEdicion {
-        justify-content: flex-start;
+        font-size: 0.75rem;
     }
 }

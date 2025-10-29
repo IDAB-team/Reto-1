@@ -1,8 +1,8 @@
 // Elementos del DOM
-const contenedor = document.querySelector('.misAnunciosFiltros'); // Contenedor donde se mostrarán los anuncios
+const contenedor = document.querySelector('.misAnunciosLista'); // Contenedor donde se mostrarán los anuncios
 const buscarBtn = document.querySelector('button[name="BuscarAnuncio"]'); // Botón de búsqueda por nombre
 const buscarInput = document.querySelector('input[name="buscar"]'); // Campo de texto para escribir el nombre del anuncio
-const selectOrden = document.querySelector('.misAnunciosOrden'); // Selector para ordenar los anuncios por precio
+const selectOrden = document.querySelector('select[name="misAnunciosOrden"]'); // Selector para ordenar los anuncios por precio
 const botonesPaginacion = document.querySelectorAll('.paginaBtn'); // Botones de paginación
 
 // Función para renderizar los anuncios desde JSON a HTML
@@ -31,12 +31,12 @@ function renderAnuncios(anuncios) {
 
 // Búsqueda por nombre
 buscarBtn.addEventListener('click', async () => {
-  const texto = buscarInput.value.trim(); // ← corregido: usar .value, no ariaValueMax
+  const texto = buscarInput.value.trim(); 
 
   try {
     let response;
     if (!texto) {
-      response = await axios.get(`index.php?controller=MisAnunciosController&accion=getAll`);
+      response = await axios.get(`index.php?controller=FiltradoController&accion=getAll`);
     } else {
       response = await axios.get(`index.php?controller=FiltradoController&accion=apiBuscarPorNombre&texto=${encodeURIComponent(texto)}`);
     }
@@ -54,10 +54,10 @@ selectOrden.addEventListener('change', async () => {
   try {
     let response;
 
-    if (valor === 'Por fecha') {
+    if (valor === 'fecha') {
       response = await axios.get('index.php?controller=FiltradoController&accion=apiOrdenarPorFecha');
-    } else {
-      const orden = valor === 'Precio más alto' ? 'DESC' : 'ASC';
+    } else if(valor ==='precio') {
+      const orden = valor === 'precio' ? 'DESC' : 'ASC';
       response = await axios.get(`index.php?controller=FiltradoController&accion=apiOrdenarPorPrecio&orden=${orden}`);
     }
 

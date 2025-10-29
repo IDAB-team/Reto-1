@@ -110,6 +110,5 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/scripts/favorito.js"></script>
-  <script src="assets/scripts/filtrado.js"></script>
   
 </html>

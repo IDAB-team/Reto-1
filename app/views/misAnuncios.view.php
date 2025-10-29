@@ -6,15 +6,17 @@ include __DIR__ . '/layout/' . $header;
 ?>
 
 <main class="misAnunciosMain">
-    <aside class="misAnunciosFiltros">
+    <aside class="misAnunciosCategorias">
         <h4>Categor&iacuteas</h4>
         <ul>
             <?php foreach ($categorias as $categoria): ?>
                 <li>
-                    <div class="misAnunciosCategoria">
-                        <img src="./<?= $categoria['Url_icono'] ?>" alt="icono <?= $categoria['Nombre'] ?>">
+                    <a href="index.php?controller=FiltradoController&accion=index&categoria=<?= urlencode($categoria['Nombre']) ?>">
+                    <div class="misAnunciosCategoria" style="cursor:pointer;" >
+                        <img src="./<?= $categoria['Url_icono'] ?>" alt="icono <?= $categoria['Nombre'] ?>" >
                         <p><?= $categoria['Nombre'] ?></p>
                     </div>
+                    </a>
                 </li>
             <?php endforeach; ?>
         </ul>
@@ -97,12 +99,7 @@ include __DIR__ . '/layout/' . $header;
         </div>
 
         <div class="misAnunciosPaginas">
-            <button class="paginaBtn paginaActiva" data-pagina="1">1</button>
-            <button class="paginaBtn" data-pagina="2">2</button>
-            <button class="paginaBtn" data-pagina="3">3</button>
-            <button class="paginaBtn" data-pagina="4">4</button>
-            <button class="paginaBtn" data-pagina="5">5</button>
-            <button class="paginaBtn" data-pagina="6">6</button>
+            
         </div>
     </section>
 </main>

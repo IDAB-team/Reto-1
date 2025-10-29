@@ -180,3 +180,149 @@
 .contactoDerecha .bEnviar:hover{
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
+
+@media (max-width: 1024px) {
+  .anuncioDivision {
+    gap: 20px; /* reduce separación entre columnas */
+  }
+
+  .tituloFavorito {
+    gap: 10em; /* reduce espacio entre título e icono */
+  }
+
+  .anuncioIzquierda {
+    padding-right: 20px;
+    margin-right: 20px;
+  }
+
+  .contactoDerecha .inputLabel,
+  .contactoDerecha .inputTextArea {
+    max-width: 600px;
+  }
+
+  .contactoDerecha .bEnviar {
+    width: 50%;
+  }
+
+  .abajodos {
+    right: 30px;
+  }
+}
+
+/* ========================== TABLETS PEQUEÑAS Y MÓVILES GRANDES ========================== */
+@media (max-width: 768px) {
+  .anuncioDivision {
+    flex-direction: column; /* pasa a columnas verticales */
+    align-items: center;
+    gap: 30px;
+  }
+
+  .anuncioIzquierda {
+    border-right: none; /* elimina división vertical */
+    border-bottom: 2px solid #1156CC; /* agrega línea divisoria inferior */
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .tituloFavorito {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .tituloFavorito h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .anuncioMedio img {
+    max-width: 80%;
+  }
+
+  .anuncioAbajo {
+    max-width: 90%;
+  }
+
+  .abajodos {
+    position: static; /* elimina posición absoluta */
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .contactoDerecha {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .contactoDerecha h1 {
+    font-size: 18px;
+  }
+
+  .contactoDerecha h2 {
+    font-size: 16px;
+  }
+
+  .contactoDerecha .inputLabel,
+  .contactoDerecha .inputTextArea {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+  }
+
+  .contactoDerecha .bEnviar {
+    width: 60%;
+    font-size: 0.9rem;
+  }
+}
+
+/* ========================== MÓVILES PEQUEÑOS ========================== */
+@media (max-width: 480px) {
+  .tituloFavorito h1 {
+    font-size: 1.2em;
+  }
+
+  .tituloFavorito {
+    gap: 0.3em;
+  }
+
+  .anuncioMedio img {
+    border-radius: 8px;
+  }
+
+  .anuncioAbajo {
+    font-size: 0.9em;
+    margin-top: 15px;
+  }
+
+  .abajodos {
+    font-size: 0.9em;
+  }
+
+  .contactoDerecha {
+    width: 95%;
+    padding: 0 10px;
+  }
+
+  .contactoDerecha h1 {
+    font-size: 1em;
+  }
+
+  .contactoDerecha h2 {
+    font-size: 0.9em;
+  }
+
+  .contactoDerecha .inputLabel,
+  .contactoDerecha .inputTextArea {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .contactoDerecha .bEnviar {
+    width: 80%;
+    min-width: unset;
+    padding: 0.7rem 2rem;
+    font-size: 0.85rem;
+  }
+}

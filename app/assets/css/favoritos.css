@@ -14,26 +14,28 @@ body {
     background-color: #f9f9f9;
 }
 
-/* ===================== MAIN ===================== */
 .FavoritoMain {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 1.5em;
-    width: 100%;
-    max-width: 1200px;   
-    margin: 2em auto;
-    padding: 0 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5em;
+  width: 60%;
 }
-
-/* ===================== FILTROS ===================== */
-.FavoritoCategorias {
+/*Filtros: */
+.FavoritoCategorias{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 0.5rem;
+  padding-right: 2.5em;
+  border-right: 2px solid #1156CC;
+    
+.favoritoAnunciosCategoria{
     display: flex;
-    flex-direction: column;
-    width: 40%;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    padding: .5rem;
+    align-items: center; /* centra imagen + texto */
+    gap: 0.6rem;
+    white-space: nowrap; /* evita wrap de texto */  
 }
 
 .FavoritoCategorias h4 {
@@ -97,8 +99,10 @@ body {
     margin-bottom: 0.3em;
 }
 
-/* ===================== BÚSQUEDA ===================== */
-.favoritoAnunciosBusqueda {
+/*Búsqueda:*/
+    .favoritoAnunciosBusqueda {
+    margin-bottom: 2rem;
+    }.favoritoFormularioBusqueda {
     display: flex;
     align-items: stretch;
     width: 100%;
@@ -299,32 +303,127 @@ body {
     color: white;
 }
 
-
-/* ===================== RESPONSIVE ===================== */
+    
 @media (max-width: 1024px) {
-  .FavoritoMain { flex-direction: column; align-items: center; gap: 1rem; }
-  .FavoritoCategorias { width: 80%; margin-bottom: 1.5em; }
-  .favoritoAnuncioContenido { min-width: 95%; }
-  .favoritoAnuncioCard { flex-direction: row; }
-  .favoritoAnunciosImagen { width: 40%; min-width: 150px; }
+    .FavoritoMain {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 2em;
+        margin-right: 2em;
+        gap: 1rem;
+    }
+
+    .FavoritoCategorias {
+      width: 80%;
+      margin-bottom: 1.5em;
+      border-right: none;
+      border-bottom: 2px solid #1156CC;
+    }
+
+    .favoritoAnunciosAnuncioCard {
+        flex-direction: row;
+        height: auto;
+    }
+
+    .favoritoAnunciosImagen {
+        width: 40%;
+        min-width: 150px;
+    }
+
+    .favoritoAnunciosInfo {
+        width: 60%;
+    }
+
+    .favoritoAnuncioContenido {
+        min-width: 95%;
+    }
 }
 
+/* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
-  .favoritoAnunciosBusqueda { flex-direction: column; gap: 0.5rem; }
-  .favoritoAnunciosBusqueda select,
-  .favoritoAnunciosBusqueda input,
-  .favoritoAnunciosBusqueda button {
-    width: 100%; border-radius: 0.5rem;
+  .favoritoFormularioBusqueda {
+    flex-direction: column;
+    gap: 0.5rem;
   }
-  .favoritoAnuncioCard { flex-direction: column; gap: 0.5rem; }
-  .favoritoAnunciosImagen { width: 100%; height: 180px; }
+
+  .favoritoFormularioBusqueda select,
+  .favoritoFormularioBusqueda input[type="search"],
+  .favoritoFormularioBusqueda button {
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+
+  .favoritoAnunciosAnuncioCard {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .favoritoAnunciosImagen {
+    width: 100%;
+    min-width: 0;
+    height: 180px;
+  }
+
+  .favoritoAnunciosInfo {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .FavoritoCategorias {
+    width: 160%;
+    justify-content: center;
+    padding: 1.5rem;
+    padding-right: 1.5em;
+  }
+
+  .FavoritoCategorias ul {
+    flex-direction: row;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
+/* Móviles pequeños */
 @media (max-width: 480px) {
-  .FavoritoMain { margin: 1em; gap: 0.8rem; }
-  .FavoritoCategorias { width: 100%; padding: 0.5rem; }
-  .favoritoAnuncioCard { flex-direction: column; gap: 0.3rem; }
-  .favoritoAnunciosImagen { width: 100%; height: 150px; }
-  .favoritoAnunciosPrecio p { font-size: 1rem; }
-  .favoritoFechaAnuncio { font-size: 0.75rem; }
+    .FavoritoMain {
+        margin: 1em;
+        gap: 0.8rem;
+    }
+
+    .favoritoFormularioBusqueda {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .favoritoFormularioBusqueda select,
+    .favoritoFormularioBusqueda input[type="search"],
+    .favoritoFormularioBusqueda button {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .favoritoAnunciosAnuncioCard {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .favoritoAnunciosImagen {
+        width: 100%;
+        height: 150px;
+    }
+
+    .favoritoAnunciosInfo {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .favoritoAnunciosPrecio p {
+        font-size: 1rem;
+    }
+
+    .favoritoFechaAnuncio {
+        font-size: 0.75rem;
+    }
 }

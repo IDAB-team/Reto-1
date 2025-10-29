@@ -55,8 +55,12 @@
                                         <?= htmlspecialchars($anuncio['Nombre']) ?>
                                     </a> </h3>
                                 </div>
-                                <p><a href="index.php?controller=VendedorController&accion=index&id=<?= $anuncio['ID_Anuncio']?>"><?= $anuncio['comerciante'] ?>
-                                </p></a>
+                                <p class="nombreComerciante">
+                                    <a href="index.php?controller=VendedorController&accion=index&id=<?= $anuncio['idUsuario'] ?>">
+                                        <?= htmlspecialchars($anuncio['comerciante']) ?>
+                                    </a>
+                                </p>
+
                                 <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio['ID_Anuncio'] ?>">Ver más</a>
                             </div>
                             <div class="infoPrecio">

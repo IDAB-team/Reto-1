@@ -21,11 +21,8 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    gap: 1.5em;
-    width: 100%;
-    max-width: 1200px;
-    margin: 2em auto;
-    padding: 0 2em;
+    gap: 2.5em;
+    width: 60%;
 }
 
 .misAnunciosEdicion div a {
@@ -40,27 +37,23 @@ body {
 /* Tablets medianas */
 @media (max-width: 1024px) {
     .anunciosMain {
-        padding: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 2em;
+        margin-right: 2em;
         gap: 1rem;
     }
 }
 
 /* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
-    .anunciosMain {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        gap: 1rem;
-    }
+
 }
 
 /* Móviles pequeños */
 @media (max-width: 480px) {
     .anunciosMain {
-        flex-direction: column;
-        align-items: center;
-        padding: 0.8rem;
+        margin: 1em;
         gap: 0.8rem;
     }
 }

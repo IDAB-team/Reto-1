@@ -6,7 +6,7 @@
 
   <!-- Filtros por categoría -->
     <aside class="filtradoCategorias">
-    <h4>Filtros</h4>
+    <h4>Categor&iacuteas</h4>
     <ul>
         <?php foreach ($listaCategorias as $categoria): ?>
         <?php if (!empty($categoria['Nombre'])): ?>

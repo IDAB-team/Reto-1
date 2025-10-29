@@ -2,6 +2,14 @@
     ------------------------------------------------- SUBIR ANUNCIO SIEMPRE -------------------------------------------------
 ================================================================================================================== */
 
+.subirMain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .subirImagen {
     width: 100%;
     height: 140px;
@@ -257,9 +265,13 @@ textarea.subirInput::placeholder {
 
     .subirBoton,
     .subirBotonAtras {
-        width: 100%;
+        width: 90%;
         padding: 0.7rem;
         font-size: 0.9rem;
+    }
+
+    .subirBotonAtras {
+        margin: 1rem 1em 0;
     }
 
     .subirBotones {

@@ -2,6 +2,14 @@
     ------------------------------------------------- AJUSTES SIEMPRE -------------------------------------------------
 ================================================================================================================== */
 
+.ajustesMain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .ajustesTitulo {
     text-align: center;
     color: #2563eb;
@@ -173,6 +181,7 @@
 
 @media (max-width: 1024px) {
     .ajustesFormulario {
+        width: 90%;
         padding: 1.5rem;
     }
 

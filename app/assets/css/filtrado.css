@@ -250,8 +250,10 @@ body {
     }
 
     .filtradoCategorias {
-        width: 80%;
-        margin-bottom: 1.5em;
+      width: 80%;
+      margin-bottom: 1.5em;
+      border-right: none;
+      border-bottom: 2px solid #1156CC;
     }
 
     .filtradoAnuncioContenido {
@@ -275,33 +277,46 @@ body {
 
 /* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
-    .filtradoFormularioBusqueda {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
+  .filtradoFormularioBusqueda {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-    .filtradoFormularioBusqueda select,
-    .filtradoFormularioBusqueda input[type="search"],
-    .filtradoFormularioBusqueda button {
-        width: 100%;
-        border-radius: 0.5rem;
-    }
+  .filtradoFormularioBusqueda select,
+  .filtradoFormularioBusqueda input[type="search"],
+  .filtradoFormularioBusqueda button {
+    width: 100%;
+    border-radius: 0.5rem;
+  }
 
-    .filtradoAnunciosAnuncioCard {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
+  .filtradoAnunciosAnuncioCard {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-    .filtradoAnunciosImagen {
-        width: 100%;
-        min-width: 0;
-        height: 180px;
-    }
+  .filtradoAnunciosImagen {
+    width: 100%;
+    min-width: 0;
+    height: 180px;
+  }
 
-    .filtradoAnunciosInfo {
-        width: 100%;
-        padding: 0.75rem 1rem;
-    }
+  .filtradoAnunciosInfo {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .filtradoCategorias {
+    width: 160%;
+    justify-content: center;
+    padding: 1.5rem;
+    padding-right: 1.5em;
+  }
+  .filtradoCategorias ul {
+    flex-direction: row;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 /* Móviles pequeños */
@@ -309,11 +324,6 @@ body {
     .FiltradoMain {
         margin: 1em;
         gap: 0.8rem;
-    }
-
-    .filtradoCategorias {
-        width: 100%;
-        padding: 0.5rem;
     }
 
     .filtradoFormularioBusqueda {

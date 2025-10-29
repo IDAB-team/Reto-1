@@ -91,8 +91,6 @@
     .favoritoAnuncioContenido h3{
         color:#1156CC;
         margin-bottom: .3em;
-        
-        
     }
 /*Búsqueda:*/
     .favoritoAnunciosBusqueda {
@@ -236,7 +234,6 @@
     color: white;
 }
     
-/* Tablets y pantallas medianas */
 @media (max-width: 1024px) {
     .FavoritoMain {
         flex-direction: column;
@@ -247,15 +244,13 @@
     }
 
     .FavoritoCategorias {
-        width: 80%;
-        margin-bottom: 1.5em;
+      width: 80%;
+      margin-bottom: 1.5em;
+      border-right: none;
+      border-bottom: 2px solid #1156CC;
     }
 
-    .favoritoAnuncioContenido {
-        min-width: 95%;
-    }
-
-    .favoritoAnuncioCard {
+    .favoritoAnunciosAnuncioCard {
         flex-direction: row;
         height: auto;
     }
@@ -268,37 +263,55 @@
     .favoritoAnunciosInfo {
         width: 60%;
     }
+
+    .favoritoAnuncioContenido {
+        min-width: 95%;
+    }
 }
 
 /* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
-    .favoritoFormularioBusqueda {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
+  .favoritoFormularioBusqueda {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-    .favoritoFormularioBusqueda select,
-    .favoritoFormularioBusqueda input[type="search"],
-    .favoritoFormularioBusqueda button {
-        width: 100%;
-        border-radius: 0.5rem;
-    }
+  .favoritoFormularioBusqueda select,
+  .favoritoFormularioBusqueda input[type="search"],
+  .favoritoFormularioBusqueda button {
+    width: 100%;
+    border-radius: 0.5rem;
+  }
 
-    .favoritoAnuncioCard {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
+  .favoritoAnunciosAnuncioCard {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-    .favoritoAnunciosImagen {
-        width: 100%;
-        min-width: 0;
-        height: 180px;
-    }
+  .favoritoAnunciosImagen {
+    width: 100%;
+    min-width: 0;
+    height: 180px;
+  }
 
-    .favoritoAnunciosInfo {
-        width: 100%;
-        padding: 0.75rem 1rem;
-    }
+  .favoritoAnunciosInfo {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .FavoritoCategorias {
+    width: 160%;
+    justify-content: center;
+    padding: 1.5rem;
+    padding-right: 1.5em;
+  }
+
+  .FavoritoCategorias ul {
+    flex-direction: row;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 /* Móviles pequeños */
@@ -306,11 +319,6 @@
     .FavoritoMain {
         margin: 1em;
         gap: 0.8rem;
-    }
-
-    .FavoritoCategorias {
-        width: 100%;
-        padding: 0.5rem;
     }
 
     .favoritoFormularioBusqueda {
@@ -326,7 +334,7 @@
         padding: 0.5rem;
     }
 
-    .favoritoAnuncioCard {
+    .favoritoAnunciosAnuncioCard {
         flex-direction: column;
         gap: 0.3rem;
     }

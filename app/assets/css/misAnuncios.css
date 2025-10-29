@@ -77,14 +77,6 @@
     padding: 0.1rem 0.5rem;
     border-radius: 8px;
 }
-.misAnunciosformularioBusqueda select{
-    appearance: none;         /* Estándar */
-    -webkit-appearance: none; /* Safari/Chrome */
-    -moz-appearance: none;    /* Firefox */
-    background: none;         /* Opcional: elimina fondo */
-    padding-right: 1.5em;
-    border: none;
-}
     .misAnunciosCategorias li:hover {
     border-bottom: solid #1156CC thin;
 }
@@ -96,6 +88,15 @@
     margin-bottom: .3em;    
     }
 /*Búsqueda:*/
+
+    .misAnunciosformularioBusqueda select{
+        appearance: none;         /* Estándar */
+        -webkit-appearance: none; /* Safari/Chrome */
+        -moz-appearance: none;    /* Firefox */
+        background: none;         /* Opcional: elimina fondo */
+        padding-right: 1.5em;
+        border: none;
+    }
     .misAnunciosformularioBusqueda {
     display: flex;
     align-items: stretch;

@@ -30,7 +30,8 @@ body {
   padding: 0.5rem;
   padding-right: 2.5em;
   border-right: 2px solid #1156CC;
-    
+}    
+
 .favoritoAnunciosCategoria{
     display: flex;
     align-items: center; /* centra imagen + texto */
@@ -100,9 +101,15 @@ body {
 }
 
 /*Búsqueda:*/
+.favoritoAnunciosBusqueda select{
+        appearance: none;         /* Estándar */
+        -webkit-appearance: none; /* Safari/Chrome */
+        -moz-appearance: none;    /* Firefox */
+        background: none;         /* Opcional: elimina fondo */
+        padding-right: 1.5em;
+        border: none;
+    }
     .favoritoAnunciosBusqueda {
-    margin-bottom: 2rem;
-    }.favoritoFormularioBusqueda {
     display: flex;
     align-items: stretch;
     width: 100%;
@@ -111,40 +118,41 @@ body {
     gap: 0;
     border-radius: 1em;
     margin-bottom: 1em;
-}
+    }
 
-.favoritoAnunciosBusqueda select {
+    .favoritoAnunciosBusqueda select{
     padding: .5em;
+    margin: none;
+    font-size: 0.95rem;
     border: .1em solid black;
     color: white;
     background-color: #1156CC;
-    border-radius: 1em 0 0 1em;
+    border-radius: 1em 0em 0em 1em;
     width: 40%;
 }
-
-.favoritoAnunciosBusqueda select option {
+    .favoritoAnunciosBusqueda select option{
     background-color: white;
     color: #1156CC;
 }
-
-.favoritoAnunciosBusqueda input[type="search"] {
+    .favoritoAnunciosBusqueda input[type="search"]{
     padding: .5em;
     border: .1em solid #1156CC;
     font-size: 0.95rem;
     width: 60%;
     border-radius: 0;
+    
 }
-
-.favoritoAnunciosBusqueda button {
+    
+    .favoritoAnunciosBusqueda button {
     background-color: #1156CC;
     width: 20%;
     color: white;
     border: .1em solid black;
-    padding: .7em;
+    padding: .7em ;
     cursor: pointer;
     display: flex;
     align-items: center;
-    border-radius: 0 1em 1em 0;
+    border-radius: 0em 1em 1em 0em;
     font-weight: 500;
 }
 

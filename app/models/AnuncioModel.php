@@ -10,7 +10,7 @@ class AnuncioModel {
                     a.ID_Anuncio,
                     a.Nombre AS nombreAnuncio,
                     a.Descripcion AS descripcionAnuncio,
-                    a.Fecha_pub,
+                    a.Fecha_pub AS fechaAnuncio,
                     a.Precio AS precioAnuncio,
                     a.Url_imagen,
                     u.Username AS usernameAnuncio,

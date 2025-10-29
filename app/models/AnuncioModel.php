@@ -129,7 +129,7 @@ class AnuncioModel {
     public static function getUltimos($limite = 8) {
         $db = Database::getConnection();
         $sql = "
-            SELECT a.*, u.Username AS comerciante
+            SELECT a.*,u.ID_Usuario as idUsuario, u.Username AS comerciante
             FROM anuncios a
             JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
             ORDER BY a.Fecha_pub DESC
@@ -152,7 +152,8 @@ class AnuncioModel {
                    a.Fecha_pub AS fechaAnuncio, 
                    a.Precio AS precioAnuncio, 
                    a.Url_Imagen AS urlImagen,
-                   u.Username AS userName
+                   u.Username AS userName,
+                   u.ID_Usuario AS idComerciante
             FROM anuncios a 
             JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
             WHERE u.ID_Usuario = :idUser
@@ -185,7 +186,7 @@ class AnuncioModel {
                 a.Fecha_pub AS fechaAnuncio, 
                 a.Precio AS precioAnuncio, 
                 a.Url_Imagen AS urlImagen,
-                u.Username AS userName,
+                u.Username AS nameUser,
                 u.ID_Usuario AS idComerciante
             FROM anuncios a
             JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
@@ -223,5 +224,21 @@ class AnuncioModel {
         $stmt->execute([':id' => $id]);
     }
 
+    public static function getAnunciosByUser($idUsuario){
+        $db= Database::getConnection();
+        $sql= "SELECT a.ID_Anuncio AS idAnuncio,
+                a.Nombre AS nombreAnuncio,
+                a.Fecha_pub AS fechaAnuncio,
+                a.Precio AS precioAnuncio,
+                a.Url_imagen AS urlImagen, 
+                u.ID_Usuario AS idUsuario, 
+                u.Username AS userName
+                FROM anuncios a JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
+                WHERE a.ID_Usuario = :idUsuario
+                ";
+        $stmt=$db->prepare($sql);
+        $stmt->execute(['idUsuario'=>$idUsuario]);
+        return $stmt ->fetchAll(PDO::FETCH_OBJ);
+    }
 
 }

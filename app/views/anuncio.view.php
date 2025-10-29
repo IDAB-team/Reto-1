@@ -34,7 +34,7 @@
                     <label><?= htmlspecialchars($anuncio->descAnuncio) ?></label>
                     <div class="abajodos">
                         <label><?= htmlspecialchars($anuncio->precioAnuncio) ?>€</label>
-                        <label><?= htmlspecialchars($anuncio->fechaAnuncio) ?></label>
+                        <label><?= date('d/m/Y', strtotime($anuncio->fechaAnuncio)) ?></label>
                     </div> 
                 </div>            
             </div>

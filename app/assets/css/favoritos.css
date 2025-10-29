@@ -349,17 +349,27 @@ body {
 
 /* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
-  .favoritoFormularioBusqueda {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+    .favoritoAnunciosBusqueda {
+        flex-direction: column;
+        font-size: 0.7em;
+    }
 
-  .favoritoFormularioBusqueda select,
-  .favoritoFormularioBusqueda input[type="search"],
-  .favoritoFormularioBusqueda button {
-    width: 100%;
-    border-radius: 0.5rem;
-  }
+    .favoritoAnunciosBusqueda select{
+        width: auto;
+        border-top-right-radius: 1em;
+        border-bottom-left-radius: 0;
+    }
+
+
+    .favoritoAnunciosBusqueda input[type="search"]{
+        width: auto;
+    }
+
+
+    .favoritoAnunciosBusqueda button {
+        width: auto;
+        border-top-right-radius: 0;
+    }
 
   .favoritoAnunciosAnuncioCard {
     flex-direction: column;
@@ -372,9 +382,19 @@ body {
     height: 180px;
   }
 
+.favoritoInfoHeader{
+    width: 100%;
+    justify-content: left;
+    flex-direction: column;
+}
+
   .favoritoAnunciosInfo {
     width: 100%;
     padding: 0.75rem 1rem;
+  }
+
+  .favoritoAnunciosPrecio p {
+    font-size: 0.5em;
   }
 
   .FavoritoCategorias {
@@ -390,48 +410,29 @@ body {
     flex-wrap: wrap;
     justify-content: center;
   }
+
+  .favoritoFechaAnuncio {
+    position: relative;
+  }
+
+  .favoritoInfoTextos{
+    width: 100%;
+    justify-content: left;
+  }
+
+.favoritoAnunciosPrecio{
+    width: 100%;
+    justify-content: left;
+}
+
+.favoritoAnunciosPrecio p{
+    width: 100%;
+}
+
+
 }
 
 /* Móviles pequeños */
 @media (max-width: 480px) {
-    .FavoritoMain {
-        margin: 1em;
-        gap: 0.8rem;
-    }
 
-    .favoritoFormularioBusqueda {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .favoritoFormularioBusqueda select,
-    .favoritoFormularioBusqueda input[type="search"],
-    .favoritoFormularioBusqueda button {
-        width: 100%;
-        font-size: 0.9rem;
-        padding: 0.5rem;
-    }
-
-    .favoritoAnunciosAnuncioCard {
-        flex-direction: column;
-        gap: 0.3rem;
-    }
-
-    .favoritoAnunciosImagen {
-        width: 100%;
-        height: 150px;
-    }
-
-    .favoritoAnunciosInfo {
-        width: 100%;
-        padding: 0.5rem 0.75rem;
-    }
-
-    .favoritoAnunciosPrecio p {
-        font-size: 1rem;
-    }
-
-    .favoritoFechaAnuncio {
-        font-size: 0.75rem;
-    }
 }

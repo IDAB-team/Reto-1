@@ -49,7 +49,7 @@
                     <div class="vendedorAnuncioTexto">
                     <h5><?= $anuncio->nombreAnuncio ?></h5>
                     <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio->idAnuncio ?>"> 
-                        <p class="desc">Ver m&aacutes...</p> 
+                        <p class="desc">Ver m&aacutes</p> 
                     </a>
                     <p class="fecha"><?=date('d/m/Y', strtotime($anuncio->fechaAnuncio)) ?></p>
                     </div>

@@ -6,7 +6,7 @@
 
     <!-- Filtros por categoría -->
     <aside class="FavoritoCategorias">
-      <h4>Filtros</h4>
+      <h4>Categor&iacuteas</h4>
       <ul>
         <?php if (!empty($listaCategorias)): ?>
           <?php foreach ($listaCategorias as $categoria): ?>
@@ -64,8 +64,12 @@
               <div class="favoritoAnunciosInfo">
                 <div class="favoritoInfoHeader">
                     <div class="favoritoInfoTextos">
-                        <h4><?= $anuncio->nombreAnuncio ?></h4>
-                        <h5><?= $anuncio->usernameAnuncio ?></h5>
+                        <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio->ID_Anuncio?>">
+                          <h4><?= $anuncio->nombreAnuncio ?></h4>
+                        </a>
+                        <a href="index.php?controller=VendedorController&idAnuncio=<?= $anuncio->ID_Anuncio ?>">
+                          <h5><?= $anuncio->usernameAnuncio ?></h5>
+                        </a>
                     </div>
                     <div class="favoritoAnunciosPrecio">
                         <p class="favoritoFechaAnuncio"><?= date('d/m/Y', strtotime($anuncio->fechaAnuncio)) ?></p>

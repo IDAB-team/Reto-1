@@ -60,8 +60,10 @@
             <div class="filtradoAnunciosInfo">
               <div class="filtradoInfoHeader">
                 <div class="filtradoInfoTextos">
-                  <h4><?= $anuncio->nombreAnuncio ?></h4>
-                  <a href="index.php?controller=VendedorController&idAnuncio=<?= $anuncio->ID_Anuncio ?>">
+                  <a class="aNombre" href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio->ID_Anuncio?>">
+                    <h4><?= $anuncio->nombreAnuncio ?></h4>
+                  </a>
+                  <a class="aVendedor" href="index.php?controller=VendedorController&idAnuncio=<?= $anuncio->ID_Anuncio ?>">
                       <?= $anuncio->usernameAnuncio ?>
                   </a>
                 </div>

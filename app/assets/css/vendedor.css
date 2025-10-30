@@ -1,5 +1,5 @@
 /* ==================================================================================================================
-    ------------------------------------------------- VENDEDOR SIEMPRE -------------------------------------------------
+------------------------------------------------- VENDEDOR SIEMPRE -------------------------------------------------
 ================================================================================================================== */
 *{
     padding: 0;
@@ -32,14 +32,13 @@ body{
     display: flex;
     flex-direction: column;
     gap: .5em;
-    
 }
 .vendedorTexto h4{
     color: #1156CC;
 }
 .vendedorTipo h5{
     display: inline;
-    
+
 }
 .tipoValor{
     color:#1156CC;
@@ -58,7 +57,7 @@ body{
 }
 .vendedorContenido{
     max-width: 80%;
-    }
+}
 
 /* Grid de tarjetas */
 .vendedorLista {
@@ -134,8 +133,6 @@ body{
 }
 
 
-
-/* Tablets y pantallas medianas */
 @media (max-width: 1024px) {
     .vendedorContenido {
         max-width: 90%;
@@ -147,7 +144,6 @@ body{
     }
 }
 
-/* Tablets pequeñas y móviles grandes */
 @media (max-width: 768px) {
     .vendedorInfo {
         flex-direction: column;
@@ -186,7 +182,6 @@ body{
     }
 }
 
-/* Móviles pequeños */
 @media (max-width: 480px) {
     .vendedorInfo {
         flex-direction: column;

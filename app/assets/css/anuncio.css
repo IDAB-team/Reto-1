@@ -12,15 +12,14 @@
 .anuncioDivision {
     display: flex;
     justify-content: center;
-    align-items: stretch; /* hace que ambas columnas sean igual de altas */
-    gap: 40px; /* separación entre columnas */
+    align-items: stretch;
+    gap: 40px;
 }
 .anuncioIzquierda,
 .contactoDerecha {
-    flex: 1; /* permite que se estiren proporcionalmente */
+    flex: 1;
 }
 
-/*izquierda*/
 .anuncioIzquierda {
     display: flex;
     flex-direction: column;
@@ -28,35 +27,31 @@
     border-right: 2px solid #1156CC;
     padding-right: 30px;
     margin-right: 30px;
-    position: relative; /* necesario para posicionar .abajodos respecto a este contenedor */
+    position: relative;
 }
 
-/* Contenedor del título + favorito */
 .tituloFavorito {
   width: 100%;
+  max-width: 500px; 
   display: flex;
-  align-items: center; /* centra verticalmente el icono con el h1 */
-  justify-content: space-between;           /* espacio entre h1 y el icono */
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* Asegura que el h1 no tenga margen inesperado */
 .tituloFavorito h1 {
     margin: 0;
-    font-size: 24px; /* ajusta según tu diseño */
+    font-size: 24px;
 }
 
-/* Ajusta el tamaño del icono para que sea igual de alto que el h1 */
 .iconoFavorito {
-    height: 100%;   /* toma la altura del contenedor flex */
-    width: auto;    /* mantiene proporción */
+    height: 100%;
+    width: auto;
 }
 
-/* limitar la altura máxima para que no se deforme */
 .tituloFavorito .iconoFavorito svg {
-    max-height: 4em; /* opcional, ajusta según diseño */
+    max-height: 4em;
 }
 
-/*favorito*/
 .favoritoToggle {
   color: black;
   text-decoration: none;
@@ -72,7 +67,7 @@
 
 .anuncioMedio img{
     width: 100%;
-    max-width: 500px; /* limita tamaño */
+    max-width: 500px;
     height: auto;
     border-radius: 10px;
     display: block;
@@ -80,18 +75,16 @@
     margin-top:5px;
 }
 
-/* Descripción centrada, igual ancho que la imagen */
 .anuncioAbajo {
     text-align: center;
-    max-width: 500px; /* mismo ancho que la imagen */
+    max-width: 500px;
     margin-top: 20px;
 }
 
-/* Contenedor del precio y fecha — abajo a la derecha */
 .precioFecha {
     position: absolute;
-    bottom: 0;          /* fija al fondo de la columna izquierda */
-    right: 50px;        /* ajusta la distancia al borde */
+    bottom: 0;
+    right: 50px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -99,7 +92,6 @@
     font-weight: 1em;
 }
 
-/* Ajustes visuales */
 .precioFecha p {
     margin: 3px 0;
 }
@@ -109,10 +101,9 @@
   font-weight: bold;
 }
 
-/*anuncio derecha*/
 .contactoDerecha{
     display: flex;
-    flex-direction: column;   /* columna para centrar verticalmente los elementos internos */
+    flex-direction: column;
     padding-left: 5px;
     margin-left: 10px;
 }
@@ -127,22 +118,20 @@
     text-decoration: none;
 }
 .contactoDerecha h2 .linkComerciante{
-    text-decoration: none; /*elimina el subrayado */
+    text-decoration: none;
     color: #1156CC;   
 }
 .contactoDerecha .anuncioFormulario{
     display: flex;
     flex-direction: column;
-    width: 100%;              /* opcional para que ocupen todo el ancho disponible */
+    width: 100%;
 }
 .contactoDerecha label{
     color:#1156CC;
 }
-
-/*Estilos compartidos por todos los campos de entrada */
 .contactoDerecha .inputLabel,
 .contactoDerecha .inputTextArea {
-    max-width: 800px; /* ajusta según diseño */
+    max-width: 800px;
     border-style: solid;
     border-width: 1px;
     border-radius: 10px;
@@ -152,23 +141,18 @@
     margin-left: 5px;
     margin-bottom: 15px;
 }
-
-/*Ajustes específicos para inputs */
 .contactoDerecha .inputLabel {
     height: 45px;
 }
-
-/*Ajustes específicos para textarea */
 .contactoDerecha .inputTextArea {
     height: 150px;
     resize: none;
 }
-
 .contactoDerecha .bEnviar{
     display:block;
     order: none;
     padding: 0.875rem 3rem;
-    width: 40%; /* deja que el botón se ajuste al contenido */
+    width: 40%;
     min-width: 150px;
     border-radius: 8px;
     font-size: 1rem;
@@ -176,7 +160,7 @@
     background-color:#1156CC;
     color:white;
     cursor:pointer;
-    margin: 0 auto; /* centra horizontalmente el botón */
+    margin: 0 auto;
 }
 .contactoDerecha .bEnviar:hover{
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
@@ -184,142 +168,115 @@
 
 @media (max-width: 1024px) {
   .anuncioDivision {
-    gap: 20px; /* reduce separación entre columnas */
+    gap: 20px;
   }
-
   .tituloFavorito {
-    gap: 10em; /* reduce espacio entre título e icono */
+    gap: 10em;
   }
-
   .anuncioIzquierda {
     padding-right: 20px;
     margin-right: 20px;
   }
-
   .contactoDerecha .inputLabel,
   .contactoDerecha .inputTextArea {
     max-width: 600px;
   }
-
   .contactoDerecha .bEnviar {
     width: 50%;
   }
-
   .precioFecha {
     right: 30px;
   }
 }
 
-/* ========================== TABLETS PEQUEÑAS Y MÓVILES GRANDES ========================== */
 @media (max-width: 768px) {
   .anuncioDivision {
-    flex-direction: column; /* pasa a columnas verticales */
+    flex-direction: column;
     align-items: center;
     gap: 30px;
   }
-
   .anuncioIzquierda {
-    border-right: none; /* elimina división vertical */
-    border-bottom: 2px solid #1156CC; /* agrega línea divisoria inferior */
+    border-right: none;
+    border-bottom: 2px solid #1156CC;
     padding-bottom: 20px;
     margin-bottom: 20px;
     padding-right: 0;
     margin-right: 0;
   }
-
   .tituloFavorito {
     width: 80%;
     gap: 0.5em;
   }
-
   .tituloFavorito h1 {
     font-size: 20px;
     text-align: center;
   }
-
   .anuncioMedio img {
     max-width: 80%;
   }
-
   .anuncioAbajo {
     max-width: 90%;
   }
-
   .precioFecha {
-    position: static; /* elimina posición absoluta */
+    position: static;
     align-items: center;
     text-align: center;
     margin-top: 10px;
   }
-
   .contactoDerecha {
     width: 90%;
     margin: 0 auto;
   }
-
   .contactoDerecha h1 {
     font-size: 18px;
   }
-
   .contactoDerecha h2 {
     font-size: 16px;
   }
-
   .contactoDerecha .inputLabel,
   .contactoDerecha .inputTextArea {
     width: 100%;
     max-width: none;
     margin-left: 0;
   }
-
   .contactoDerecha .bEnviar {
     width: 60%;
     font-size: 0.9rem;
   }
 }
 
-/* ========================== MÓVILES PEQUEÑOS ========================== */
 @media (max-width: 480px) {
   .tituloFavorito h1 {
     font-size: 1.2em;
   }
-
   .tituloFavorito {
     gap: 0.3em;
   }
-
   .anuncioMedio img {
     border-radius: 8px;
   }
-
   .anuncioAbajo {
     font-size: 0.9em;
     margin-top: 15px;
   }
-
   .precioFecha {
     font-size: 0.9em;
   }
-
   .contactoDerecha {
     width: 95%;
     padding: 0 10px;
   }
-
   .contactoDerecha h1 {
     font-size: 1em;
   }
-
   .contactoDerecha h2 {
     font-size: 0.9em;
   }
-
   .contactoDerecha .inputLabel,
   .contactoDerecha .inputTextArea {
     font-size: 12px;
     padding: 5px;
   }
-
   .contactoDerecha .bEnviar {
     width: 80%;
     min-width: unset;

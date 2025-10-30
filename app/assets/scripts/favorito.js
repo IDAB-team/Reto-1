@@ -8,15 +8,27 @@ function toggleFavorito() {
     link.addEventListener('click', async (e) => {
       e.preventDefault();
       const url = link.getAttribute('href');
+
       try {
-        await axios.get(url);
+        const response = await axios.get(url);
         link.classList.toggle('favoritoActivo');
+
+        // Si el favorito fue quitado, eliminar el card del DOM
+        if (!link.classList.contains('favoritoActivo')) {
+          const card = link.closest('.favoritoAnuncioCard');
+          if (card) {
+            card.classList.add('fade-out'); // efecto visual opcional
+            setTimeout(() => card.remove(), 300); // lo elimina tras la animación
+          }
+        }
+
       } catch (error) {
         console.error('Error al cambiar favorito:', error);
       }
     });
   });
 }
+
 
 function renderFavoritos(anuncios) {
   contenedorFavoritos.innerHTML = '';

@@ -32,7 +32,7 @@
     <div class="filtradoAnunciosBusqueda">
         <select id="anuncioOrdenar">
           <option value="ordenar" selected disabled hidden>Ordenar por ▽</option>
-          <option value="Por fecha">Fecha de publicación(más reciente)</option>
+          <option value="Por fecha">Fecha de publicación (más reciente)</option>
           <option value="Precio más bajo">Precio más bajo</option>
           <option value="Precio más alto">Precio más alto</option>
         </select>

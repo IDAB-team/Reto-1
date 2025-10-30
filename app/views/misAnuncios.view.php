@@ -11,7 +11,7 @@ include __DIR__ . '/layout/' . $header;
         <ul>
             <?php foreach ($categorias as $categoria): ?>
                 <li>
-                    <a href="index.php?controller=FiltradoController&accion=index&categoria=<?= urlencode($categoria['Nombre']) ?>">
+                    <a href="index.php?controller=MisAnunciosController&accion=index&categoria=<?= urlencode($categoria['Nombre']) ?>">
                     <div class="misAnunciosCategoria" style="cursor:pointer;" >
                         <img src="./<?= $categoria['Url_icono'] ?>" alt="icono <?= $categoria['Nombre'] ?>" >
                         <p><?= $categoria['Nombre'] ?></p>
@@ -27,9 +27,10 @@ include __DIR__ . '/layout/' . $header;
             <!--Ordenar-->
         <div class="misAnunciosformularioBusqueda">
             <select name="misAnunciosOrden">
-                <option value="ordenar" selected disabled hidden>Ordenar por ▽	</option>
-                <option value="fecha">Fecha de publicación</option>
-                <option value="precio">Precio</option>
+                <option value="ordenar" selected disabled hidden>Ordenar por ▽</option>
+                <option value="fecha">Fecha de publicación (más reciente)</option>
+                <option value="precio_asc">Precio más bajo</option>
+                <option value="precio_desc">Precio más alto</option>
             </select>
 
             <input type="search" name="buscar" placeholder="Buscar...">
@@ -106,6 +107,13 @@ include __DIR__ . '/layout/' . $header;
 </main>
 
 <?php include __DIR__ . '/layout/footer.php'; ?>
-<script src="./assets/scripts/anuncios.js"></script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/scripts/misAnuncios.js" ></script>
 
+  <!-- Variables globales para el JS -->
+  <script>
+    const usuarioLogueado = <?= !empty($user) ? 'true' : 'false' ?>;
+    const favoritosUsuario = <?= json_encode($favoritos ?? []) ?>;
+  </script>
 </html>

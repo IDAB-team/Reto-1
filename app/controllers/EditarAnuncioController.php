@@ -65,17 +65,17 @@ class EditarAnuncioController extends BaseController {
 
     public function editarAnuncio(){
         session_start();
-        if(!empty($_POST["nombre"]) || !empty($_POST["descripcion"]) || !empty($_POST["imagen"]) || !empty($_POST["categoria"]) || !empty($_POST["precio"]) || !empty($_POST["stock"])){
+        if(!empty($_POST["nombre"]) && !empty($_POST["descripcion"]) && !empty($_POST["categoria"]) && !empty($_POST["precio"]) && !empty($_POST["stock"])){
             $anuncioActual = AnuncioModel::getAnuncioById($_GET["anuncio"]);
             if (!empty($_FILES["imagen"]["name"])) {
+                $rutaFisicaAntigua = realpath(__DIR__ . "/../" . $anuncioActual->urlImagen);
+                if ($rutaFisicaAntigua && file_exists($rutaFisicaAntigua)) {
+                    unlink($rutaFisicaAntigua);
+                } 
                 $nombreTmp = $_FILES["imagen"]["tmp_name"];
                 $nombreOriginal = $_FILES["imagen"]["name"];
                 $rutaFisica = __DIR__ . "/../assets/images/anuncios/" . time() . "_" . $nombreOriginal;
                 $rutaWeb = "assets/images/anuncios/" . time() . "_" . $nombreOriginal;
-                $carpeta = __DIR__ . "/../assets/images/anuncios/";
-                if (!file_exists($carpeta)) {
-                    mkdir($carpeta, 0777, true);
-                }
                 move_uploaded_file($nombreTmp, $rutaFisica);
             } else {
                 $rutaWeb = $anuncioActual->urlImagen;

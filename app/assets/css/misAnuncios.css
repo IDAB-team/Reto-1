@@ -1,12 +1,9 @@
-/* ==================================================================================================================
-    ------------------------------------------------- MIS ANUNCIOS SIEMPRE -------------------------------------------------
-================================================================================================================== */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;font-family: 'Montserrat', sans-serif;
 }
-    body{
+body{
     width: 100%;
     height: 100%;
     margin: 0;
@@ -14,21 +11,20 @@
     background-color: #f9f9f9;
 }
 .misAnunciosMain {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2.5em;
-  width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2.5em;
+    width: 60%;
 }
 /*Filtros: */
 .misAnunciosCategorias{
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem;
-  padding-right: 2.5em;
-  border-right: 2px solid #1156CC;
-    
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    padding-right: 2.5em;
+    border-right: 2px solid #1156CC;
 }
 .misAnunciosCategoria {
     display: flex;
@@ -44,30 +40,28 @@
     object-fit: contain;
     display: block;
 }
-    .misAnunciosCategorias h4 {
+.misAnunciosCategorias h4 {
     text-align: center;
     margin-bottom: 1em;
     color: #1156CC;
     border-bottom: solid #1156CC thin;
 }
-    
-    .misAnunciosCategorias a {
+
+.misAnunciosCategorias a {
     color: black;
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
-   
 }
-    .misAnunciosCategorias ul {
+.misAnunciosCategorias ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
-    
 }
-    .misAnunciosCategorias li {
+.misAnunciosCategorias li {
     margin: 0.3em 0;
     display: flex;
     align-items: center;
@@ -76,27 +70,27 @@
     padding: 0.1rem 0.5rem;
     border-radius: 8px;
 }
-    .misAnunciosCategorias li:hover {
+.misAnunciosCategorias li:hover {
     border-bottom: solid #1156CC thin;
 }
-    .misAnunciosContenido{
-    max-width: 80%;
-    }
-    .misAnunciosContenido h3{
+.misAnunciosContenido{
+    min-width: 80%;
+}
+.misAnunciosContenido h3{
     color:#1156CC;
     margin-bottom: .3em;    
-    }
+}
 /*Búsqueda:*/
 
-    .misAnunciosformularioBusqueda select{
-        appearance: none;         /* Estándar */
-        -webkit-appearance: none; /* Safari/Chrome */
-        -moz-appearance: none;    /* Firefox */
-        background: none;         /* Opcional: elimina fondo */
-        padding-right: 1.5em;
-        border: none;
-    }
-    .misAnunciosformularioBusqueda {
+.misAnunciosformularioBusqueda select{
+    appearance: none;         /* Estándar */
+    -webkit-appearance: none; /* Safari/Chrome */
+    -moz-appearance: none;    /* Firefox */
+    background: none;         /* Opcional: elimina fondo */
+    padding-right: 1.5em;
+    border: none;
+}
+.misAnunciosformularioBusqueda {
     display: flex;
     align-items: stretch;
     width: 100%;
@@ -105,9 +99,9 @@
     gap: 0;
     border-radius: 1em;
     margin-bottom: 1em;
-    }
+}
 
-    .misAnunciosformularioBusqueda select{
+.misAnunciosformularioBusqueda select{
     padding: .5em;
     margin: none;
     font-size: 0.95rem;
@@ -117,20 +111,19 @@
     border-radius: 1em 0em 0em 1em;
     width: 40%;
 }
-    .misAnunciosformularioBusqueda select option{
+.misAnunciosformularioBusqueda select option{
     background-color: white;
     color: #1156CC;
 }
-    .misAnunciosformularioBusqueda input[type="search"]{
+.misAnunciosformularioBusqueda input[type="search"]{
     padding: .5em;
     border: .1em solid #1156CC;
     font-size: 0.95rem;
     width: 60%;
     border-radius: 0;
-    
 }
-    
-    .misAnunciosformularioBusqueda button {
+
+.misAnunciosformularioBusqueda button {
     background-color: #1156CC;
     width: 20%;
     color: white;
@@ -143,28 +136,27 @@
     font-weight: 500;
 }
 /*Anuncios: */
-    .misAnunciosLista{
+.misAnunciosLista{
     display: flex;
     flex-direction: column;
     gap: 1em;
 }
-    .misAnunciosInfo {
+.misAnunciosInfo {
     padding: 1em;
     margin-top: 1em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-
 }
-    .misAnunciosDetalles {
+.misAnunciosDetalles {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    
+
 }
-    .misAnunciosTexto{
+.misAnunciosTexto{
     width: 70%;
     padding: .5em;
     display: flex;
@@ -181,34 +173,74 @@
     font-size: medium;
     color: #1156CC;
 }
-
-    .misAnunciosAnuncioCard{
+.misAnunciosAnuncioCard {
     display: flex;  
-    overflow: hidden;   /*Recorta la imagen a los bordes */
+    overflow: hidden;   
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     border-radius: 1em;
     position: relative;
     transition: transform 0.2s ease; 
-    height: 20%;
-    max-height: 20%;
-    }
-    .misAnunciosAnuncioCard:hover{
+    height: 200px; 
+    margin-bottom: 1em;
+}
+
+.misAnunciosAnuncioCard:hover {
     transform: scale(1.03);
-    }
-    .misAnunciosImagen{
-    width: 50%;
+}
+
+.misAnunciosImagen {
+    width: 50%; 
     min-width: 180px;
-        
-    }
-    .misAnunciosImagen img {
-    display: block;           /* elimina gaps por inline images */
+    height: 200px; 
+    overflow: hidden; 
+    border-radius: 1em 0 0 1em;
+}
+
+.misAnunciosImagen img {
     width: 100%;
     height: 100%;
-    object-fit: cover;        /* <- ocupa todo y recorta sin deformar */
-    object-position: center; 
-    
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
-    .desc p {
+
+.misAnunciosInfo {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    gap: 0.4em;
+}
+
+.misAnunciosInfoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 0.4rem;
+}
+
+.misAnunciosInfoTextos {
+    width: 60%;
+}
+
+.aNombre {
+    font-size: large;
+}
+
+.aVendedor {
+    font-size: medium;
+    color: #1156CC;
+    font-weight: bold;
+}
+
+.misAnunciosPrecio {
+    font-weight: bolder;
+    font-size: x-large;
+    align-items: left;
+}
+
+.misAnunciosDescripcion {
     font-size: small;
     font-style: italic;
     line-height: 1.4;
@@ -216,56 +248,51 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    /*-webkit-line-clamp: 4; /* Número de líneas visibles */
     -webkit-box-orient: vertical;
-    max-height: 6.5em; /* Aproximado según line-height */
-    }
-    .misAnunciosPrecio{
-    font-weight: bolder;
-    font-size: x-large;
-    align-items: left;
+    max-height: 6.5em;
+    margin-top: 0.3em;
 }
-    .misAnunciosFecha{
+
+.misAnunciosFecha {
     position: absolute;
     top: 0.6em;
     right: 0.8em;
     color: #989898;
     padding: 0.3em 0.6em;
     border-radius: 0.4em;
-    font-size:x-small;
+    font-size: x-small;
     font-weight: 300;
-    }
-    .misAnunciosEdicion{
+}
+
+.misAnunciosEdicion {
     display: flex;
     justify-content: flex-end;
-    }
-    
-    .misAnunciosEdicion a{
-        text-decoration: none;
-        color: black;
-    }
-    .misAnunciosEdicion :hover{
-    color: #1156CC;
-    } 
+    gap: 0.5em;
+}
 
-    .usuarioInformacion {
-    display: flex;
-    flex-direction: column;
-    }
-    a{
-        text-decoration: none;
-        color: black;
-    }
+.misAnunciosEdicion div a {
+    text-decoration: none;
+    color: black;
+}
+
+.misAnunciosEdicion div a:hover {
+    color: #1156CC;
+}
+
+.misAnunciosInfoTextos a{
+    text-decoration: none;
+    color: black;
+}
 
 /* Paginación */
-    .misAnunciosPaginas {
+.misAnunciosPaginas {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
     margin-top: 2rem;
 }
 
-    .paginaBtn {
+.paginaBtn {
     background-color: #989898;
     color: white;
     font-weight: 750;
@@ -275,11 +302,11 @@
     cursor: pointer;
 }
 
-    .paginaBtn:hover {
-    background-color: #1156CC;
+.paginaBtn:hover {
+    background-color: #1156CC;  
 }
 
-    .paginaActiva {
+.paginaActiva {
     background-color: #1156CC;
     color: white;
 }

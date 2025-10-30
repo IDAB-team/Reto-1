@@ -43,7 +43,7 @@ class FiltradoController extends BaseController {
         }
         // Si no hay filtros, mostrar todos
         else {
-            $listaAnuncios = AnuncioModel::getAll();
+            $listaAnuncios = AnuncioModel::getAllOrderByFecha();
         }
 
         $this->render('filtrado.view.php', [

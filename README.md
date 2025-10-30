@@ -2,22 +2,6 @@
 
 ---
 
-# 🔹 Índice
-
-- [Estado del Proyecto](#estado)
-- [Descripción](#descripcion)
-- [Desarrolladores](#desarrolladores)
-- [Stack Tecnológico](#stack)
-- [Aspecto](#aspecto)
-
----
-
-<h1 id="estado">🔹 Estado del Proyecto</h1>
-
-**En desarrollo 🔧**  
-
----
-
 <h1 id="descripcion">🔹 Aplicación Web para Comerciantes de Vitoria</h1>
 
 Este proyecto corresponde a una aplicación web orientada a **digitalizar y visibilizar los comercios locales de Vitoria**.
@@ -55,13 +39,3 @@ Ofrece funcionalidades para administrar comercios, productos, categorías y faci
 ![Figma](https://img.shields.io/badge/Figma-1E90FF?logo=figma&logoColor=white&style=for-the-badge)
 ![Canva](https://img.shields.io/badge/Canva-1E90FF?logo=canva&logoColor=white&style=for-the-badge)
 
----
-
-<h1 id="aspecto">🔹 Aspecto</h1>
-
-El diseño de la aplicación se centra en una **paleta azul**, buscando transmitir confianza y modernidad:  
-
-- **Color principal:** #1156CC (Dodger Blue)  
-- **Tipografía:** Montserrat clara y legible  
-
----

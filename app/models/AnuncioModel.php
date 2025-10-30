@@ -288,7 +288,6 @@ class AnuncioModel {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    // Obtener anuncios de un usuario ordenados por fecha o precio
     public static function getByIdUserOrdenados($idUsuario, $campo, $orden='ASC') {
         $db = Database::getConnection();
 
@@ -297,13 +296,13 @@ class AnuncioModel {
         $ordenSQL = strtoupper($orden) === 'DESC' ? 'DESC' : 'ASC';
 
         $sql = "SELECT a.ID_Anuncio AS idAnuncio,
-                       a.Nombre AS nombreAnuncio,
-                       a.Descripcion AS descAnuncio,
-                       a.Fecha_pub AS fechaAnuncio,
-                       a.Precio AS precioAnuncio,
-                       a.Url_Imagen AS urlImagen,
-                       u.Username AS userName,
-                       u.ID_Usuario AS idComerciante
+                    a.Nombre AS nombreAnuncio,
+                    a.Descripcion AS descAnuncio,
+                    a.Fecha_pub AS fechaAnuncio,
+                    a.Precio AS precioAnuncio,
+                    a.Url_Imagen AS urlImagen,
+                    u.Username AS userName,
+                    u.ID_Usuario AS idComerciante
                 FROM anuncios a
                 JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
                 WHERE a.ID_Usuario = :idUsuario
@@ -313,5 +312,30 @@ class AnuncioModel {
         $stmt->execute(['idUsuario' => $idUsuario]);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public static function getByIdUserPorCategoria($userId, $categoria) {
+    $db = Database::getConnection();
+    $sql = "SELECT a.ID_Anuncio AS idAnuncio,
+                   a.Nombre AS nombreAnuncio,
+                   a.Descripcion AS descAnuncio,
+                   a.Fecha_pub AS fechaAnuncio,
+                   a.Precio AS precioAnuncio,
+                   a.Url_Imagen AS urlImagen,
+                   u.Username AS userName,
+                   u.ID_Usuario AS idComerciante,
+                   c.Nombre AS nombreCategoria
+            FROM anuncios a
+            JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
+            JOIN categorias c ON a.ID_Categoria = c.ID_Categoria
+            WHERE u.ID_Usuario = :userId AND LOWER(c.Nombre) = LOWER(:categoria)";
+    
+    $stmt = $db->prepare($sql);
+    $stmt->execute([
+        ':userId' => $userId,
+        ':categoria' => $categoria
+    ]);
+
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+}
 
 }

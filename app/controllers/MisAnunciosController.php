@@ -124,7 +124,7 @@ public function apiBuscarPorNombre() {
     exit;
 }
 
-// Ordenar por fecha solo del usuario
+// Ordenar por fecha más reciente
 public function apiOrdenarPorFecha() {
     session_start();
     header('Content-Type: application/json');
@@ -135,12 +135,12 @@ public function apiOrdenarPorFecha() {
     }
 
     $user = $_SESSION['user'];
-    $resultados = AnuncioModel::getByIdUserOrdenados($user['id'], 'fecha');
+    $resultados = AnuncioModel::getByIdUserOrdenados($user['id'], 'fecha', 'DESC'); // DESC = más reciente primero
     echo json_encode($resultados);
     exit;
 }
 
-// Ordenar por precio solo del usuario
+// Ordenar por precio ASC o DESC
 public function apiOrdenarPorPrecio() {
     session_start();
     header('Content-Type: application/json');
@@ -151,10 +151,36 @@ public function apiOrdenarPorPrecio() {
     }
 
     $user = $_SESSION['user'];
-    $orden = $_GET['orden'] ?? 'ASC'; // ASC o DESC
+    $orden = $_GET['orden'] ?? 'ASC';
     $resultados = AnuncioModel::getByIdUserOrdenados($user['id'], 'precio', $orden);
     echo json_encode($resultados);
     exit;
 }
+
+// Filtrar anuncios por categoría solo del usuario
+public function apiPorCategoria() {
+    session_start();
+    header('Content-Type: application/json');
+
+    if (!isset($_SESSION['user'])) {
+        echo json_encode([]);
+        exit;
+    }
+
+    $user = $_SESSION['user'];
+    $categoria = $_GET['categoria'] ?? '';
+
+    if (empty($categoria)) {
+        // Si no se envía categoría, devolver todos los anuncios del usuario
+        $resultados = AnuncioModel::getByIdUser($user['id']);
+    } else {
+        // Método en el modelo que filtre por categoría + userId
+        $resultados = AnuncioModel::getByIdUserPorCategoria($user['id'], $categoria);
+    }
+
+    echo json_encode($resultados);
+    exit;
+}
+
 
 }

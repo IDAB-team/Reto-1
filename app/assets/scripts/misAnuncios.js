@@ -3,7 +3,9 @@ const buscarBtn = document.querySelector('button[name="buscarAnuncio"]');
 const buscarInput = document.querySelector('input[name="buscar"]'); 
 const selectOrden = document.querySelector('select[name="misAnunciosOrden"]'); 
 const botonesPaginacionContainer = document.querySelector('.misAnunciosPaginas'); 
+const categoriasLinks = document.querySelectorAll('.misAnunciosCategorias a');
 
+// Renderizar anuncios dinámicamente
 function renderAnuncios(anuncios) {
   contenedor.innerHTML = '';
 
@@ -49,6 +51,7 @@ function renderAnuncios(anuncios) {
   });
 }
 
+// Cargar anuncios vía API
 async function cargarAnuncios(url) {
   try {
     const response = await axios.get(url);
@@ -62,11 +65,7 @@ async function cargarAnuncios(url) {
 // Búsqueda
 buscarBtn.addEventListener('click', () => {
   const texto = buscarInput.value.trim();
-
-  const url = texto
-    ? `index.php?controller=MisAnunciosController&accion=apiBuscarPorNombre&texto=${encodeURIComponent(texto)}`
-    : 'index.php?controller=MisAnunciosController&accion=apiOrdenarPorFecha';
-
+  const url = `index.php?controller=MisAnunciosController&accion=apiBuscarPorNombre&texto=${encodeURIComponent(texto)}`;
   cargarAnuncios(url);
 });
 
@@ -75,11 +74,31 @@ selectOrden.addEventListener('change', () => {
   const valor = selectOrden.value;
   let url;
 
-  if (valor === 'fecha') {
-    url = 'index.php?controller=MisAnunciosController&accion=apiOrdenarPorFecha';
-  } else if (valor === 'precio') {
-    url = 'index.php?controller=MisAnunciosController&accion=apiOrdenarPorPrecio&orden=DESC';
+  switch(valor) {
+    case 'fecha':
+      url = 'index.php?controller=MisAnunciosController&accion=apiOrdenarPorFecha';
+      break;
+    case 'precio_asc':
+      url = 'index.php?controller=MisAnunciosController&accion=apiOrdenarPorPrecio&orden=ASC';
+      break;
+    case 'precio_desc':
+      url = 'index.php?controller=MisAnunciosController&accion=apiOrdenarPorPrecio&orden=DESC';
+      break;
   }
 
   if (url) cargarAnuncios(url);
+});
+
+
+// Filtrar por categoría desde el aside
+categoriasLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const urlParams = new URL(link.href).searchParams;
+    const categoria = urlParams.get('categoria');
+
+    if (categoria) {
+      cargarAnuncios(`index.php?controller=MisAnunciosController&accion=apiPorCategoria&categoria=${encodeURIComponent(categoria)}`);
+    }
+  });
 });

@@ -1,88 +1,85 @@
-// Elementos del DOM
-const contenedor = document.querySelector('.misAnunciosLista'); // Contenedor donde se mostrarán los anuncios
-const buscarBtn = document.querySelector('button[name="BuscarAnuncio"]'); // Botón de búsqueda por nombre
-const buscarInput = document.querySelector('input[name="buscar"]'); // Campo de texto para escribir el nombre del anuncio
-const selectOrden = document.querySelector('select[name="misAnunciosOrden"]'); // Selector para ordenar los anuncios por precio
-const botonesPaginacion = document.querySelectorAll('.paginaBtn'); // Botones de paginación
+const contenedor = document.querySelector('.misAnunciosLista'); 
+const buscarBtn = document.querySelector('button[name="buscarAnuncio"]'); 
+const buscarInput = document.querySelector('input[name="buscar"]'); 
+const selectOrden = document.querySelector('select[name="misAnunciosOrden"]'); 
+const botonesPaginacionContainer = document.querySelector('.misAnunciosPaginas'); 
 
-// Función para renderizar los anuncios desde JSON a HTML
 function renderAnuncios(anuncios) {
-  contenedor.innerHTML = ''; // Limpiar contenido anterior
+  contenedor.innerHTML = '';
 
   if (!anuncios || anuncios.length === 0) {
-    contenedor.innerHTML = '<p>No se encontraron anuncios.</p>';
+    contenedor.innerHTML = '<p>No tienes anuncios publicados</p>';
     return;
   }
 
   anuncios.forEach(anuncio => {
-    const anuncioHTML = `
-      <div class="anuncio">
-        <img src="${anuncio.urlImagen}" alt="${anuncio.nombreAnuncio}" />
-        <h3>${anuncio.nombreAnuncio}</h3>
-        <p>${anuncio.descAnuncio}</p>
-        <p><strong>Precio:</strong> $${anuncio.precioAnuncio}</p>
-        <p><em>Publicado por:</em> ${anuncio.userName}</p>
-        <p><em>Fecha:</em> ${anuncio.fechaAnuncio}</p>
+    const box = document.createElement('div');
+    box.classList.add('misAnunciosAnuncioCard');
+
+    box.innerHTML = `
+      <div class="misAnunciosImagen">
+        <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=${anuncio.idAnuncio}">
+          <img src="./${anuncio.urlImagen}" alt="${anuncio.nombreAnuncio}">
+        </a>
+      </div>
+      <div class="misAnunciosFecha">
+        <p>${new Date(anuncio.fechaAnuncio).toLocaleDateString()}</p>
+      </div>
+      <div class="misAnunciosInfo">
+        <div class="misAnunciosInfoHeader">
+          <div class="misAnunciosInfoTextos">
+            <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=${anuncio.idAnuncio}">
+              <h4 class="aNombre">${anuncio.nombreAnuncio}</h4>
+            </a>
+            <a class="linkComerciante" href="#">
+              <h5 class="aVendedor">${anuncio.userName}</h5>
+            </a>
+          </div>
+          <div class="misAnunciosPrecio">
+            <p>${anuncio.precioAnuncio} €</p>
+          </div>
+        </div>
+        <div class="misAnunciosDescripcion">
+          <p>${anuncio.descAnuncio}</p>
+        </div>
       </div>
     `;
-    contenedor.innerHTML += anuncioHTML;
+
+    contenedor.appendChild(box);
   });
 }
 
-// Búsqueda por nombre
-buscarBtn.addEventListener('click', async () => {
-  const texto = buscarInput.value.trim(); 
-
+async function cargarAnuncios(url) {
   try {
-    let response;
-    if (!texto) {
-      response = await axios.get(`index.php?controller=FiltradoController&accion=getAll`);
-    } else {
-      response = await axios.get(`index.php?controller=FiltradoController&accion=apiBuscarPorNombre&texto=${encodeURIComponent(texto)}`);
-    }
+    const response = await axios.get(url);
     renderAnuncios(response.data);
   } catch (error) {
-    console.error("Error al buscar por nombre:", error);
-    contenedor.innerHTML = '<p>Error al buscar anuncios.</p>';
+    console.error("Error al cargar anuncios:", error);
+    contenedor.innerHTML = '<p>Error al cargar anuncios.</p>';
   }
+}
+
+// Búsqueda
+buscarBtn.addEventListener('click', () => {
+  const texto = buscarInput.value.trim();
+
+  const url = texto
+    ? `index.php?controller=MisAnunciosController&accion=apiBuscarPorNombre&texto=${encodeURIComponent(texto)}`
+    : 'index.php?controller=MisAnunciosController&accion=apiOrdenarPorFecha';
+
+  cargarAnuncios(url);
 });
 
-// Ordenar por precio o fecha
-selectOrden.addEventListener('change', async () => {
+// Orden
+selectOrden.addEventListener('change', () => {
   const valor = selectOrden.value;
+  let url;
 
-  try {
-    let response;
-
-    if (valor === 'fecha') {
-      response = await axios.get('index.php?controller=FiltradoController&accion=apiOrdenarPorFecha');
-    } else if(valor ==='precio') {
-      const orden = valor === 'precio' ? 'DESC' : 'ASC';
-      response = await axios.get(`index.php?controller=FiltradoController&accion=apiOrdenarPorPrecio&orden=${orden}`);
-    }
-
-    renderAnuncios(response.data);
-  } catch (error) {
-    console.error("Error al ordenar los anuncios:", error);
-    contenedor.innerHTML = '<p>Error al ordenar anuncios.</p>';
+  if (valor === 'fecha') {
+    url = 'index.php?controller=MisAnunciosController&accion=apiOrdenarPorFecha';
+  } else if (valor === 'precio') {
+    url = 'index.php?controller=MisAnunciosController&accion=apiOrdenarPorPrecio&orden=DESC';
   }
-});
 
-// Paginación
-botonesPaginacion.forEach(btn => {
-  btn.addEventListener('click', async () => {
-    const pagina = btn.getAttribute('data-pagina');
-
-    try {
-      const response = await axios.get(`index.php?controller=MisAnunciosController&accion=getPaginas&pagina=${pagina}`);
-      renderAnuncios(response.data);
-
-      // Actualizar clase activa visualmente
-      botonesPaginacion.forEach(b => b.classList.remove('paginaActiva'));
-      btn.classList.add('paginaActiva');
-    } catch (error) {
-      console.error("Error al cargar la página:", error);
-      contenedor.innerHTML = '<p>Error al cargar la página.</p>';
-    }
-  });
+  if (url) cargarAnuncios(url);
 });

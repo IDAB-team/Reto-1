@@ -104,4 +104,57 @@ class MisAnunciosController extends BaseController {
     echo json_encode($listaAnuncios);
     exit;
 }
+
+// Buscar anuncios por nombre solo del usuario
+public function apiBuscarPorNombre() {
+    session_start();
+    header('Content-Type: application/json');
+
+    if (!isset($_SESSION['user'])) {
+        echo json_encode([]);
+        exit;
+    }
+
+    $user = $_SESSION['user'];
+    $texto = $_GET['texto'] ?? '';
+
+    // Método en el modelo que busque por nombre + userId
+    $resultados = AnuncioModel::buscarPorNombreUsuario($texto, $user['id']);
+    echo json_encode($resultados);
+    exit;
+}
+
+// Ordenar por fecha solo del usuario
+public function apiOrdenarPorFecha() {
+    session_start();
+    header('Content-Type: application/json');
+
+    if (!isset($_SESSION['user'])) {
+        echo json_encode([]);
+        exit;
+    }
+
+    $user = $_SESSION['user'];
+    $resultados = AnuncioModel::getByIdUserOrdenados($user['id'], 'fecha');
+    echo json_encode($resultados);
+    exit;
+}
+
+// Ordenar por precio solo del usuario
+public function apiOrdenarPorPrecio() {
+    session_start();
+    header('Content-Type: application/json');
+
+    if (!isset($_SESSION['user'])) {
+        echo json_encode([]);
+        exit;
+    }
+
+    $user = $_SESSION['user'];
+    $orden = $_GET['orden'] ?? 'ASC'; // ASC o DESC
+    $resultados = AnuncioModel::getByIdUserOrdenados($user['id'], 'precio', $orden);
+    echo json_encode($resultados);
+    exit;
+}
+
 }

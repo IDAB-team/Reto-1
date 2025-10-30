@@ -78,12 +78,11 @@ class MisAnunciosController extends BaseController {
         exit;
     }
 
-    public function eliminar(){
+    public function eliminar() {
         if (!empty($_GET["anuncio"])) {
             $idAnuncio = $_GET["anuncio"];
             AnuncioModel::deleteById($idAnuncio);
         }
-
         header("Location: index.php?controller=MisAnunciosController");
         exit;
     }

@@ -240,5 +240,26 @@ class AnuncioModel {
         $stmt->execute(['idUsuario'=>$idUsuario]);
         return $stmt ->fetchAll(PDO::FETCH_OBJ);
     }
+    public static function getByIdUserAndCategoria($userId, $categoriaNombre) {
+    $db = Database::getConnection();
+    $sql = "SELECT a.Nombre AS nombreAnuncio,
+                   a.ID_Anuncio AS idAnuncio,
+                   a.Descripcion AS descAnuncio,
+                   a.Fecha_pub AS fechaAnuncio, 
+                   a.Precio AS precioAnuncio, 
+                   a.Url_Imagen AS urlImagen,
+                   u.Username AS userName,
+                   u.ID_Usuario AS idComerciante
+            FROM anuncios a 
+            JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
+            JOIN categorias c ON a.ID_Categoria = c.ID_Categoria
+            WHERE u.ID_Usuario = :idUser AND c.Nombre = :categoriaNombre";
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute(['idUser' => $userId, 'categoriaNombre' => $categoriaNombre]);
+
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+}
+
 
 }

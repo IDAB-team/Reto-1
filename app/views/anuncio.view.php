@@ -39,7 +39,7 @@
 
             <div class="contactoDerecha">
                 <h1>Si estas interesado/a</h1>
-                <h2>CONTACTA CON <a class="linkComerciante" href="index.php?controller=VendedorController&accion=index&id=<?= $anuncio->idComerciante?>"><?= htmlspecialchars( $anuncio-> nameUser ) ?><a></h2>
+                <h2>CONTACTA CON <a class="linkComerciante" href="index.php?controller=VendedorController&accion=index&id=<?= $anuncio->idComerciante?>"><?= htmlspecialchars( $anuncio-> userName ) ?><a></h2>
                     <div class="anuncioFormulario">
                         <label>Correo Electronico:</label>
                         <input class="inputLabel" type="text" name="correo" placeholder="Introduce tu correo">

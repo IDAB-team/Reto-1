@@ -208,13 +208,14 @@ body {
 width: 60%;
 }
 
-.filtradoInfoTextos h4 {
-font-size: large;
+.aNombre {
+  font-size: large;
 }
 
-.filtradoInfoTextos h5 {
+.aVendedor{
     font-size: medium;
     color: #1156CC;
+    font-weight: bold;
 }
 
 .filtradoAnunciosPrecio {
@@ -316,6 +317,8 @@ font-size: large;
   background-color: #1156CC;
   color: white;
 }
+
+
 
 /* Tablets y pantallas medianas */
 @media (max-width: 1024px) {

@@ -59,12 +59,15 @@ include __DIR__ . '/layout/' . $header;
                     <div class="misAnunciosDetalles">
                         <div class="misAnunciosTexto">
                             <a href="index.php?controller=AnuncioController&accion=getAnuncioById&idAnuncio=<?= $anuncio->idAnuncio?>">
-                            <h4><?=$anuncio->nombreAnuncio ?> </h4>
-                            <h5><?=$anuncio->userName ?></h5> 
+                                <h4><?=$anuncio->nombreAnuncio ?> </h4>
+                            </a>
+                            <a class="linkComerciante" href="index.php?controller=VendedorController&accion=index&id=<?= $anuncio->idComerciante?>">
+                                <h5><?=$anuncio->userName ?></h5> 
+                            </a>
                             <div class="desc">
                                 <p><?=$anuncio->descAnuncio ?></p>
                             </div>
-                            </a>
+                            
                         </div>
                         <div class="misAnunciosPrecio">
                             <p><?=$anuncio->precioAnuncio ?> €</p>

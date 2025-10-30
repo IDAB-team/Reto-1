@@ -166,6 +166,10 @@ body{
     overflow: hidden; 
     max-height: 150px;
 }
+.misAnunciosTexto a{
+    text-decoration: none;
+}
+
 .misAnunciosTexto h4{
     font-size: large;
 }

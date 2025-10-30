@@ -85,11 +85,8 @@
                 </a>
               <?php endif; ?>
             </div>
-
-            </div>
-
+          </div>
         </div>
-      </div>      
     <?php endforeach; ?>
     
     </div>

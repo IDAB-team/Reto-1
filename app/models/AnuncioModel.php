@@ -58,7 +58,7 @@ class AnuncioModel {
                 FROM anuncios a
                 JOIN usuarios u ON a.ID_Usuario = u.ID_Usuario
                 JOIN categorias c ON a.ID_Categoria = c.ID_Categoria
-                WHERE c.Nombre = :nameCategory";
+                WHERE LOWER(c.Nombre) = LOWER(:nameCategory)";
         $stmt = $db->prepare($sql);
         $stmt->execute(['nameCategory' => $nameCategory]);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -71,7 +71,7 @@ class AnuncioModel {
                     a.ID_Anuncio,
                     a.Nombre AS nombreAnuncio,
                     a.Descripcion AS descripcionAnuncio,
-                    a.Fecha_pub,
+                    a.Fecha_pub AS fechaAnuncio,
                     a.Precio AS precioAnuncio,
                     a.Url_imagen,
                     u.Username AS usernameAnuncio,
@@ -92,7 +92,7 @@ class AnuncioModel {
                     a.ID_Anuncio,
                     a.Nombre AS nombreAnuncio,
                     a.Descripcion AS descripcionAnuncio,
-                    a.Fecha_pub,
+                    a.Fecha_pub AS fechaAnuncio,
                     a.Precio AS precioAnuncio,
                     a.Url_imagen,
                     u.Username AS usernameAnuncio,
@@ -111,7 +111,7 @@ class AnuncioModel {
                     a.ID_Anuncio,
                     a.Nombre AS nombreAnuncio,
                     a.Descripcion AS descripcionAnuncio,
-                    a.Fecha_pub,
+                    a.Fecha_pub AS fechaAnuncio,
                     a.Precio AS precioAnuncio,
                     a.Url_imagen,
                     u.Username AS usernameAnuncio,

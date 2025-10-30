@@ -57,34 +57,6 @@ class MisAnunciosController extends BaseController {
         echo json_encode($resultados);
         exit;
     }
-    public function apiBuscarAnuncios() {
-    session_start();
-    header('Content-Type: application/json');
-
-    $userId = $_SESSION['user']['id'] ?? null;
-    $texto = $_GET['texto'] ?? '';
-    $categoria = $_GET['categoria'] ?? '';
-
-    if (!$userId) {
-        echo json_encode([]);
-        exit;
-    }
-
-    if ($categoria) {
-        $anuncios = AnuncioModel::getByIdUserAndCategoria($userId, $categoria);
-    } else {
-        $anuncios = AnuncioModel::getByIdUser($userId);
-    }
-
-    if ($texto) {
-        $anuncios = array_filter($anuncios, fn($a) => stripos($a->nombreAnuncio, $texto) !== false);
-    }
-
-    echo json_encode(array_values($anuncios));
-    exit;
-}
-
-
 
     public function buscarPorId() {
         session_start();
@@ -133,27 +105,4 @@ class MisAnunciosController extends BaseController {
     echo json_encode($listaAnuncios);
     exit;
 }
-
-public function apiFiltrarPorCategoria() {
-    session_start();
-    header('Content-Type: application/json');
-
-    if (!isset($_SESSION['user'])) {
-        echo json_encode([]);
-        exit;
-    }
-
-    $userId = $_SESSION['user']['id'];
-    $categoria = $_GET['categoria'] ?? '';
-
-    if (!$categoria) {
-        $anuncios = AnuncioModel::getByIdUser($userId); // Todos los anuncios del usuario
-    } else {
-        $anuncios = AnuncioModel::getByIdUserAndCategoria($userId, $categoria); // Solo anuncios de esa categoría
-    }
-
-    echo json_encode($anuncios);
-    exit;
-}
-
 }
